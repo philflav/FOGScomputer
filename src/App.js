@@ -1,7 +1,7 @@
 import React from 'react';
 
 //import { BrowserRouter as Router,  Route} from 'react-router-dom';
-import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 
 import Archives from './pages/archives.js';
 import Layout from './pages/layout.js';
@@ -23,10 +23,13 @@ class App extends React.Component {
           <Link to="/archive">Archive<br/></Link>
           <Link to="/settings">Settings</Link>
           <hr/>
-          <Route exact path ='/' component={Layout}/>
-          <Route path ='/archives' component ={Archives} />
+          <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
+          <Route path ='/' exact component={Layout}/>
+          <Route path ='/archive' component ={Archives} />
           <Route path ='/settings' component ={Settings} />
           <Route path ='/featured' component ={Featured} />
+          <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
+          </Switch>
 
         </div>
       </Router>
