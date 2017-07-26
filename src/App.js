@@ -1,12 +1,14 @@
 import React from 'react';
 
 //import { BrowserRouter as Router,  Route} from 'react-router-dom';
-import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Archives from './pages/archives.js';
 import Layout from './pages/layout.js';
 import Featured from './pages/featured.js';
-import Settings from './pages/settings.js'
+import Settings from './pages/settings.js';
+
+import {Nav, NavItem} from 'react-bootstrap'
 
 
 
@@ -18,10 +20,12 @@ class App extends React.Component {
       <Router >
         <div>
           <h1>Home</h1>
-          <Link to="/">Home<br/></Link>
-          <Link to="/featured">Featured<br/></Link>
-          <Link to="/archive">Archive<br/></Link>
-          <Link to="/settings">Settings</Link>
+          <Nav bsStyle="tabs" >
+          <NavItem href = "/">Home</ NavItem>
+          <NavItem href = "/featured">Featured</NavItem>
+          <NavItem href = "/archive">Archive</NavItem>
+          <NavItem href = "/settings">Settings</NavItem>
+          </Nav>
           <hr/>
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
