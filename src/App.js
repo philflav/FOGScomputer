@@ -8,7 +8,7 @@ import Layout from './pages/layout.js';
 import Featured from './pages/featured.js';
 import Settings from './pages/settings.js';
 
-import {Nav, NavItem} from 'react-bootstrap'
+import {Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap'
 
 
 
@@ -23,10 +23,16 @@ class App extends React.Component {
           <Nav bsStyle="tabs" >
           <NavItem href = "/">Home</ NavItem>
           <NavItem href = "/featured">Featured</NavItem>
-          <NavItem href = "/archive">Archive</NavItem>
           <NavItem href = "/settings">Settings</NavItem>
+                <NavDropdown eventKey="4" title="Archives" id="nav-dropdown">
+                <MenuItem href="/archive/fred">Fred</MenuItem>
+                <MenuItem href="/archive/bert">Bert</MenuItem>
+                <MenuItem href="/archive/john">John</MenuItem>
+                <MenuItem divider />
+                <MenuItem href="/">Homepage</MenuItem>
+        </NavDropdown>
           </Nav>
-          <hr/>
+ 
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
           <Route path ='/archive/:id' component ={Archives} />
