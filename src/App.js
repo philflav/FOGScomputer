@@ -25,7 +25,8 @@ class App extends React.Component {
           <hr/>
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
-          <Route path ='/archive' component ={Archives} />
+          <Route path ='/archive/:id' component ={Archives} />
+          <Route path ='/archive' component = {Archives} />
           <Route path ='/settings' component ={Settings} />
           <Route path ='/featured' component ={Featured} />
           <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
