@@ -20,26 +20,24 @@ class App extends React.Component {
       <Router >
         <div>
           <h1>FOGS Computer (prototype)</h1>
-          <Nav bsStyle="tabs" >
+          <Nav bsStyle="pills" >
           <NavItem href = "/">Layout</ NavItem>
           <NavItem href = "/featured">Featured</NavItem>
           <NavItem href = "/settings">Settings</NavItem>
-          <NavDropdown eventKey="4" title="Players" id="nav-dropdown">
-                <MenuItem href="player/fred">Fred</MenuItem>
-                <MenuItem href="player/bert">Bert</MenuItem>
-                <MenuItem href="player/john">John</MenuItem>
+          <NavDropdown title="Players" id="nav-dropdown">
+                <MenuItem href="/player/Flavin">Flavin</MenuItem>
+                <MenuItem href="/player/McClean">McClean</MenuItem>
+                <MenuItem href="/player/Mahoney">Mahoney</MenuItem>
                 <MenuItem divider />
                 <MenuItem href="/">Homepage</MenuItem>
-        </NavDropdown>
-            <Nav pullRight>
-                <NavItem href ='#'><Glyphicon glyph="log-in" /></NavItem>
-            </Nav>
-        </Nav>
+         </NavDropdown>
+         <NavItem href ='#'><Glyphicon glyph="log-in" /> Login</NavItem>
+          </Nav>
 
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
-          <Route path ='/player/:id' component ={Players} />
+          <Route path ='/player/:playerName' component ={Players} />
           <Route path ='/players' component = {Players} />
           <Route path ='/settings' component ={Settings} />
           <Route path ='/featured' component ={Featured} />
