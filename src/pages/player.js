@@ -1,18 +1,20 @@
 import React from "react"; 
 
+import {Panel, Well} from 'react-bootstrap'
+
 export default class Player extends React.Component {
 
 render () {
-
-    return (
-        
+    const title ='Database Record for '+ this.props.forename;
+    return (        
         <div>
-            <h1> Database Record for {this.props.forename}</h1>
+            <Panel header={title}  bsStyle="primary">          
             <h3>{this.props.forename} {this.props.surname} </h3>
 
-            Latest handicap recorded is {this.props.handicap}
-            <br/>
-            Phone: {this.props.phone}  email: {this.props.email}
+            < Well  bsSize="small">Latest handicap recorded is {this.props.handicap} </Well>
+            <Well bsSize="small" > Phone: {this.props.phone} </Well > 
+            <Well bsSize="small">  email: {this.props.email} </Well>
+            </Panel>
         </div>
     )
 }
