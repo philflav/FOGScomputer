@@ -25,9 +25,9 @@ class App extends React.Component {
           <NavItem href = "/featured">Featured</NavItem>
           <NavItem href = "/settings">Settings</NavItem>
           <NavDropdown title="Players" id="nav-dropdown">
-                <MenuItem href="/player/Flavin">Flavin</MenuItem>
-                <MenuItem href="/player/McClean">McClean</MenuItem>
-                <MenuItem href="/player/Mahoney">Mahoney</MenuItem>
+                <MenuItem href="/test/player/Flavin">Flavin</MenuItem>
+                <MenuItem href="/test/player/McClean">McClean</MenuItem>
+                <MenuItem href="/test/player/Mahoney">Mahoney</MenuItem>
                 <MenuItem divider />
                 <MenuItem href="/">Homepage</MenuItem>
          </NavDropdown>
@@ -37,7 +37,7 @@ class App extends React.Component {
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
-          <Route path ='/player/:playerName' component ={Players} />
+          <Route path ='/:compName/player/:playerName' component ={Players} />
           <Route path ='/players' component = {Players} />
           <Route path ='/settings' component ={Settings} />
           <Route path ='/featured' component ={Featured} />

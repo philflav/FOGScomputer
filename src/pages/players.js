@@ -14,21 +14,23 @@ export default class Players  extends React.Component {
      
 
     constructor(props) {
-        super(props);
+        super(props);  
         
-        this.state={playerName:props.match.params.playerName}
+        //get competition and player names from URL.
+        this.state ={playerName: this.props.match.params.playerName,compName: this.props.match.params.compName };
 
-     
     }
 
     
     componentWillMount() {
+
+
          
          var dbRefPlayer= dbRefPlayers.orderByChild('surname').equalTo(this.state.playerName);
          dbRefPlayer.once('value').then(snap =>{
                   snap.forEach((child) => {
                   this.setState({forename: child.val().forename, surname: child.val().surname, email: child.val().email, phone:child.val().mobile, handicap:child.val().c_hcap});
-                  console.log(child.val())
+                  //console.log(child.val())
          }) 
   
         })
@@ -39,6 +41,7 @@ export default class Players  extends React.Component {
 
          return (             
             <div>  
+                <h3>Competition {this.state.compName}</h3>
                 <Player forename = {this.state.forename} surname = {this.state.surname} handicap = {this.state.handicap} email = {this.state.email} phone = {this.state.phone}/>    
             </div>
         )
