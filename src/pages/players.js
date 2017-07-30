@@ -28,33 +28,35 @@ export default class Players  extends React.Component {
 
     
     componentWillMount() {
-
-
          
          var dbRefPlayer= dbRefPlayers.orderByChild('surname').equalTo(this.state.playerName);
          dbRefPlayer.once('value').then(snap =>{
                   snap.forEach((child) => {
                   this.setState({playerId: child.val().player_id, forename: child.val().forename, surname: child.val().surname, email: child.val().email, phone:child.val().mobile, handicap:child.val().c_hcap});
-                  
-         }) 
+                  }) 
+         })
+
         var dbRefComp = dbRefComps.orderByChild('name').equalTo(this.state.compName);
-        var dbRefScorecard = dbRefScorecards.orderByChild('scorecard_id')
+        
+        var dbRefScorecard = dbRefScorecards.orderByChild('scorecard_id');
        
-        dbRefComp.once('value').then(snap =>{
-               
-                snap.forEach((child) => {
-                    if(child.val().player_id === (this.state.playerId)){
-                        this.setState({
-                            index1: child.val().SC1,
-                            index2: child.val().SC2,
-                            index3: child.val().SC3,
-                            index4: child.val().SC4,
- 
+                dbRefComp.once('value').then(snap =>{ 
+                        //console.log("--", snap.val())              
+                        snap.forEach((child) => {
+                            if(child.val().player_id === (this.state.playerId)){
+                                this.setState({
+                                    index1: child.val().SC1,
+                                    index2: child.val().SC2,
+                                    index3: child.val().SC3,
+                                    index4: child.val().SC4,
+        
                                  })
                              }
               
-                        })     
+                        })  
+                    //console.log("0", this.state)   
                     })   
+                
                    //Lookup course ID for courses played     
                 dbRefScorecard.once('value').then(snap => {
                 snap.forEach((child) =>{
@@ -70,36 +72,37 @@ export default class Players  extends React.Component {
                     if((this.state.index4)===child.val().scorecard_id){
                         this.setState({courseId4: child.val().course_id})                       
                     }
-               
+                     //console.log("1",this.state)
                      
                     })
                 })
-                console.log(this.state)
+               
 
                 //Look up course names
 
                 dbRefCourses.once('value').then(snap =>{
                     snap.forEach((child) => {
-                        if((this.state.courseId1)===child.val().course_id){
+                        //console.log(child.val())
+                        if((this.state.courseId1)===child.val().Course_id){
                             this.setState({courseName1: child.val().CourseName})                       
                         }
-                        if((this.state.courseId2)===child.val().course_id){
+                        if((this.state.courseId2)===child.val().Course_id){
                             this.setState({courseName2: child.val().CourseName})                       
                         }
-                        if((this.state.courseId3)===child.val().course_id){
+                        if((this.state.courseId3)===child.val().Course_id){
                             this.setState({courseName3: child.val().CourseName})                       
                         }
-                        if((this.state.courseId4)===child.val().course_id){
+                        if((this.state.courseId4)===child.val().Course_id){
                             this.setState({courseName4: child.val().CourseName})                       
                         }
                         })
-
+                        //console.log("2",this.state)
                 })
                 
-                    console.log(this.state)
+         }       
               
-                } 
-            )}
+                
+            
         
         
 
@@ -111,10 +114,10 @@ export default class Players  extends React.Component {
                 <Player forename = {this.state.forename} surname = {this.state.surname} handicap = {this.state.handicap} email = {this.state.email} phone = {this.state.phone}/>          
                        
                         <div>
-                        <Scorecard index = {this.state.courseName1} /> ;
-                        <Scorecard index = {this.state.courseName2} /> ;
-                        <Scorecard index = {this.state.courseName3} /> ;
-                        <Scorecard index = {this.state.courseName4} /> ;
+                        <Scorecard index={this.state.courseId1} courseName = {this.state.courseName1} /> ;
+                        <Scorecard courseName = {this.state.courseName2} /> ;
+                        <Scorecard courseName = {this.state.courseName3} /> ;
+                        <Scorecard courseName = {this.state.courseName4} /> ;
                         </div>
                       
             </div>
