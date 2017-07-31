@@ -212,7 +212,7 @@ export default class Players  extends React.Component {
                             this.setState({courseName4: child.val().CourseName})                       
                         }
                         })
-                        //console.log("2",this.state)
+                      //  console.log("2",this.state)
                 })
                 
          }       
@@ -230,10 +230,10 @@ export default class Players  extends React.Component {
                 <Player forename = {this.state.forename} surname = {this.state.surname} handicap = {this.state.handicap} email = {this.state.email} phone = {this.state.phone}/>          
                        
                         <div>
-                        <Scorecard courseName = {this.state.courseName1} handicap={day1hcap} scores= {day1f9score.concat(day1b9score)} f9={day1f9total} b9={day1b9total} total={day1total}/> ;
-                        <Scorecard courseName = {this.state.courseName2}  handicap={day2hcap} scores= {day2f9score.concat(day2b9score)} f9={day2f9total} b9={day2b9total} total={day2total}/>;
-                        <Scorecard courseName = {this.state.courseName3}  handicap={day3hcap} scores= {day3f9score.concat(day3b9score)} f9={day3f9total} b9={day3b9total} total={day3total}/> ;
-                        <Scorecard courseName = {this.state.courseName4}  handicap={day4hcap} scores= {day4f9score.concat(day4b9score)} f9={day4f9total} b9={day4b9total} total={day4total}/> ;
+                        <Scorecard courseName = {this.state.courseName1} courseId = {this.state.courseId1}  handicap={day1hcap} scores= {day1f9score.concat(day1b9score)} f9={day1f9total} b9={day1b9total} total={day1total}/> ;
+                        <Scorecard courseName = {this.state.courseName2} courseId = {this.state.courseId2}  handicap={day2hcap} scores= {day2f9score.concat(day2b9score)} f9={day2f9total} b9={day2b9total} total={day2total}/>;
+                        <Scorecard courseName = {this.state.courseName3} courseId = {this.state.courseId3}  handicap={day3hcap} scores= {day3f9score.concat(day3b9score)} f9={day3f9total} b9={day3b9total} total={day3total}/> ;
+                        <Scorecard courseName = {this.state.courseName4} courseId = {this.state.courseId4}  handicap={day4hcap} scores= {day4f9score.concat(day4b9score)} f9={day4f9total} b9={day4b9total} total={day4total}/> ;
                         </div>
                       
             </div>
