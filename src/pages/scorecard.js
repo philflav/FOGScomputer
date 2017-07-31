@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Table, Panel, Well } from 'react-bootstrap'
+import {Table, Panel} from 'react-bootstrap'
 //import PropTypes from 'prop-types';
 
 import fire from '../fire.js';
@@ -148,7 +148,7 @@ export class Scorecard extends Component {
                     <td>{this.props.scores[4]}</td>
                     <td>{this.props.scores[5]}</td>
                     <td>{this.props.scores[6]}</td>
-                    <td>{this.props.scores[6]}</td>
+                    <td>{this.props.scores[7]}</td>
                     <td>{this.props.scores[8]}</td>
                     <td>{this.props.scores[9]}</td>
                     <td>{this.props.f9}</td>
