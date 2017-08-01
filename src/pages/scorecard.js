@@ -22,7 +22,7 @@ var totalpts
 
 export class Scorecard extends Component {
 
-   
+ 
      
 
     componentWillMount() {
@@ -89,6 +89,15 @@ export class Scorecard extends Component {
 
     render() {
         console.log(this.props.scores)
+
+        const scorestyle = (val) => {
+            if(val===0){return {background: "grey", color: "black"}}
+            if(val===1){return {background:"black",color: "white"}}
+            if(val===2){return {background: "blue", color: "white"}}
+            if(val>2){return {background: "green", color:"white"}}
+        }
+
+ 
         
         return (
           
@@ -96,9 +105,9 @@ export class Scorecard extends Component {
                 <Panel header = {this.props.courseName} bsStyle="primary">  
                 <h4><i>Playing handicap {this.props.handicap}</i> </h4>
                 <div>
-                <Table responsive cols="6">
-                <thead>
-                <tr>
+                <Table striped responsive >
+                <thead >
+                <tr >
                     <th>Hole</th>  
                     <th> 1</th>
                     <th> 2</th>
@@ -155,15 +164,15 @@ export class Scorecard extends Component {
                 </tr>
                 <tr>
                     <td>Pts</td>
-                    <td>{pts[1]}</td>
-                    <td>{pts[2]}</td>
-                    <td>{pts[3]}</td>
-                    <td>{pts[4]}</td>
-                    <td>{pts[5]}</td>
-                    <td>{pts[6]}</td>
-                    <td>{pts[7]}</td>
-                    <td>{pts[8]}</td>
-                    <td>{pts[9]}</td>
+                    <td style={scorestyle(pts[1])}>{pts[1]}</td>
+                    <td style={scorestyle(pts[2])}>{pts[2]}</td>
+                    <td style={scorestyle(pts[3])}>{pts[3]}</td>
+                    <td style={scorestyle(pts[4])}>{pts[4]}</td>
+                    <td style={scorestyle(pts[5])}>{pts[5]}</td>
+                    <td style={scorestyle(pts[6])}>{pts[6]}</td>
+                    <td style={scorestyle(pts[7])}>{pts[7]}</td>
+                    <td style={scorestyle(pts[8])}>{pts[8]}</td>
+                    <td style={scorestyle(pts[9])}>{pts[9]}</td>
                     <td>{f9pts}</td>
                 </tr>
                 </tbody>
@@ -229,15 +238,15 @@ export class Scorecard extends Component {
                 </tr>
                 <tr>
                     <td>Pts</td>
-                    <td>{pts[10]}</td>
-                    <td>{pts[11]}</td>
-                    <td>{pts[12]}</td>
-                    <td>{pts[13]}</td>
-                    <td>{pts[14]}</td>
-                    <td>{pts[15]}</td>
-                    <td>{pts[16]}</td>
-                    <td>{pts[17]}</td>
-                    <td>{pts[18]}</td>
+                    <td style={scorestyle(pts[10])}>{pts[10]}</td>
+                    <td style={scorestyle(pts[11])}>{pts[11]}</td>
+                    <td style={scorestyle(pts[12])}>{pts[12]}</td>
+                    <td style={scorestyle(pts[13])}>{pts[13]}</td>
+                    <td style={scorestyle(pts[14])}>{pts[14]}</td>
+                    <td style={scorestyle(pts[15])}>{pts[15]}</td>
+                    <td style={scorestyle(pts[16])}>{pts[16]}</td>
+                    <td style={scorestyle(pts[17])}>{pts[17]}</td>
+                    <td style={scorestyle(pts[18])}>{pts[18]}</td>
                     <td>{b9pts}</td>
                     <td ><b>{totalpts}</b></td>
                 </tr>
