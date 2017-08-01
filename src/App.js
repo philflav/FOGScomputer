@@ -25,9 +25,9 @@ class App extends React.Component {
           <NavItem href = "/featured">Featured</NavItem>
           <NavItem href = "/settings">Settings</NavItem>
           <NavDropdown title="Players" id="nav-dropdown">
-                <MenuItem href="/test/player/Flavin">Flavin</MenuItem>
-                <MenuItem href="/test/player/McClean">McClean</MenuItem>
-                <MenuItem href="/test/player/Mahoney">Mahoney</MenuItem>
+                <MenuItem href="/FOGS2017/player/Flavin">Flavin</MenuItem>
+                <MenuItem href="/FOGS2017/player/McClean">McClean</MenuItem>
+                <MenuItem href="/FOGS2017/player/Mahoney">Mahoney</MenuItem>
                 <MenuItem divider />
                 <MenuItem href="/">Homepage</MenuItem>
          </NavDropdown>
