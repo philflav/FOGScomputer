@@ -6,6 +6,8 @@ import fire from '../fire.js';
 
 import stableford from '../stableford.js'
 
+import '../App.css'
+
 var dbRefHoles = fire.database().ref().child('hole');
 
 
@@ -93,8 +95,8 @@ export class Scorecard extends Component {
         const scorestyle = (val) => {
             if(val===0){return {background: "grey", color: "black"}}
             if(val===1){return {background:"black",color: "white"}}
-            if(val===2){return {background: "blue", color: "white"}}
-            if(val>2){return {background: "green", color:"white"}}
+            if(val===2){return {background: "#519bd9", color: "white"}}
+            if(val>2){return {background: "#458f4a", color:"white"}}
         }
 
  
@@ -106,8 +108,8 @@ export class Scorecard extends Component {
                 <h4><i>Playing handicap {this.props.handicap}</i> </h4>
                 <div>
                 <Table striped responsive >
-                <thead >
-                <tr >
+                <thead className="scorecard-header" >
+                <tr className="table-header" >
                     <th>Hole</th>  
                     <th> 1</th>
                     <th> 2</th>
@@ -178,7 +180,7 @@ export class Scorecard extends Component {
                 </tbody>
  
                 <thead>
-                <tr>
+                <tr className="table-header" >
                     <th>Hole</th>  
                     <th>10</th>
                     <th>11</th>
