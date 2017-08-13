@@ -60,6 +60,11 @@ export default class Players  extends React.Component {
                   this.setState({playerId: child.val().player_id, forename: child.val().forename, surname: child.val().surname, email: child.val().email, phone:child.val().mobile, handicap:child.val().c_hcap});
                   }) 
          })
+    
+    
+        
+                   
+                    
 
         var dbRefComp = dbRefComps.orderByChild('name').equalTo(this.state.compName);
         

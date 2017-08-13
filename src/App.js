@@ -7,6 +7,7 @@ import Players from './pages/players.js';
 import Layout from './pages/layout.js';
 import Featured from './pages/featured.js';
 import Settings from './pages/settings.js';
+import Leaderboard from './pages/leaderboard.js';
 
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
 
@@ -37,6 +38,7 @@ class App extends React.Component {
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
+          <Route path ='/:compName/leaderboard' component = {Leaderboard} />
           <Route path ='/:compName/player/:playerName' component ={Players} />
           <Route path ='/players' component = {Players} />
           <Route path ='/settings' component ={Settings} />

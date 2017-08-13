@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  background-color: #525;
+  background-color: #524;
   height: 50px;
   padding: 10px;
   color: white;
@@ -24,4 +24,19 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.scorecard-header {
+  background-color: #b7bf9d;
+  padding: 10px;
+  height:50px;
+  color: white;
+}
+.table-header {
+
+  background-color: #2e9120;
+  padding: 10px;
+  padding-bottom: 15px;
+  height:50px;
+  color: white;
+
 }

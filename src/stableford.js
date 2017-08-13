@@ -1,25 +1,33 @@
-function stableford(hcap, score, par, SI) {
+/**
+ * 
+ * @param {*} handicap of player
+ * @param {*} shots taken
+ * @param {*} par of hole
+ * @param {*} SI of hole
+ * returns Stableford points 
+ */
+function stableford(handicap, shots, par, SI) {
  
     var x;
 
-        if (score>0){
-            x=par-score
+        if (shots>0){
+            x=par-shots
         } else {
    
             return 0;
         }
-        if(hcap>18){
-            if (hcap-18 >=SI) {
+        if(handicap>18){
+            if (handicap-18 >=SI) {
                 x=x+4;
             }else{
                 x=x+3;
             }
         }else{
-            if (hcap>=SI) {
+            if (handicap>=SI) {
                 x=x+3;
             }else{
                 x=x+2;
-            }
+            }   
         }
         if (x>0) {
     

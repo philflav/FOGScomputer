@@ -1,6 +1,15 @@
 {
   "rules": {
     ".read": "auth != true",
-    ".write": "auth != true"
+    ".write": "auth != true",
+  "scorecard": { 
+    ".indexOn":"scorecard_id"},
+    "player" : {
+    ".indexOn":"player_id"},
+    "course" : {
+    ".indexOn":"Course_id"},
+    "comp" : {
+      ".indexOn":"name"}
+    }
   }
 }
