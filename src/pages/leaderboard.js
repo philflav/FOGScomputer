@@ -74,13 +74,13 @@ export default class Leaderboard extends React.Component {
             })
                   
                    
-                   for (var i = 0; i < 12; i++) {               
-                    getscorecard(cards[i*4]).then(function(results) {
+                   for (var i = 0; i < cards.length/4; i++) {               
+                    getscorecard(cards[1+i*4]).then(function(results) {
                         RESULTS.push(results) 
                         stateCopy = {results: RESULTS} 
-                        console.log("stateCopy: ",stateCopy) 
-                        that.setState(stateCopy);
-                        that.setState({compName: 'First results are in!' })                                                                 
+                        that.setState(stateCopy)
+                        that.setState({compName: that.props.match.params.compName}) 
+                        that.setState({day: 1})                                                                
                                                          
                          })
               
@@ -138,8 +138,8 @@ export default class Leaderboard extends React.Component {
         <DayTable results={this.state.results} />
           </td>
           <td>
-        <OverallTable results={this.state.results} />
-          </td>
+        {//<OverallTable results={this.state.results} />
+         } </td>
          </tr>
           </tbody>
         </table>
@@ -157,11 +157,11 @@ class ResultRow extends React.Component {
       //console.log('ResultRow :',this.props.results)    
     return (
       <tr>        
-        <td>{this.props.results.playerId}</td>
-        <td>{this.props.results.PlayerName}</td>
-        <td>{this.props.results.points}</td>
-        <td>{this.props.results.F1}</td>
-        <td>{this.props.results.par3s}</td>
+        <td>{this.props.results.playerId} </td>
+        <td>{this.props.results.PlayerName}({this.props.results.handicap}) </td>
+        <td>{this.props.results.points}  </td>
+        <td>{this.props.results.F1}  </td>
+        <td>{this.props.results.par3s}  </td>
       </tr>
     );
   }
@@ -186,14 +186,15 @@ class DayTable extends React.Component {
     //});
     return (
       <div>
-        <h3>Day result</h3>
+        <h3>Day {that.state.day} result</h3>
       <table>
             <thead>
             <tr>
-            <th> Name </th>
-            <th> Points </th>
-            <th> F1 </th>
-            <th> Par3s</th>
+            <th> Player ID </th>
+            <th>  Name(handicap) </th>
+            <th>  Points  </th>
+            <th>  F1    </th>
+            <th>  Par3s </th>
             </tr>
           </thead>
         <tbody>{rowItems}</tbody>
