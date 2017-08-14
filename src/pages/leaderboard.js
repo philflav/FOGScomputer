@@ -9,6 +9,8 @@ import Scorecard from './scorecard.js'
 
 import Result from './result.js'
 
+import {Panel, Table} from 'react-bootstrap'
+
 import getscorecard from '../functions/getscorecard'
 
 
@@ -142,20 +144,9 @@ export default class Leaderboard extends React.Component {
 	render() {
         return (
       <div> 
-        <h3> Leaderboard {this.state.compName} </h3>
-        <table>
-
-          <tbody>
-        <tr>
-          <td>
+        <Panel bsStyle="primary" header = {this.state.compName}> 
         <DayTable results={this.state.results} />
-          </td>
-          <td>
-        {//<OverallTable results={this.state.results} />
-         } </td>
-         </tr>
-          </tbody>
-        </table>
+        </Panel>
       </div>
     );
   }
@@ -196,8 +187,8 @@ class DayTable extends React.Component {
     <ResultRow results={result} key={result.playerId} />))
     return (
       <div>
-        <h3>COURSE NAME {coursename}</h3>
-      <table>
+      <Panel bsStyle="info" header= {"Result for "+(coursename)}>
+      <Table striped bordered condensed hover >
             <thead>
             <tr>
             <th> Player ID </th>
@@ -208,7 +199,21 @@ class DayTable extends React.Component {
             </tr>
           </thead>
         <tbody>{rowItems}</tbody>
-      </table>
+      </Table>
+      </Panel>
+      <Panel bsStyle = "info" header={"Overall placings after "  + (coursename)}>
+        <Table>
+        <thead>
+            <tr>
+            <th> Player ID </th>
+            <th>  Name(handicap) </th>
+            <th>  Points  </th>
+            <th>  F1    </th>
+            <th>  Par3s </th>
+            </tr>
+          </thead>
+        </Table>
+      </Panel>
       </div>
     );
   }
