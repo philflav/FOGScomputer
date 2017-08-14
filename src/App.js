@@ -38,7 +38,7 @@ class App extends React.Component {
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
-          <Route path ='/:compName/leaderboard' component = {Leaderboard} />
+          <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
           <Route path ='/:compName/player/:playerName' component ={Players} />
           <Route path ='/players' component = {Players} />
           <Route path ='/settings' component ={Settings} />

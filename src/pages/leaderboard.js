@@ -43,6 +43,7 @@ export default class Leaderboard extends React.Component {
 
         //get competition and player names from URL.
         this.state = { compName: this.props.match.params.compName,
+                day: this.props.match.params.day,
                results: RESULTS};
         stateCopy = Object.assign({}, this.state);
         console.log("State Copy before: ",stateCopy) 
@@ -73,55 +74,67 @@ export default class Leaderboard extends React.Component {
 
             })
                   
-                   
+                switch(that.state.day){
+                   case '1': //get day 1 results
                    for (var i = 0; i < cards.length/4; i++) {               
-                    getscorecard(cards[1+i*4]).then(function(results) {
-                        RESULTS.push(results) 
+                    getscorecard(cards[i*4]).then(function(results) {
+                        RESULTS.push(results)
+                        RESULTS.sort(function (a, b) {
+                        return b.points - a.points;
+                            }); 
                         stateCopy = {results: RESULTS} 
-                        that.setState(stateCopy)
-                        that.setState({compName: that.props.match.params.compName}) 
-                        that.setState({day: 1})                                                                
-                                                         
+                        that.setState(stateCopy)       
                          })
               
                     }
-
-                   
-                   
-                        
-                    
+                    break
+                    case '2': //get day 2 results
+                   for (var i = 0; i < cards.length/4; i++) {               
+                    getscorecard(cards[1+i*4]).then(function(results) {
+                        RESULTS.push(results)
+                        RESULTS.sort(function (a, b) {
+                        return b.points - a.points;
+                            }); 
+                        stateCopy = {results: RESULTS} 
+                        that.setState(stateCopy)       
+                         })
               
-            
-                 
-        })
-   
-            //display sorted leaderboard for each player
+                    }
+                    break
+                    case '3': //get day 3 results
+                   for (var i = 0; i < cards.length/4; i++) {               
+                    getscorecard(cards[2+i*4]).then(function(results) {
+                         RESULTS.push(results)
+                        RESULTS.sort(function (a, b) {
+                        return b.points - a.points;
+                            }); 
+                        stateCopy = {results: RESULTS} 
+                        that.setState(stateCopy)       
+                         })
+              
+                    }
+                    break  
+                    case '4': //get day 4 results
+                   for (var i = 0; i < cards.length/4; i++) {               
+                    getscorecard(cards[3+i*4]).then(function(results) {
+                        RESULTS.push(results)
+                        RESULTS.sort(function (a, b) {
+                        return b.points - a.points;
+                            }); 
+                        stateCopy = {results: RESULTS} 
+                        that.setState(stateCopy)       
+                         })
+              
+                    }
+                    break                                     
+                    default:
+                        that.setState({day: 'undefined'})
+                        that.setState({results: {courseName: 'overall'}})
 
+                }
         
-                /*
-           console.log('DAY2')
-            for (var i = 0; i < cards.length; i++) {               
-                getscorecard(cards[i][1]).then(function(value) {
-                    console.log(value)
-                     {<Result />}
-                 })
-            }
-
-            console.log('DAY3')
-            for (var i = 0; i < cards.length; i++) {               
-                getscorecard(cards[i][2]).then(function(value) {
-                    console.log(value)
-                     {<Result />} 
-                 })
-            }
-            console.log('DAY4')
-            for (var i = 0; i < cards.length; i++) {               
-                getscorecard(cards[i][3]).then(function(value) {
-                    console.log(value)
-                     {<Result />}
-                 })
-            } */
-                
+            })
+                  
         }
        
     
@@ -129,7 +142,7 @@ export default class Leaderboard extends React.Component {
 	render() {
         return (
       <div> 
-        <h1> Leaderboard {this.state.compName} </h1>
+        <h3> Leaderboard {this.state.compName} </h3>
         <table>
 
           <tbody>
@@ -176,17 +189,14 @@ class DayTable extends React.Component {
   render() {
     //console.log('DayTable :')  
     var results = this.props.results 
-    //console.log("results",results)
-  // var rows = [];   
+    console.log("results",results)
+    var coursename = 'undefined'
     var rowItems = results.map((result) => (
+    coursename = result.CourseName,
     <ResultRow results={result} key={result.playerId} />))
-  // results.forEach(function(rowresult) { 
-      //console.log("row:", rowresult)     
-    //  rows.push(<ResultRow results={rowresult} key={rowresult.playerId} />);      
-    //});
     return (
       <div>
-        <h3>Day {that.state.day} result</h3>
+        <h3>COURSE NAME {coursename}</h3>
       <table>
             <thead>
             <tr>
