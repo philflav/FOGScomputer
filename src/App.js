@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <Router >
         <div>
-          <h1>FOGS Computer (prototype)</h1>
+          <h1>FOGS Computer online V1</h1>
           <Nav bsStyle="pills" >
           <NavItem href = "/">Layout</ NavItem>
           <NavItem href = "/featured">Featured</NavItem>
@@ -32,7 +32,7 @@ class App extends React.Component {
                 <MenuItem divider />
                 <MenuItem href="/">Homepage</MenuItem>
          </NavDropdown>
-         <NavDropdown title="Leaderboard" id="navdropdown">
+         <NavDropdown title="2017 Leaderboard" id="navdropdown">
                 <MenuItem href="/FOGS2017/1/leaderboard">2017 Day 1</MenuItem>
                 <MenuItem href="/FOGS2017/2/leaderboard">2017 Day 2</MenuItem>
                 <MenuItem href="/FOGS2017/3/leaderboard">2017 Day 3</MenuItem>
