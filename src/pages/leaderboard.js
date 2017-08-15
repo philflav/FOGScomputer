@@ -46,7 +46,8 @@ export default class Leaderboard extends React.Component {
         //get competition and player names from URL.
         this.state = { compName: this.props.match.params.compName,
                 day: this.props.match.params.day,
-               results: RESULTS};
+               results: [],
+               overall: []}
         stateCopy = Object.assign({}, this.state);
         //console.log("State Copy before: ",stateCopy) 
         that=this 
@@ -62,6 +63,7 @@ export default class Leaderboard extends React.Component {
         var dbRefComp = dbRefComps.orderByChild('name').equalTo(this.state.compName);
         var cards = [];
         var RESULTS= []
+        var OVERALL= []
        
         
         
@@ -69,7 +71,7 @@ export default class Leaderboard extends React.Component {
                 var readcards = dbRefComp.once('value').then(snap => {
             
                     snap.forEach((child) => {
-                    console.log("Scorecard numbers",child.val())      
+                    //console.log("Scorecard numbers",child.val())      
                     cards.push(child.val().SC1)
                     cards.push(child.val().SC2)
                     cards.push(child.val().SC3)
@@ -103,11 +105,19 @@ export default class Leaderboard extends React.Component {
                                      }, 0);
                                    }, 0);
                           
-                          console.log(scorecard1,'Par3s',par3Count, 'Points', ptsCount, 'F1',F1Count);
-                            
-                                                 })
-                      })
+                      
+                          OVERALL.push({PlayerName: scorecard1.PlayerName, tpar3s: par3Count, tpoints: ptsCount, tF1: F1Count})
+                          OVERALL.sort(function (a, b) {
+                            return b.tpoints - a.tpoints;
+                                }); 
+                          stateCopy = {overall: OVERALL}
+                          that.setState(stateCopy)  
+ 
+                          })
+                        })
                       }) 
+                      
+                      //console.log(that.state)
                     }) 
                             
             })
@@ -183,6 +193,7 @@ export default class Leaderboard extends React.Component {
       <div> 
         <Panel bsStyle="primary" header = {this.state.compName}> 
         <DayTable results={this.state.results} />
+        <OverallTable results={this.state.overall} />
         </Panel>
       </div>
     );
@@ -197,8 +208,7 @@ class ResultRow extends React.Component {
   render() {
       //console.log('ResultRow :',this.props.results)    
     return (
-      <tr>        
-        <td>{this.props.results.playerId} </td>
+      <tr>  
         <td>{this.props.results.PlayerName}({this.props.results.handicap}) </td>
         <td>{this.props.results.points}  </td>
         <td>{this.props.results.F1}  </td>
@@ -207,6 +217,23 @@ class ResultRow extends React.Component {
     );
   }
 }
+class OverallResultRow extends React.Component {
+  
+      constructor (props){
+          super(props)
+      }
+    render() {
+        console.log('ResultRow :',this.props.results)    
+      return (
+        <tr>  
+          <td>{this.props.results.PlayerName} </td>
+          <td>{this.props.results.tpoints}  </td>
+          <td>{this.props.results.tF1}  </td>
+          <td>{this.props.results.tpar3s}  </td>
+        </tr>
+      );
+    }
+  }
 
 class DayTable extends React.Component {
     
@@ -228,8 +255,7 @@ class DayTable extends React.Component {
       <Table striped bordered condensed hover >
             <thead>
             <tr>
-            <th> Player ID </th>
-            <th>  Name(handicap) </th>
+            <th>  Name</th>
             <th>  Points  </th>
             <th>  F1    </th>
             <th>  Par3s </th>
@@ -237,19 +263,6 @@ class DayTable extends React.Component {
           </thead>
         <tbody>{rowItems}</tbody>
       </Table>
-      </Panel>
-      <Panel bsStyle = "info" header={"Overall placings after "  + (coursename)}>
-        <Table>
-        <thead>
-            <tr>
-            <th> Player ID </th>
-            <th>  Name(handicap) </th>
-            <th>  Points  </th>
-            <th>  F1    </th>
-            <th>  Par3s </th>
-            </tr>
-          </thead>
-        </Table>
       </Panel>
       </div>
     );
@@ -265,13 +278,17 @@ class OverallTable extends React.Component {
   render() {
     //console.log('OverallTable :')  
    var rows = []; 
-   this.props.results.forEach(function(result) {      
-      rows.push(<ResultRow results={result} key={result.PlayerName} />);      
+   var results=this.props.results
+   console.log(results)
+   
+   results.forEach(function(overallResult) {      
+      rows.push(<OverallResultRow results={overallResult} key={overallResult.PlayerName} />);  
+      console.log("over: ",overallResult)    
     });
     return (
       <div>
-        <h3>Overall Standings </h3>
-      <table>
+      <Panel bsStyle="primary" header="Overall Leaderboard">
+      <Table striped bordered condensed hover>
             <thead>
             <tr>
             <th> Name </th>
@@ -281,7 +298,8 @@ class OverallTable extends React.Component {
             </tr>
           </thead>
         <tbody>{rows}</tbody>
-      </table>
+      </Table>
+      </Panel>
        </div>
     );
   }
