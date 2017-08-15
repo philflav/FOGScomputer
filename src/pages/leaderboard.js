@@ -48,7 +48,7 @@ export default class Leaderboard extends React.Component {
                 day: this.props.match.params.day,
                results: RESULTS};
         stateCopy = Object.assign({}, this.state);
-        console.log("State Copy before: ",stateCopy) 
+        //console.log("State Copy before: ",stateCopy) 
         that=this 
 
     }
@@ -62,19 +62,56 @@ export default class Leaderboard extends React.Component {
         var dbRefComp = dbRefComps.orderByChild('name').equalTo(this.state.compName);
         var cards = [];
         var RESULTS= []
+       
         
         
     
-                dbRefComp.once('value').then(snap => {
+                var readcards = dbRefComp.once('value').then(snap => {
             
                     snap.forEach((child) => {
-                    //console.log("Scorecard numbers",child.val())      
+                    console.log("Scorecard numbers",child.val())      
                     cards.push(child.val().SC1)
                     cards.push(child.val().SC2)
                     cards.push(child.val().SC3)
                     cards.push(child.val().SC4)
-
+                    var day1 = new getscorecard(child.val().SC1)
+                    var day2 = new getscorecard(child.val().SC2)
+                    var day3 = new getscorecard(child.val().SC3)
+                    var day4 = new getscorecard(child.val().SC4)
+                    var allcards =[] 
+                    day1.then(function(scorecard1) {
+                      allcards.push(scorecard1)
+                      day2.then(function(scorecard2) {
+                        allcards.push(scorecard2)
+                        day3.then(function(scorecard3) {
+                          allcards.push(scorecard3)
+                          day4.then(function(scorecard4) {
+                            allcards.push(scorecard4)
+                              var par3Count = allcards.reduce(function(total, obj) {
+                                return total + ['par3s'].reduce(function(total, prop) {
+                                    return total + obj[prop];
+                                      }, 0);
+                                    }, 0);
+                              var ptsCount = allcards.reduce(function(total, obj) {
+                                  return total + ['points'].reduce(function(total, prop) {
+                                      return total + obj[prop];
+                                      }, 0);
+                                    }, 0);
+                              var F1Count = allcards.reduce(function(total, obj) {
+                                  return total + ['F1'].reduce(function(total, prop) {
+                                      return total + obj[prop];
+                                     }, 0);
+                                   }, 0);
+                          
+                          console.log(scorecard1,'Par3s',par3Count, 'Points', ptsCount, 'F1',F1Count);
+                            
+                                                 })
+                      })
+                      }) 
+                    }) 
+                            
             })
+              
                   
                 switch(that.state.day){
                    case '1': //get day 1 results
@@ -180,7 +217,7 @@ class DayTable extends React.Component {
   render() {
     //console.log('DayTable :')  
     var results = this.props.results 
-    console.log("results",results)
+    //console.log("results",results)
     var coursename = 'undefined'
     var rowItems = results.map((result) => (
     coursename = result.CourseName,
