@@ -11,10 +11,10 @@ export default class Settings extends React.Component {
         console.log(this.props);
         return (
             <div>
-       <h1> Settings </h1>
+       <h1>Under development</h1>
 
       
-       <p> This page is settings for ....</p>
+       <p>Placeholder page for functions not yet implemented</p>
        </div>
 
         );

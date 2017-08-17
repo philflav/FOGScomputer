@@ -1,36 +1,16 @@
 import React from "react"; 
-import ReactDOM from "react-dom";
 
 import fire from '../fire.js';
-
-import Player from './player.js';
-
-import Scorecard from './scorecard.js'
-
-import Result from './result.js'
 
 import {Panel, Table} from 'react-bootstrap'
 
 import getscorecard from '../functions/getscorecard'
 
 
-var dbRefPlayers = fire.database().ref().child('player');
-var dbRefComps = fire.database().ref().child('comp');
-var dbRefScorecards = fire.database().ref().child('scorecard');
-var dbRefCourses = fire.database().ref().child('course');
 
-var RESULTS = [{playerId: 6, PlayerName: 'Phil Flavin', points: 29, F1: 4, par3s: 12},
-               {playerId: 7, PlayerName: 'Simon Mahoney', points: 33, F1: 3, par3s: 6},
-               {playerId: 8, PlayerName: 'Basil McClean', points: 35, F1: 10, par3s: 9},
-               {playerId: 9, PlayerName: 'Paul Aldous', points: 29, F1: 4, par3s: 14},
-               {playerId: 13, PlayerName: 'Roger Mayhew', points: 29, F1: 4, par3s: 11},
-               {playerId: 21, PlayerName: 'Paul Grant', points: 29, F1: 4, par3s: 4},
-               {playerId: 23, PlayerName: 'Erik Hanson', points: 29, F1: 4, par3s: 7},
-               {playerId: 31, PlayerName: 'Ian Buxton', points: 29, F1: 4, par3s: 7},
-               {playerId: 26, PlayerName: 'Jim Harrison', points: 29, F1: 4, par3s: 9},
-               {playerId: 30, PlayerName: 'Steve Livermore', points: 29, F1: 4, par3s: 10},
-               {playerId: 10, PlayerName: 'Steve Boswell', points: 29, F1: 4, par3s: 1},
-               {playerId: 28, PlayerName: 'Tony Dann', points: 29, F1: 4, par3s: 13}]
+var dbRefComps = fire.database().ref().child('comp');
+
+
 
 var stateCopy
 var that
@@ -68,7 +48,7 @@ export default class Leaderboard extends React.Component {
         
         
     
-                var readcards = dbRefComp.once('value').then(snap => {
+                    dbRefComp.once('value').then(snap => {
             
                     snap.forEach((child) => {
                     //console.log("Scorecard numbers",child.val())      
@@ -138,7 +118,7 @@ export default class Leaderboard extends React.Component {
                     }
                     break
                     case '2': //get day 2 results
-                   for (var i = 0; i < cards.length/4; i++) {               
+                   for (i = 0; i < cards.length/4; i++) {               
                     getscorecard(cards[1+i*4]).then(function(results) {
                         RESULTS.push(results)
                         RESULTS.sort(function (a, b) {
@@ -151,7 +131,7 @@ export default class Leaderboard extends React.Component {
                     }
                     break
                     case '3': //get day 3 results
-                   for (var i = 0; i < cards.length/4; i++) {               
+                   for (i = 0; i < cards.length/4; i++) {               
                     getscorecard(cards[2+i*4]).then(function(results) {
                          RESULTS.push(results)
                         RESULTS.sort(function (a, b) {
@@ -164,7 +144,7 @@ export default class Leaderboard extends React.Component {
                     }
                     break  
                     case '4': //get day 4 results
-                   for (var i = 0; i < cards.length/4; i++) {               
+                   for (i = 0; i < cards.length/4; i++) {               
                     getscorecard(cards[3+i*4]).then(function(results) {
                         RESULTS.push(results)
                         RESULTS.sort(function (a, b) {
@@ -202,10 +182,7 @@ export default class Leaderboard extends React.Component {
         
 class ResultRow extends React.Component {
 
-    constructor (props){
-        super(props)
-    }
-  render() {
+    render() {
       //console.log('ResultRow :',this.props.results)    
     return (
       <tr>  
@@ -218,10 +195,7 @@ class ResultRow extends React.Component {
   }
 }
 class OverallResultRow extends React.Component {
-  
-      constructor (props){
-          super(props)
-      }
+
     render() {
         console.log('ResultRow :',this.props.results)    
       return (
@@ -237,11 +211,7 @@ class OverallResultRow extends React.Component {
 
 class DayTable extends React.Component {
     
-    constructor (props){
-        super(props)
-    
-    }
-  render() {
+     render() {
     //console.log('DayTable :')  
     var results = this.props.results 
     //console.log("results",results)
@@ -270,10 +240,6 @@ class DayTable extends React.Component {
 }
 
 class OverallTable extends React.Component {
-    
-    constructor (props){
-        super(props)
-    }
 
   render() {
     //console.log('OverallTable :')  
