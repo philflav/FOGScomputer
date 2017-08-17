@@ -29,7 +29,7 @@ export default class Leaderboard extends React.Component {
                results: [],
                overall: []}
         stateCopy = Object.assign({}, this.state);
-        //console.log("State Copy before: ",stateCopy) 
+
         that=this 
 
     }

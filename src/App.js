@@ -1,16 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import fire from './fire.js';
+import fire from './fire.js'
 
 //import { BrowserRouter as Router,  Route} from 'react-router-dom';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-import Players from './pages/players.js';
-import Layout from './pages/layout.js';
-import Featured from './pages/featured.js';
-import Settings from './pages/settings.js';
-import Leaderboard from './pages/leaderboard.js';
-import LoginForm from './pages/loginform.js';
+import Players from './pages/players.js'
+import Layout from './pages/layout.js'
+import Featured from './pages/featured.js'
+import Settings from './pages/settings.js'
+import Leaderboard from './pages/leaderboard.js'
+import LoginForm from './pages/loginform.js'
+import EditPlayer from './pages/editplayer.js'
 
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
 
@@ -80,7 +81,7 @@ class App extends React.Component {
           <Route path ='/:compName/player/:playerName' component ={Players} />
           <Route path ='/players' component = {Players} />
           <Route path ='/featured' component ={Featured} />
-          <Route path ='/admin/player' component = {Settings} />
+          <Route path ='/admin/player' component = {EditPlayer} />
           <Route path ='/admin/course' component = {Settings} />
           <Route path ='/admin/comp' component = {Settings} />
           <Route path ='/admin/login' component = {LoginForm} />
