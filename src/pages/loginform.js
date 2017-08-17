@@ -25,6 +25,7 @@ export default class LoginForm extends React.Component {
         const btnLogin=document.getElementById('btnLogin')
         const btnLogout=document.getElementById('btnLogout')
 
+
         console.log(txtEmail, txtPassword, btnLogin)
 
         //Add login event
@@ -38,14 +39,8 @@ export default class LoginForm extends React.Component {
 
             const logPromise =auth.signInWithEmailAndPassword(email, pass)
 
-            logPromise.catch(e => console.log(e.message))
+            logPromise.catch(e => alert(e.message))
 
-        })
-
-        //Add logout event
-
-        btnLogout.addEventListener('click', e =>{
-            fire.auth().signOut()
         })
 
         //Add realtime Listner
@@ -53,13 +48,13 @@ export default class LoginForm extends React.Component {
         fire.auth().onAuthStateChanged(firebaseUser =>{
             if(firebaseUser) {
             console.log(firebaseUser)
-            btnLogout.classList.remove('hide')
             btnLogin.classList.add('hide')
+
             }else{
             console.log('not logged in')
-            btnLogout.classList.add('hide')
             btnLogin.classList.remove('hide')
             }
+
         })
 
     }
@@ -70,12 +65,13 @@ export default class LoginForm extends React.Component {
         return (
 
             <div> 
+                <Well>
                 <Form inline>         
                 <input id="txtEmail" type="email" placeholder="username" />
                 <input id="txtPassword" type="password" placeholder="****" />                              
-                <Button bsStyle="primary" id="btnLogin" > Login </Button>
-                <Button bsStyle="primary hide" id="btnLogout" > Logout </Button>             
+                <Button bsStyle="primary" id="btnLogin" > Login </Button>       
                 </Form>
+                </Well>
             </div>
 
         )

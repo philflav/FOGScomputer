@@ -1,5 +1,7 @@
 import React from 'react';
 
+import fire from './fire.js';
+
 //import { BrowserRouter as Router,  Route} from 'react-router-dom';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -17,6 +19,30 @@ import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
 
 class App extends React.Component {
 
+  componentDidMount(){
+    const menuLogin=document.getElementById('menu-login')
+    const menuLogout=document.getElementById('menu-logout')
+    const adminNav=document.getElementById('admin-nav-dropdown')
+
+    menuLogout.addEventListener('click', e =>{
+      fire.auth().signOut()
+  })
+
+    fire.auth().onAuthStateChanged(firebaseUser =>{
+      if(firebaseUser) {
+      console.log(firebaseUser)
+      adminNav.classList.remove('hide')  
+      menuLogin.classList.add('hide')
+      menuLogout.classList.remove('hide')
+      }else{
+      console.log('not logged in')
+      adminNav.classList.add('hide')
+      menuLogin.classList.remove('hide')
+      menuLogout.classList.add('hide')
+      }
+  })
+  }
+
   render() {
     return (
       <Router >
@@ -25,10 +51,10 @@ class App extends React.Component {
           <Nav bsStyle="pills" >
           <NavItem href = "/">Layout</ NavItem>
           <NavItem href = "/featured">Featured</NavItem>
-          <NavDropdown title="Admin" id="nav-dropdown" bsClass="hide">
+          <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
                 <MenuItem href="/admin/player">Add/Update Player</MenuItem>
                 <MenuItem href="/admin/course">Add/Update Course</MenuItem>
-                <MenuItem href="/admin/comp>">Add/Update Competiton</MenuItem>
+                <MenuItem href="/admin/comp>">Add/Update Competition</MenuItem>
           </NavDropdown>
           <NavDropdown title="Recent players" id="nav-dropdown">
                 <MenuItem href="/FOGS2017/player/Flavin">Flavin</MenuItem>
@@ -43,7 +69,8 @@ class App extends React.Component {
                 <MenuItem href="/FOGS2017/3/leaderboard">2017 Day 3</MenuItem>
                 <MenuItem href="/FOGS2017/4/leaderboard">2017 Day 4</MenuItem>
          </NavDropdown>
-         <NavItem href ='/admin/login'><Glyphicon glyph="log-in" />Login</NavItem>
+         <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
+         <NavItem href ='#' id='menu-logout'><Glyphicon glyph="log-out" />SignOut</NavItem>
           </Nav>
 
  
