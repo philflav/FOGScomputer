@@ -7,7 +7,7 @@ import {
     Well,
     FormGroup, 
     InputGroup, 
-    FormControl,
+    Form,
     Button,
     ButtonToolbar
         } from 'react-bootstrap'
@@ -54,9 +54,11 @@ export default class LoginForm extends React.Component {
             if(firebaseUser) {
             console.log(firebaseUser)
             btnLogout.classList.remove('hide')
+            btnLogin.classList.add('hide')
             }else{
             console.log('not logged in')
             btnLogout.classList.add('hide')
+            btnLogin.classList.remove('hide')
             }
         })
 
@@ -67,13 +69,13 @@ export default class LoginForm extends React.Component {
         
         return (
 
-            <div>          
+            <div> 
+                <Form inline>         
                 <input id="txtEmail" type="email" placeholder="username" />
-                <input id="txtPassword" type="password" placeholder="****" />
-                <ButtonToolbar>
-                    <Button bsStyle="primary" id="btnLogin" > Login </Button>
-                    <Button bsStyle="primary hide" id="btnLogout" > Logout </Button>
-                </ButtonToolbar>
+                <input id="txtPassword" type="password" placeholder="****" />                              
+                <Button bsStyle="primary" id="btnLogin" > Login </Button>
+                <Button bsStyle="primary hide" id="btnLogout" > Logout </Button>             
+                </Form>
             </div>
 
         )
