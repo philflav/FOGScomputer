@@ -12,6 +12,7 @@ import Settings from './pages/settings.js'
 import Leaderboard from './pages/leaderboard.js'
 import LoginForm from './pages/loginform.js'
 import EditPlayer from './pages/editplayer.js'
+import EditCourse from './pages/editcourse.js'
 
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
 
@@ -82,7 +83,7 @@ class App extends React.Component {
           <Route path ='/players' component = {Players} />
           <Route path ='/featured' component ={Featured} />
           <Route path ='/admin/player' component = {EditPlayer} />
-          <Route path ='/admin/course' component = {Settings} />
+          <Route path ='/admin/course' component = {EditCourse} />
           <Route path ='/admin/comp' component = {Settings} />
           <Route path ='/admin/login' component = {LoginForm} />
           <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
