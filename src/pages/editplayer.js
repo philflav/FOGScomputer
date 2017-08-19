@@ -8,6 +8,7 @@ var dbRefPlayers = fire.database().ref().child('player');
 var that
 var playerList = []
 var selKey
+var maxPlayerId = 0
 
  
 export default class EditPlayer extends React.Component {
@@ -39,8 +40,11 @@ export default class EditPlayer extends React.Component {
             // console.log(snap.val())
              snap.forEach((child) => {
              playerList.push(child.val())
+             if(maxPlayerId<child.val().player_id){
+             maxPlayerId=child.val().player_id
+             }
              })
-             console.log(playerList)
+             //console.log(playerList)
              this.setState({players: playerList})
              //Add realtime Listner
 
@@ -85,7 +89,10 @@ export default class EditPlayer extends React.Component {
        console.log(eventKey)
        var key = eventKey
        if(eventKey<1){
-            that.setState({selforename:'Bill'})
+           //get next player ID
+            selKey = maxPlayerId+1 //use the next available player ID
+            //console.log('Next player ID:', selKey)
+            that.setState({selforename:'forename',selsurname:'surname',selemail:'',selmobile:'',selhandicap:'', selplayerId:selKey})                      
         }
         else
         {
