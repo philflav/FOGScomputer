@@ -1,14 +1,21 @@
 import React from "react"; 
 
 import fire from '../fire.js';
-import {Panel, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button} from 'react-bootstrap'
+import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button} from 'react-bootstrap'
 
 var dbRefCourses = fire.database().ref().child('course');
+var dbRefHoles = fire.database().ref().child('hole');
 
 var that
 var courseList = []
 var selKey
 var maxCourseId = 0
+var title
+var holes = []
+var pars = []
+var SIs =[]
+
+const tableStyle = {"border":"rgba(0,255,0,.25) solid 1px","borderWidth":"0 0 0 5px","textAlign":"center","width":"300px"}
 
  
 export default class EditCourse extends React.Component {
@@ -23,35 +30,37 @@ export default class EditCourse extends React.Component {
         } 
         
         that=this
-       // this.handleInputChange = this.handleInputChange.bind(this); 
-
+        
+        
     }
 
     componentDidMount() {
         const btnSave=document.getElementById('btnSave')
         var dbRefCourse= dbRefCourses.orderByChild('Course_id')
-        dbRefCourse.once('value').then(snap =>{
-            // console.log(snap.val())
+        dbRefCourse.on('value' ,snap =>{
+             console.log('Course data changing')
              snap.forEach((child) => {
              courseList.push(child.val())
              if(maxCourseId<child.val().Course_id){
              maxCourseId=child.val().Course_id
+             this.setState({course: courseList})
              }
              })
              //console.log(playerList)
-             this.setState({course: courseList})
+             
              //Add realtime Listner
 
              fire.auth().onAuthStateChanged(firebaseUser =>{
             if(firebaseUser) {
-            console.log(firebaseUser)
+            //console.log(firebaseUser)
             btnSave.classList.remove('hide')
     
             }else{
-            console.log('not logged in')
+            //console.log('not logged in')
             btnSave.classList.add('hide')
             }
         })
+        
     })
     }
     
@@ -63,6 +72,7 @@ export default class EditCourse extends React.Component {
             .catch(e =>{
                 console.log(e)
             })
+        
        
     }
    
@@ -96,27 +106,59 @@ export default class EditCourse extends React.Component {
                      snap.forEach((child) => {
                      selKey=child.key
                      that.setState({selCourseId: child.val().Course_id, selCourseName: child.val().CourseName});
-                     }) 
+                    }) 
+            //get hole data for selected course
+            holes=[]
+            pars =[]
+            SIs =[]
+            dbRefHoles.once('value').then(snap => {                            
+                snap.forEach((child) =>{
+                        //console.log(child.val(), that.state)
+                      if(child.val().Course_ID===that.state.selCourseId){
+                       var holeNum= child.val().Number
+                       var par=child.val().PAR
+                       var SI=child.val().SI
+                       //console.log(holeNum,par,SI)
+                       //holes.push=(<Hole number={holeNum} par={par} SI={SI}/>) 
+                       holes.push(holeNum) 
+                       pars.push(par) 
+                       SIs.push(SI)                     
+                                            
+                   } 
+
             })
-        }
-      }
+            console.log(holes,pars,SIs)
+            that.forceUpdate()
+           
+        })
+      })
+    }
+
+    }
 
 
     render () {
         
         var menuItems
         var courses = []
-        courses=this.state.course
-      
-        menuItems = courses.map((course) => (
+        var holeData = []
+     
+        for (var i=0; i<18; i++){
+        holeData.push(<Hole number={holes[i]} par={pars[i]} SI={SIs[i]} />)
+        }
+        
+   
+             
+        menuItems = that.state.course.map((course) => (
             <MenuItem eventKey={course.Course_id}>{course.Course_id} {course.CourseName} </MenuItem>))
             
-        
+            title = "Editing >"+that.state.selCourseName
     
         return (
-
+           
+           
             <div>
-                <Panel bsStyle="primary" header = "CourseName">
+                <Panel bsStyle="primary" header ={title}>
                 <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
                     <NavDropdown eventKey="999" title="Select Course" id="nav-dropdown">
                     <MenuItem eventKey="0">Add new course</MenuItem>
@@ -129,12 +171,40 @@ export default class EditCourse extends React.Component {
                 <Button bsStyle="primary" id="btnSave" onClick={this.handleSave}>Save</Button>
                 </Well>
                 <Well>
-                    Hole by hole details here
+                    <Table responsive>
+                        <thead>
+                            <th>Hole Number</th>
+                            <th>Par</th>
+                            <th>Stroke Index</th>
+                        </thead>
+                        <tbody>
+                           {holeData}
+                        </tbody>
+                    </Table>
                 </Well>
                 </Panel>
                 </div> 
 
         );
     
+    }
+}
+
+class Hole extends React.Component {
+
+    render () {
+
+
+        return (
+            <div>       
+         
+                    <tr>
+                    <td><input value={this.props.number}/></td>                             
+                    <td><input value={this.props.par} /></td>
+                     <td><input value={this.props.SI} /></td>
+                 </tr>
+           
+            </div>
+        )
     }
 }
