@@ -14,8 +14,9 @@ var title
 var holes = []
 var pars = []
 var SIs =[]
+var holeKeys= []
 
-const tableStyle = {"border":"rgba(0,255,0,.25) solid 1px","borderWidth":"0 0 0 5px","textAlign":"center","width":"300px"}
+const tableStyle = {"border":"rgba(0,255,0,.25) solid 1px","borderWidth":"0 0 0 5px","textAlign":"center","width":"150px"}
 
  
 export default class EditCourse extends React.Component {
@@ -25,12 +26,15 @@ export default class EditCourse extends React.Component {
             {courseName:'',
             course_id:'',
             }] ,
-            selCourseName:'somewhere Golf Club',
-            selCourseId:''
+            selCourseName:'not selected!',
+            selCourseId:'',
+            par:[] ,
+            SI:[] ,
+            ref:[]
         } 
         
         that=this
-        
+        console.log(this.state)
         
     }
 
@@ -38,7 +42,7 @@ export default class EditCourse extends React.Component {
         const btnSave=document.getElementById('btnSave')
         var dbRefCourse= dbRefCourses.orderByChild('Course_id')
         dbRefCourse.on('value' ,snap =>{
-             console.log('Course data changing')
+             //console.log('Course data changing')
              snap.forEach((child) => {
              courseList.push(child.val())
              if(maxCourseId<child.val().Course_id){
@@ -81,16 +85,61 @@ export default class EditCourse extends React.Component {
         const target = event.target
         const name = target.name
         const value = target.value
-        console.log(name)
+        console.log(target)
         that.setState({
            
             [name]: value});
        
       
     }
+    handleParChange(event) {
+        const target = event.target
+        const name = "par["+target.name+"]"
+        const key = holeKeys[target.name]
+        const value = target.value  
+        console.log (name,value)
+         that.setState({
+            [name]: value,                      
+                        })
+                    
+   
+        //update hole par details on database
+
+        var update ={PAR: value}
+        console.log(update, key, name)
+        fire.database().ref(/hole/+key).update(update)
+        .catch(e =>{
+            console.log(e)
+        })
+        console.log(that.state)
+        that.forceUpdate()
+
+
+        
+    }
+    handleSIChange(event) {
+        const target = event.target
+        const name = "SI["+target.name+"]"
+        const key = holeKeys[target.name]
+        const value = target.value  
+        console.log (name,value)
+        that.setState({            
+             [name]: value}) 
+   
+             var update ={SI: value}
+             console.log(update, key, name)
+             fire.database().ref(/hole/+key).update(update)
+             .catch(e =>{
+                 console.log(e)
+             })
+             console.log(that.state)
+             that.forceUpdate()
+
+        
+    }
   
     handleSelect(eventKey) {
-       console.log(eventKey)
+       //console.log(eventKey)
        var key = eventKey
        if(eventKey<1){
            //get next player ID
@@ -100,7 +149,7 @@ export default class EditCourse extends React.Component {
         }
         else
         {
-            console.log(eventKey)
+            //console.log(eventKey)
             var dbRefCourse= dbRefCourses.orderByChild('Course_id').equalTo(eventKey);
             dbRefCourse.once('value').then(snap =>{
                      snap.forEach((child) => {
@@ -111,6 +160,7 @@ export default class EditCourse extends React.Component {
             holes=[]
             pars =[]
             SIs =[]
+            holeKeys = []
             dbRefHoles.once('value').then(snap => {                            
                 snap.forEach((child) =>{
                         //console.log(child.val(), that.state)
@@ -118,16 +168,17 @@ export default class EditCourse extends React.Component {
                        var holeNum= child.val().Number
                        var par=child.val().PAR
                        var SI=child.val().SI
-                       //console.log(holeNum,par,SI)
-                       //holes.push=(<Hole number={holeNum} par={par} SI={SI}/>) 
+                       var key=child.key
+
                        holes.push(holeNum) 
                        pars.push(par) 
-                       SIs.push(SI)                     
+                       SIs.push(SI) 
+                       holeKeys.push(key)  
+ 
                                             
                    } 
 
             })
-            console.log(holes,pars,SIs)
             that.forceUpdate()
            
         })
@@ -144,7 +195,9 @@ export default class EditCourse extends React.Component {
         var holeData = []
      
         for (var i=0; i<18; i++){
-        holeData.push(<Hole number={holes[i]} par={pars[i]} SI={SIs[i]} />)
+        that.state.par[i]=pars[i]
+        that.state.SI[i]=SIs[i]
+        holeData.push(<Hole number={i} />)
         }
         
    
@@ -153,6 +206,7 @@ export default class EditCourse extends React.Component {
             <MenuItem eventKey={course.Course_id}>{course.Course_id} {course.CourseName} </MenuItem>))
             
             title = "Editing >"+that.state.selCourseName
+            
     
         return (
            
@@ -167,8 +221,7 @@ export default class EditCourse extends React.Component {
                     </NavDropdown>
                 </Nav>
                 <Well>
-                <input style = {{"width":"250px"}} type="text" name="selCourseName" value = {this.state.selCourseName} onChange={this.handleInputChange}/> <br/><br/>
-                <Button bsStyle="primary" id="btnSave" onClick={this.handleSave}>Save</Button>
+                <input style = {{"width":"250px"}} type="text" name="selCourseName" value = {this.state.selCourseName} onChange={this.handleInputChange}/>    <Button bsStyle="primary" id="btnSave" onClick={this.handleSave}>Save</Button>
                 </Well>
                 <Well>
                     <Table responsive>
@@ -193,18 +246,16 @@ export default class EditCourse extends React.Component {
 class Hole extends React.Component {
 
     render () {
-
-
-        return (
-            <div>       
-         
+        var number = this.props.number
+       return (
+                
                     <tr>
-                    <td><input value={this.props.number}/></td>                             
-                    <td><input value={this.props.par} /></td>
-                     <td><input value={this.props.SI} /></td>
-                 </tr>
+                    <td>{number+1}</td>                             
+                    <td><input style = {{"width":"100px"}} name={number} placeholder={that.state.par[number]} onChange={that.handleParChange}/></td>
+                    <td><input style = {{"width":"100px"}} name={number} placeholder={that.state.SI[number]} onChange={that.handleSIChange}/></td>
+                    </tr>
            
-            </div>
+            
         )
     }
 }

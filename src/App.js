@@ -32,12 +32,12 @@ class App extends React.Component {
 
     fire.auth().onAuthStateChanged(firebaseUser =>{
       if(firebaseUser) {
-      console.log(firebaseUser)
+      //console.log(firebaseUser)
       adminNav.classList.remove('hide')  
       menuLogin.classList.add('hide')
       menuLogout.classList.remove('hide')
       }else{
-      console.log('not logged in')
+      //console.log('not logged in')
       adminNav.classList.add('hide')
       menuLogin.classList.remove('hide')
       menuLogout.classList.add('hide')
