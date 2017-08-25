@@ -1,7 +1,9 @@
 import React from "react"; 
 
 import fire from '../fire.js';
-import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button} from 'react-bootstrap'
+import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button, Col} from 'react-bootstrap'
+
+import Hole from './hole.js'
 
 var dbRefCourses = fire.database().ref().child('course');
 var dbRefHoles = fire.database().ref().child('hole');
@@ -28,9 +30,9 @@ export default class EditCourse extends React.Component {
             }] ,
             selCourseName:'not selected!',
             selCourseId:'',
-            par:[] ,
-            SI:[] ,
-            ref:[]
+            par:'' ,
+            SI:'' ,
+            key:''
         } 
         
         that=this
@@ -92,51 +94,7 @@ export default class EditCourse extends React.Component {
        
       
     }
-    handleParChange(event) {
-        const target = event.target
-        const name = "par["+target.name+"]"
-        const key = holeKeys[target.name]
-        const value = target.value  
-        console.log (name,value)
-         that.setState({
-            [name]: value,                      
-                        })
-                    
    
-        //update hole par details on database
-
-        var update ={PAR: value}
-        console.log(update, key, name)
-        fire.database().ref(/hole/+key).update(update)
-        .catch(e =>{
-            console.log(e)
-        })
-        console.log(that.state)
-        that.forceUpdate()
-
-
-        
-    }
-    handleSIChange(event) {
-        const target = event.target
-        const name = "SI["+target.name+"]"
-        const key = holeKeys[target.name]
-        const value = target.value  
-        console.log (name,value)
-        that.setState({            
-             [name]: value}) 
-   
-             var update ={SI: value}
-             console.log(update, key, name)
-             fire.database().ref(/hole/+key).update(update)
-             .catch(e =>{
-                 console.log(e)
-             })
-             console.log(that.state)
-             that.forceUpdate()
-
-        
-    }
   
     handleSelect(eventKey) {
        //console.log(eventKey)
@@ -156,33 +114,44 @@ export default class EditCourse extends React.Component {
                      selKey=child.key
                      that.setState({selCourseId: child.val().Course_id, selCourseName: child.val().CourseName});
                     }) 
-            //get hole data for selected course
+            //get holes data for selected course
             holes=[]
             pars =[]
             SIs =[]
             holeKeys = []
+            that.setState({
+                par: pars,
+                SI: SIs,
+                key: holeKeys 
+               })
             dbRefHoles.once('value').then(snap => {                            
                 snap.forEach((child) =>{
-                        //console.log(child.val(), that.state)
+                    //console.log(child.val(), that.state)
                       if(child.val().Course_ID===that.state.selCourseId){
                        var holeNum= child.val().Number
-                       var par=child.val().PAR
+                       var par=child.val().par
                        var SI=child.val().SI
                        var key=child.key
 
                        holes.push(holeNum) 
                        pars.push(par) 
                        SIs.push(SI) 
-                       holeKeys.push(key)  
- 
-                                            
-                   } 
+                       holeKeys.push(key)
+                      
+                      }
+                    })
+     
+                       that.setState({
+                        par: pars,
+                        SI: SIs,
+                        key: holeKeys 
+                       })
+                       console.log("Before render :",that.state)
 
             })
-            that.forceUpdate()
-           
+                   
         })
-      })
+      
     }
 
     }
@@ -192,14 +161,17 @@ export default class EditCourse extends React.Component {
         
         var menuItems
         var courses = []
-        var holeData = []
-     
-        for (var i=0; i<18; i++){
-        that.state.par[i]=pars[i]
-        that.state.SI[i]=SIs[i]
-        holeData.push(<Hole number={i} />)
+        var holeData = []        
+
+
+        for(var i=0; i<18; i++){
+        //    console.log(that.state.par[i],that.state.SI[i])
+        if(that.state.key[i]){
+        holeData.push(<Hole number={i}  hkey={that.state.key[i]} par={that.state.par[i]} SI={that.state.SI[i]}/>)
         }
-        
+        //console.log('Hole :',holeData)
+        }
+               
    
              
         menuItems = that.state.course.map((course) => (
@@ -215,47 +187,35 @@ export default class EditCourse extends React.Component {
                 <Panel bsStyle="primary" header ={title}>
                 <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
                     <NavDropdown eventKey="999" title="Select Course" id="nav-dropdown">
-                    <MenuItem eventKey="0">Add new course</MenuItem>
-                    <MenuItem divider />
                     {menuItems}
                     </NavDropdown>
                 </Nav>
+
                 <Well>
-                <input style = {{"width":"250px"}} type="text" name="selCourseName" value = {this.state.selCourseName} onChange={this.handleInputChange}/>    <Button bsStyle="primary" id="btnSave" onClick={this.handleSave}>Save</Button>
+                <input style = {{"width":"250px"}} type="text" name="selCourseName" value = {this.state.selCourseName} onChange={this.handleInputChange}/>    <Button bsStyle="primary" id="btnSave" onClick={this.handleSave}>Save Name</Button>
                 </Well>
-                <Well>
+                <Well >
+                    <div>
                     <Table responsive>
                         <thead>
-                            <th>Hole Number</th>
-                            <th>Par</th>
-                            <th>Stroke Index</th>
+                        <tr>
+                            <th style={{width:40}}>Number</th>
+                            <th style={{width:40}}>Par</th>
+                            <th style={{width:40}}>Stroke Index</th>
+                            <th style={{width:40}}> </th>
+                        </tr>
                         </thead>
                         <tbody>
-                           {holeData}
+                        {holeData}
                         </tbody>
                     </Table>
+                    </div>
                 </Well>
                 </Panel>
                 </div> 
 
-        );
+        )
     
     }
 }
 
-class Hole extends React.Component {
-
-    render () {
-        var number = this.props.number
-       return (
-                
-                    <tr>
-                    <td>{number+1}</td>                             
-                    <td><input style = {{"width":"100px"}} name={number} placeholder={that.state.par[number]} onChange={that.handleParChange}/></td>
-                    <td><input style = {{"width":"100px"}} name={number} placeholder={that.state.SI[number]} onChange={that.handleSIChange}/></td>
-                    </tr>
-           
-            
-        )
-    }
-}
