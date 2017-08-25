@@ -13,6 +13,7 @@ import Leaderboard from './pages/leaderboard.js'
 import LoginForm from './pages/loginform.js'
 import EditPlayer from './pages/editplayer.js'
 import EditCourse from './pages/editcourse.js'
+import EditComp from './pages/editcomp.js'
 
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
 
@@ -55,8 +56,8 @@ class App extends React.Component {
           <NavItem href = "/featured">Featured</NavItem>
           <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
                 <MenuItem href="/admin/player">Add/Update Player</MenuItem>
-                <MenuItem href="/admin/course">Add/Update Course</MenuItem>
-                <MenuItem href="/admin/comp>">Add/Update Competition</MenuItem>
+                <MenuItem href="/admin/course">Update Course</MenuItem>
+                <MenuItem href="/admin/comp">Add/Update Competition</MenuItem>
           </NavDropdown>
           <NavDropdown title="Recent players" id="nav-dropdown">
                 <MenuItem href="/FOGS2017/player/Flavin">Flavin</MenuItem>
@@ -84,7 +85,7 @@ class App extends React.Component {
           <Route path ='/featured' component ={Featured} />
           <Route path ='/admin/player' component = {EditPlayer} />
           <Route path ='/admin/course' component = {EditCourse} />
-          <Route path ='/admin/comp' component = {Settings} />
+          <Route path ='/admin/comp' component = {EditComp} />
           <Route path ='/admin/login' component = {LoginForm} />
           <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
           </Switch>
