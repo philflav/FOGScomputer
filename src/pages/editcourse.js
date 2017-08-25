@@ -199,10 +199,10 @@ export default class EditCourse extends React.Component {
                     <Table responsive>
                         <thead>
                         <tr>
-                            <th style={{width:40}}>Number</th>
-                            <th style={{width:40}}>Par</th>
-                            <th style={{width:40}}>Stroke Index</th>
-                            <th style={{width:40}}> </th>
+                            <th style={{"width":"25px"}}>#</th>
+                            <th style={{"width":"25px"}}>Par</th>
+                            <th style={{"width":"25px"}}>SI</th>
+                            <th style={{"width":"25px"}}> </th>
                         </tr>
                         </thead>
                         <tbody>

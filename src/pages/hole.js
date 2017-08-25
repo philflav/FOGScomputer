@@ -53,8 +53,8 @@ export default class Hole extends React.Component {
                     
                     <tr>
                     <td style = {{"width":"40px"}}>{this.state.number+1} </td>                             
-                    <td ><input type="number" ref={this.state.key} name="par" value={this.state.par} onChange={this.handlechange.bind(this)}/> </td>
-                    <td ><input type="number" ref={this.state.key} name="SI"  value={this.state.SI} onChange={this.handlechange.bind(this)}/> </td>
+                    <td ><input style = {{"width":"40px"}} type="number" ref={this.state.key} name="par" value={this.state.par} onChange={this.handlechange.bind(this)}/> </td>
+                    <td ><input style = {{"width":"40px"}}type="number" ref={this.state.key} name="SI"  value={this.state.SI} onChange={this.handlechange.bind(this)}/> </td>
                     <td style = {{"width":"20px"}}></td>
                     <td><Button bsStyle="primary" onClick={this.saveData.bind(this)}>Save</Button></td>
                     </tr>
