@@ -15,6 +15,7 @@ var complist = []
 var namelist = []
 var title, that
 var selectedComp
+var selectMode //should competiotn slect be enabled
 var courseList, playerList, Day1List, Day2List, Day3List, Day4List
 var compPlayers =[]
 var compCourses =[]
@@ -25,6 +26,7 @@ export default class EditComp extends React.Component {
         super(props)
 
         this.state = {title: 'Competition not selected',
+            compName: this.props.match.params.compName,
             players: [],
             courses: ["not defined", "not defined", "not defined", "not defined"],
             comps: [
@@ -39,6 +41,9 @@ export default class EditComp extends React.Component {
             name: '',
             }]
         }
+        if(this.state.compName){
+            this.state.title=this.state.compName
+        }
         this.handleSelect = this.handleSelect.bind(this);
             that=this    
           }
@@ -46,6 +51,14 @@ export default class EditComp extends React.Component {
     
     componentWillMount() {
 
+        if(this.state.compName){
+            this.handleSelect(this.state.compName)
+            selectMode=true
+        }
+        
+        else
+        {
+        selectMode=false
         var dbRefCompName= dbRefCompNames.orderByChild('name')
         dbRefCompName.on('value' ,snap =>{
             snap.forEach((child) => {
@@ -55,7 +68,7 @@ export default class EditComp extends React.Component {
                 })
  
         })
-    
+        }
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -180,7 +193,7 @@ return(
 
                 <Panel bsStyle="primary" header = {this.state.title}>
                 <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
-                    <NavDropdown eventKey="999" title="Select Competition" id="nav-dropdown">
+                    <NavDropdown eventKey="999" title="Select Competition" id="nav-dropdown" disabled={selectMode}>
                     <MenuItem eventKey='0'> Start New Comp</MenuItem>
                     <MenuItem divider />
                     {menuItems}

@@ -81,6 +81,7 @@ class App extends React.Component {
           <Route path ='/' exact component={Layout}/>
           <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
           <Route path ='/:compName/player/:playerName' component ={Players} />
+          <Route path ='/admin/comp/:compName' component = {EditComp} />
           <Route path ='/players' component = {Players} />
           <Route path ='/featured' component ={Featured} />
           <Route path ='/admin/player' component = {EditPlayer} />
