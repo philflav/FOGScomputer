@@ -15,7 +15,7 @@ var complist = []
 var namelist = []
 var title, that
 var selectedComp
-var courseList, playerList
+var courseList, playerList, Day1List, Day2List, Day3List, Day4List
 var compPlayers =[]
 var compCourses =[]
 
@@ -67,17 +67,22 @@ export default class EditComp extends React.Component {
 
         
         courseList = nextState.courses.map((course) =>(
-            <li>{course}</li>
+           <li>{course}</li>
         ))
 
         playerList = nextState.players.map(function(player,index) {
-            if(index===3|index===6|index===9){
-                return (<div><hr /><li>{player.playername}</li></div>)
-            }else{
+
+            if(index===2|index===5|index===8|index===11){
+                return (<div><li>{player.playername}<hr /></li></div>)
+            }else {
                 return (<div><li>{player.playername}</li></div>)
             }
         })
-        
+        Day1List  =<h3>to be completed sometime</h3>
+        Day2List = Day1List
+        Day3List = Day2List
+        Day4List = Day3List
+                
     }
     
 
@@ -104,7 +109,8 @@ export default class EditComp extends React.Component {
                         snap.forEach((child2 ) =>{
                         compPlayers.push({
                             playername: child2.val().forename+' '+child2.val().surname,
-                            draw: child.val().draw
+                            draw: child.val().draw,
+                            playerId: child.val().player_id
                                 })
                             })
                             compPlayers.sort(function (a, b) {
@@ -182,7 +188,7 @@ return(
                 </Nav>
                 <Grid>
                     <Row>
-                      <Col md={6}>
+                      <Col md={4}>
                          <Well>
                              <h3>Courses</h3>
                              <ol>
@@ -190,11 +196,37 @@ return(
                              </ol>
                         </Well>
                 </Col>
-                <Col md={6}>
+                <Col md={4}>
                         <Well>
                             <h3>Players/Teams</h3>
                             <ul>
                             {playerList}
+                            </ul>
+                        </Well>
+                        </Col>
+                <Col md={4}>
+                        <Well>
+                            <h3>Day 1 Playing Groups</h3>
+                            <ul>
+                            {Day1List}
+                            </ul>
+                        </Well>
+                        <Well>
+                            <h3>Day 2 Playing Groups</h3>
+                            <ul>
+                            {Day2List}
+                            </ul>
+                        </Well>
+                        <Well>
+                            <h3>Day 3 Playing Groups</h3>
+                            <ul>
+                            {Day3List}
+                            </ul>
+                        </Well>
+                        <Well>
+                            <h3>Day 4 Playing Groups</h3>
+                            <ul>
+                            {Day4List}
                             </ul>
                         </Well>
                 </Col>
