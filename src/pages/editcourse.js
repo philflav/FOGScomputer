@@ -24,7 +24,8 @@ const tableStyle = {"border":"rgba(0,255,0,.25) solid 1px","borderWidth":"0 0 0 
 export default class EditCourse extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {course:[
+        this.state = {title: 'Course not selected',
+            course:[
             {courseName:'',
             course_id:'',
             }] ,
@@ -114,6 +115,7 @@ export default class EditCourse extends React.Component {
                      selKey=child.key
                      that.setState({selCourseId: child.val().Course_id, selCourseName: child.val().CourseName});
                     }) 
+                    var title = "Editing > "+that.state.selCourseName
             //get holes data for selected course
             holes=[]
             pars =[]
@@ -122,7 +124,8 @@ export default class EditCourse extends React.Component {
             that.setState({
                 par: pars,
                 SI: SIs,
-                key: holeKeys 
+                key: holeKeys ,
+                title: title
                })
             dbRefHoles.once('value').then(snap => {                            
                 snap.forEach((child) =>{
@@ -177,14 +180,14 @@ export default class EditCourse extends React.Component {
         menuItems = that.state.course.map((course) => (
             <MenuItem eventKey={course.Course_id}>{course.Course_id} {course.CourseName} </MenuItem>))
             
-            title = "Editing >"+that.state.selCourseName
+
             
     
         return (
            
            
             <div>
-                <Panel bsStyle="primary" header ={title}>
+                <Panel bsStyle="primary" header ={this.state.title}>
                 <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
                     <NavDropdown eventKey="999" title="Select Course" id="nav-dropdown">
                     {menuItems}
