@@ -3,6 +3,8 @@ import React from "react"
 
 import fire from '../fire.js'
 
+import PlayOrder from './playorder.js'
+
 import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button, Grid, Col, Row} from 'react-bootstrap'
 
 var dbRefCompNames = fire.database().ref().child('compNames');
@@ -201,7 +203,7 @@ return(
                 </Nav>
                 <Grid>
                     <Row>
-                      <Col md={4}>
+                      <Col md={3}>
                          <Well>
                              <h3>Courses</h3>
                              <ol>
@@ -209,7 +211,7 @@ return(
                              </ol>
                         </Well>
                 </Col>
-                <Col md={4}>
+                <Col md={3}>
                         <Well>
                             <h3>Players/Teams</h3>
                             <ul>
@@ -217,30 +219,29 @@ return(
                             </ul>
                         </Well>
                         </Col>
-                <Col md={4}>
+                <Col md={6}>
                         <Well>
-                            <h3>Day 1 Playing Groups</h3>
-                            <ul>
-                            {Day1List}
-                            </ul>
+                        <h3>Playing Groups</h3>
+                        <Well>
+
+                            <PlayOrder day='1' players={this.state.players} />
+                       
                         </Well>
                         <Well>
-                            <h3>Day 2 Playing Groups</h3>
-                            <ul>
-                            {Day2List}
-                            </ul>
+
+                            <PlayOrder day='2' players={this.state.players} />
+
                         </Well>
                         <Well>
-                            <h3>Day 3 Playing Groups</h3>
-                            <ul>
-                            {Day3List}
-                            </ul>
+
+                            <PlayOrder day='3' players={this.state.players} />
+
                         </Well>
                         <Well>
-                            <h3>Day 4 Playing Groups</h3>
-                            <ul>
-                            {Day4List}
-                            </ul>
+
+                            <PlayOrder day='4' players={this.state.players} />
+
+                        </Well>
                         </Well>
                 </Col>
                     </Row>

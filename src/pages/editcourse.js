@@ -109,7 +109,7 @@ export default class EditCourse extends React.Component {
         else
         {
             //console.log(eventKey)
-            var dbRefCourse= dbRefCourses.orderByChild('Course_id').equalTo(eventKey);
+            var dbRefCourse= dbRefCourses.orderByChild('Course_id').equalTo(eventKey)
             dbRefCourse.once('value').then(snap =>{
                      snap.forEach((child) => {
                      selKey=child.key
