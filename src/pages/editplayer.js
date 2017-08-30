@@ -1,7 +1,7 @@
 import React from "react"; 
 
 import fire from '../fire.js';
-import {Panel, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button} from 'react-bootstrap'
+import {Panel, Nav, NavDropdown, MenuItem,  Well, Button} from 'react-bootstrap'
 
 var dbRefPlayers = fire.database().ref().child('player');
 
@@ -86,8 +86,6 @@ export default class EditPlayer extends React.Component {
     }
   
     handleSelect(eventKey) {
-       console.log(eventKey)
-       var key = eventKey
        if(eventKey<1){
            //get next player ID
             selKey = maxPlayerId+1 //use the next available player ID

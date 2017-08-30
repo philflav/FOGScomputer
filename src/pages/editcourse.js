@@ -1,7 +1,7 @@
 import React from "react"; 
 
 import fire from '../fire.js';
-import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button, Col} from 'react-bootstrap'
+import {Panel, Table, Nav, NavDropdown, MenuItem, Well, Button} from 'react-bootstrap'
 
 import Hole from './hole.js'
 
@@ -12,13 +12,11 @@ var that
 var courseList = []
 var selKey
 var maxCourseId = 0
-var title
 var holes = []
 var pars = []
 var SIs =[]
 var holeKeys= []
 
-const tableStyle = {"border":"rgba(0,255,0,.25) solid 1px","borderWidth":"0 0 0 5px","textAlign":"center","width":"150px"}
 
  
 export default class EditCourse extends React.Component {
@@ -98,8 +96,7 @@ export default class EditCourse extends React.Component {
    
   
     handleSelect(eventKey) {
-       //console.log(eventKey)
-       var key = eventKey
+ 
        if(eventKey<1){
            //get next player ID
             selKey = maxCourseId+1 //use the next available player ID
@@ -163,7 +160,6 @@ export default class EditCourse extends React.Component {
     render () {
         
         var menuItems
-        var courses = []
         var holeData = []        
 
 

@@ -1,6 +1,6 @@
 import React from "react"; 
 
-import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button, Grid, Col, Row} from 'react-bootstrap'
+import {Panel, Well, Button} from 'react-bootstrap'
 
 import fire from '../fire.js';
  
@@ -9,7 +9,7 @@ var dbRefPlayers = fire.database().ref().child('player');
 
 var selCompName = ''
 var players = [] //array of competition record objects
-var drawCompleted = false//flag for draw completed
+
 var link
 
 export default class Draw extends React.Component {
@@ -32,11 +32,11 @@ export default class Draw extends React.Component {
                         var dbRefPlayer= dbRefPlayers.orderByChild('player_id').equalTo(child.val().player_id);
                         dbRefPlayer.once('value').then(snap =>{
                             snap.forEach((child1) => {
-                                players.push({player_id: child.val().player_id, draw: child.val().draw, playerName: child1.val().forename+' '+child1.val().surname})
+                                players.push({competitorRef: child.ref, player_id: child.val().player_id, draw: child.val().draw, playerName: child1.val().forename+' '+child1.val().surname})
                                 if(child.val().draw){
                                 var selectedButton = document.getElementById(child.val().draw);
                                 selectedButton.setAttribute('disabled', true)
-                                selectedButton.innerHTML= child1.val().forename + ' drew '+ child.val().draw
+                                selectedButton.innerHTML= child1.val().forename +' '+ child1.val().surname+' drew '+ child.val().draw
                                 }
                                 })
                             })
@@ -55,7 +55,7 @@ export default class Draw extends React.Component {
     handleClick (i,event) {
         var selectedButton = document.getElementById(i);
         selectedButton.setAttribute('disabled', true)
-        selectedButton.innerHTML='PlayerName drew '+i    
+        selectedButton.innerHTML= i + ' not drawn'   
     }
 
 
@@ -85,7 +85,7 @@ export default class Draw extends React.Component {
         return (
             <div>
                  <Panel bsStyle="primary" header= {selCompName}>
-                 <Button href={link}>Teams/Groups</Button>
+                 <Button bsStyle="info" href={link}>Go to Teams/Groups</Button>
                  <Well>
                  {items}
                  </Well>

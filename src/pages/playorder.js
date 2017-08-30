@@ -1,22 +1,13 @@
 import React from "react"; 
 
-import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button} from 'react-bootstrap'
+import {Well, Button} from 'react-bootstrap'
 
-var group 
+
 var day
 var players = []
 
 export default class PlayOrder extends React.Component {
 
-    constructor(props){
-        super(props)
-
-        group='empty'
-
-
-    }
-
-    
 
     componentWillReceiveProps(nextProps) {
         this.group1=''
@@ -48,7 +39,7 @@ export default class PlayOrder extends React.Component {
             this.group3= players[2].playername+', '+players[1].playername+', '+players[5].playername+', '+players[10].playername
             break
             default:
-            this.group= 'Day not found'
+            
             }
         }
     }

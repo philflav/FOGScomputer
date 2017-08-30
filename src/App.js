@@ -8,7 +8,6 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Players from './pages/players.js'
 import Layout from './pages/layout.js'
 import Draw from './pages/draw.js'
-import Settings from './pages/settings.js'
 import Leaderboard from './pages/leaderboard.js'
 import LoginForm from './pages/loginform.js'
 import EditPlayer from './pages/editplayer.js'
@@ -52,27 +51,13 @@ class App extends React.Component {
         <div>
           <h1>FOGS Computer online V1</h1>
           <Nav bsStyle="pills" >
-          <NavItem href = "/">Layout</ NavItem>
+          <NavItem href = "/">Home Page</ NavItem>
           <NavItem href = "/draw">The Draw</NavItem>
           <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
                 <MenuItem href="/admin/player">Add/Update Player</MenuItem>
                 <MenuItem href="/admin/course">Update Course</MenuItem>
-
-          </NavDropdown>
-          <NavDropdown title="Recent players" id="nav-dropdown">
-                <MenuItem href="/FOGS2017/player/Flavin">Flavin</MenuItem>
-                <MenuItem href="/FOGS2017/player/McClean">McClean</MenuItem>
-                <MenuItem href="/FOGS2017/player/Mahoney">Mahoney</MenuItem>
-                <MenuItem divider />
-                <MenuItem href="/">Homepage</MenuItem>
-         </NavDropdown>
+        </NavDropdown>
          <MenuItem href="/comps">Competitions Summary</MenuItem>
-         <NavDropdown title="2017 Leaderboard" id="navdropdown">
-                <MenuItem href="/FOGS2017/1/leaderboard">2017 Day 1</MenuItem>
-                <MenuItem href="/FOGS2017/2/leaderboard">2017 Day 2</MenuItem>
-                <MenuItem href="/FOGS2017/3/leaderboard">2017 Day 3</MenuItem>
-                <MenuItem href="/FOGS2017/4/leaderboard">2017 Day 4</MenuItem>
-         </NavDropdown>
          <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
          <NavItem href ='#' id='menu-logout'><Glyphicon glyph="log-out" />SignOut</NavItem>
           </Nav>
@@ -83,8 +68,8 @@ class App extends React.Component {
           <Route path ='/draw/:compName' component = {Draw} />
           <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
           <Route path ='/:compName/player/:playerName' component ={Players} />
-          <Route path ='/:compName' component = {Comp} />
           <Route path ='/comps' component = {Comp} />
+          <Route path ='/:compName' component = {Comp} />
           <Route path ='/players' component = {Players} />
           <Route path ='/admin/player' component = {EditPlayer} />
           <Route path ='/admin/course' component = {EditCourse} />

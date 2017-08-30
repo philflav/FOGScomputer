@@ -5,20 +5,18 @@ import fire from '../fire.js'
 
 import PlayOrder from './playorder.js'
 
-import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button, Grid, Col, Row} from 'react-bootstrap'
+import {Panel, Nav,  NavDropdown, MenuItem, Well, Grid, Col, Row} from 'react-bootstrap'
 
 var dbRefCompNames = fire.database().ref().child('compNames');
 var dbRefPlayers = fire.database().ref().child('player')
 var dbRefComps = fire.database().ref().child('comp')
 var dbRefCourses = fire.database().ref().child('course')
-var maxCompId = 0
 var menuItems = []
 var complist = []
-var namelist = []
-var title, that
+var that
 var selectedComp
 var selectMode //should competiotn slect be enabled
-var courseList, playerList, Day1List, Day2List, Day3List, Day4List
+var courseList, playerList
 var compPlayers =[]
 var compCourses =[]
 
@@ -44,7 +42,8 @@ export default class Comp extends React.Component {
             }]
         }
         if(this.state.compName){
-            this.state.title=this.state.compName
+            //this.state.title=this.state.compName
+            this.setState({title: this.state.compname})
         }
         this.handleSelect = this.handleSelect.bind(this);
             that=this    
@@ -93,18 +92,13 @@ export default class Comp extends React.Component {
                 return (<div><li>{player.playername}</li></div>)
             }
         })
-        Day1List  =<h3>to be completed sometime</h3>
-        Day2List = Day1List
-        Day3List = Day2List
-        Day4List = Day3List
                 
     }
     
 
     handleSelect(eventKey){
-
-        var key=eventKey
-                compPlayers=[]
+     
+        compPlayers=[]
         compCourses=[]
         if(eventKey<1) {
             console.log('Create new competition')

@@ -1,7 +1,7 @@
 import React from "react"; 
 
 import fire from '../fire.js';
-import {Panel, Table, Nav, NavItem, NavDropdown, MenuItem, Glyphicon, Well, Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 
 
 export default class Hole extends React.Component {

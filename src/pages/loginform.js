@@ -2,15 +2,7 @@ import React from "react";
 
 import fire from '../fire.js';
 
-import {
-    Panel, 
-    Well,
-    FormGroup, 
-    InputGroup, 
-    Form,
-    Button,
-    ButtonToolbar
-        } from 'react-bootstrap'
+import {  Well, Form, Button, } from 'react-bootstrap'
 
 
 
@@ -23,7 +15,6 @@ export default class LoginForm extends React.Component {
         const txtEmail=document.getElementById('txtEmail')
         const txtPassword=document.getElementById('txtPassword')
         const btnLogin=document.getElementById('btnLogin')
-        const btnLogout=document.getElementById('btnLogout')
 
 
         console.log(txtEmail, txtPassword, btnLogin)
