@@ -22,7 +22,7 @@ var courseList, playerList, Day1List, Day2List, Day3List, Day4List
 var compPlayers =[]
 var compCourses =[]
 
-export default class EditComp extends React.Component {
+export default class Comp extends React.Component {
 
     constructor(props){
         super(props)
@@ -112,7 +112,7 @@ export default class EditComp extends React.Component {
         else
         {
             selectedComp=eventKey
-            var title="Editing > "+ selectedComp
+            var title="Viewing > "+ selectedComp
             that.setState({title: title})
             var needCourseNames = true
 
@@ -224,22 +224,22 @@ return(
                         <h3>Playing Groups</h3>
                         <Well>
 
-                            <PlayOrder day='1' players={this.state.players} />
+                            <PlayOrder day='1' players={this.state.players} compName={selectedComp} />
                        
                         </Well>
                         <Well>
 
-                            <PlayOrder day='2' players={this.state.players} />
+                            <PlayOrder day='2' players={this.state.players} compName={selectedComp} />
 
                         </Well>
                         <Well>
 
-                            <PlayOrder day='3' players={this.state.players} />
+                            <PlayOrder day='3' players={this.state.players} compName={selectedComp}/>
 
                         </Well>
                         <Well>
 
-                            <PlayOrder day='4' players={this.state.players} />
+                            <PlayOrder day='4' players={this.state.players} compName={selectedComp} />
 
                         </Well>
                         </Well>

@@ -62,9 +62,10 @@ export default class PlayOrder extends React.Component {
 
     render () {
         console.log(day, players)
+        var link = './'+this.props.compName+'/'+this.props.day+'/leaderboard'
         return (
             <div>
-                <h5>Day {this.props.day}</h5>
+                <Button href={link}> Day {this.props.day} results</Button>
                 <Well>{this.group1}</Well>
                 <Well>{this.group2}</Well>
                 <Well>{this.group3}</Well>             

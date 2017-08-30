@@ -13,7 +13,7 @@ import Leaderboard from './pages/leaderboard.js'
 import LoginForm from './pages/loginform.js'
 import EditPlayer from './pages/editplayer.js'
 import EditCourse from './pages/editcourse.js'
-import EditComp from './pages/editcomp.js'
+import Comp from './pages/comp.js'
 
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
 
@@ -57,7 +57,7 @@ class App extends React.Component {
           <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
                 <MenuItem href="/admin/player">Add/Update Player</MenuItem>
                 <MenuItem href="/admin/course">Update Course</MenuItem>
-                <MenuItem href="/admin/comp">Add/Update Competition</MenuItem>
+
           </NavDropdown>
           <NavDropdown title="Recent players" id="nav-dropdown">
                 <MenuItem href="/FOGS2017/player/Flavin">Flavin</MenuItem>
@@ -66,6 +66,7 @@ class App extends React.Component {
                 <MenuItem divider />
                 <MenuItem href="/">Homepage</MenuItem>
          </NavDropdown>
+         <MenuItem href="/comps">Competitions Summary</MenuItem>
          <NavDropdown title="2017 Leaderboard" id="navdropdown">
                 <MenuItem href="/FOGS2017/1/leaderboard">2017 Day 1</MenuItem>
                 <MenuItem href="/FOGS2017/2/leaderboard">2017 Day 2</MenuItem>
@@ -79,14 +80,15 @@ class App extends React.Component {
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
+          <Route path ='/featured' component = {Featured} />
           <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
           <Route path ='/:compName/player/:playerName' component ={Players} />
-          <Route path ='/admin/comp/:compName' component = {EditComp} />
+          <Route path ='/comps' component = {Comp} />
+          <Route path ='/:compName' component = {Comp} />
           <Route path ='/players' component = {Players} />
           <Route path ='/featured' component ={Featured} />
           <Route path ='/admin/player' component = {EditPlayer} />
           <Route path ='/admin/course' component = {EditCourse} />
-          <Route path ='/admin/comp' component = {EditComp} />
           <Route path ='/admin/login' component = {LoginForm} />
           <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
           </Switch>
