@@ -7,7 +7,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 import Players from './pages/players.js'
 import Layout from './pages/layout.js'
-import Featured from './pages/featured.js'
+import Draw from './pages/draw.js'
 import Settings from './pages/settings.js'
 import Leaderboard from './pages/leaderboard.js'
 import LoginForm from './pages/loginform.js'
@@ -53,7 +53,7 @@ class App extends React.Component {
           <h1>FOGS Computer online V1</h1>
           <Nav bsStyle="pills" >
           <NavItem href = "/">Layout</ NavItem>
-          <NavItem href = "/featured">Featured</NavItem>
+          <NavItem href = "/draw">The Draw</NavItem>
           <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
                 <MenuItem href="/admin/player">Add/Update Player</MenuItem>
                 <MenuItem href="/admin/course">Update Course</MenuItem>
@@ -80,13 +80,12 @@ class App extends React.Component {
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
-          <Route path ='/featured' component = {Featured} />
+          <Route path ='/draw/:compName' component = {Draw} />
           <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
           <Route path ='/:compName/player/:playerName' component ={Players} />
-          <Route path ='/comps' component = {Comp} />
           <Route path ='/:compName' component = {Comp} />
+          <Route path ='/comps' component = {Comp} />
           <Route path ='/players' component = {Players} />
-          <Route path ='/featured' component ={Featured} />
           <Route path ='/admin/player' component = {EditPlayer} />
           <Route path ='/admin/course' component = {EditCourse} />
           <Route path ='/admin/login' component = {LoginForm} />
