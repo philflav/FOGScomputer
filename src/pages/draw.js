@@ -9,8 +9,9 @@ var dbRefPlayers = fire.database().ref().child('player');
 
 var selCompName = ''
 var players = [] //array of competition record objects
-
+var playerCount=1
 var link
+const maxPlayers =12 //set the maximum nuber of players allowed
 
 export default class Draw extends React.Component {
     constructor(props){
@@ -27,7 +28,7 @@ export default class Draw extends React.Component {
         var dbRefComp = dbRefComps.orderByChild('name').equalTo(this.props.match.params.compName);
 
         dbRefComp.once('value').then(snap => {
-            
+                    playerCount=snap.numChildren()
                     snap.forEach((child) => { 
                         var dbRefPlayer= dbRefPlayers.orderByChild('player_id').equalTo(child.val().player_id);
                         dbRefPlayer.once('value').then(snap =>{
@@ -41,6 +42,10 @@ export default class Draw extends React.Component {
                                 })
                             })
                         })
+                        for(var j=playerCount+1;j<maxPlayers+1;j++){
+                        var selectedButton = document.getElementById(j)
+                        selectedButton.remove()
+                    }
                     })                 
                     console.log(players)
                 
@@ -61,9 +66,9 @@ export default class Draw extends React.Component {
 
     
     render () {
-        var nums = [1,2,3,4,5,6,7,8,9,10,11,12]
+        var nums = new Array(maxPlayers).join().split(',').map(function(item, index){ return ++index;})
         var ranNums = []
-        var i = nums.length
+        var i = maxPlayers
         var j = 0
     
             while (i--) {
