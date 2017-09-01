@@ -24,7 +24,7 @@
     "course2_id" : 17,
     "course3_id" : 21,
     "course4_id" : 22,
-    "draw" : 7,
+
     "hLOCK" : 4,
     "name" : "FOGS2018",
     "player_id" : 8,
@@ -43,7 +43,7 @@
 
     "hLOCK" : 4,
     "name" : "FOGS2018",
-    "player_id" : 17,
+    "player_id" : 31,
     "sdate" : "2017-6-11"
   }, {
     "F1" : 0,
@@ -188,6 +188,23 @@
     "hLOCK" : 4,
     "name" : "FOGS2018",
     "player_id" : 26,
+    "sdate" : "2017-6-11"
+  } ,
+  {
+    "F1" : 0,
+    "SC1" : 842,
+    "SC2" : 863,
+    "SC3" : 8617,
+    "SC4" : 886,
+    "comp_id" : 341,
+    "course1_id" : 20,
+    "course2_id" : 17,
+    "course3_id" : 21,
+    "course4_id" : 22,
+
+    "hLOCK" : 4,
+    "name" : "FOGS2018",
+    "player_id" : 25,
     "sdate" : "2017-6-11"
   } ,
     {
@@ -4450,7 +4467,7 @@
     "forename" : "Keven",
     "mobile" : "not known",
     "player_id" : 17,
-    "surname" : "parris"
+    "surname" : "Parris"
   }, {
     "email" : "not known",
     "c_hcap" : 0,
