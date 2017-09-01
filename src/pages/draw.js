@@ -1,6 +1,6 @@
 import React from "react"; 
 
-import {Panel, Well, Button} from 'react-bootstrap'
+import {Panel, Well, Button, Nav, NavDropdown, NavItem,MenuItem} from 'react-bootstrap'
 
 import fire from '../fire.js';
  
@@ -16,6 +16,7 @@ const maxPlayers =12 //set the maximum nuber of players allowed
 export default class Draw extends React.Component {
     constructor(props){
         super(props)
+        this.state ={players: []}
         selCompName='The draw for '+this.props.match.params.compName
 
         link='/'+this.props.match.params.compName
@@ -40,6 +41,7 @@ export default class Draw extends React.Component {
                                 selectedButton.innerHTML= child1.val().forename +' '+ child1.val().surname+' drew '+ child.val().draw
                                 }
                                 })
+                                this.setState({players: players})
                             })
                         })
                         for(var j=playerCount+1;j<maxPlayers+1;j++){
@@ -57,16 +59,22 @@ export default class Draw extends React.Component {
 
     }
 
-    handleClick (i,event) {
+    handleClick (i,event) {  //draw button clicked
         var selectedButton = document.getElementById(i);
         selectedButton.setAttribute('disabled', true)
         selectedButton.innerHTML= i + ' not drawn'   
     }
 
+    handleSelect(eventKey){  //player selected
+
+        alert(eventKey)
+
+    }
+
 
     
     render () {
-        var nums = new Array(maxPlayers).join().split(',').map(function(item, index){ return ++index;})
+        var nums = new Array(maxPlayers).join().split(',').map(function(item, index){ return ++index;})//fills an array of integers
         var ranNums = []
         var i = maxPlayers
         var j = 0
@@ -85,12 +93,24 @@ export default class Draw extends React.Component {
               
                 
                 );
-        }, this);
+        }, this)
+
+        var menuItems
+        var plist = []
+        plist=this.state.players
+      
+        menuItems = plist.map((player) => (
+        <MenuItem eventKey={player.player_id}>{player.player_id} {player.playerName} </MenuItem>))
 
         return (
             <div>
                  <Panel bsStyle="primary" header= {selCompName}>
-                 <Button bsStyle="info" href={link}>Go to Teams/Groups</Button>
+                 <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleSelect}>
+                     <NavItem href={link}> Teams/Groups </NavItem>
+                    <NavDropdown eventKey="999" title="Select Player to Draw" id="nav-dropdown">
+                        {menuItems}
+                    </NavDropdown>
+                </Nav>
                  <Well>
                  {items}
                  </Well>
