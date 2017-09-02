@@ -46,3 +46,7 @@ hr {
   border: 0;
   border-top: 1px solid #8283BF;
 }
+
+.dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
+  color: #BDBCBC;
+}

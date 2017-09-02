@@ -57,7 +57,7 @@ export default class Draw extends React.Component {
                         var dbRefPlayer= dbRefPlayers.orderByChild('player_id').equalTo(child.val().player_id);
                         dbRefPlayer.once('value').then(snap =>{
                             snap.forEach((child1) => {
-                                players.push({competitorKey: child.key, player_id: child.val().player_id, draw: child.val().draw, playerName: child1.val().forename+' '+child1.val().surname})
+                                players.push({competitorKey: child.key, player_id: child.val().player_id, draw: child.val().draw, playerName: child1.val().forename+' '+child1.val().surname, enabled: true})
                                 if(child.val().draw>0){
                                 var selectedButton = document.getElementById(child.val().draw);
                                 selectedButton.setAttribute('disabled', true)
@@ -89,16 +89,17 @@ export default class Draw extends React.Component {
         var selectedButton = document.getElementById(i);
         selectedButton.setAttribute('disabled', true)
         var update ={draw: i}
-        console.log(selPlayer.competitorKey, update)
-        fire.database().ref('/comp/'+selPlayer.competitorKey).update(update)
+        console.log(players[selPlayer].competitorKey, update)
+        fire.database().ref('/comp/'+players[selPlayer].competitorKey).update(update)
         .catch(e =>{
          console.log(e)
         })
         .then(
-            selectedButton.innerHTML= selPlayer.playerName + ' drew '+ i,
+            selectedButton.innerHTML= players[selPlayer].playerName + ' drew '+ i,
             this.setState({selPlayerName: 'no one'}),
-            selPlayer.competitorKey='',
-            
+            players[selPlayer].competitorKey='',
+            players[selPlayer].enabled= false //stops player drawing multiple times
+                       
         )
 
 
@@ -106,9 +107,10 @@ export default class Draw extends React.Component {
 
     handleMenuSelect(eventKey){  //comp database reference to player selected
 
-        selPlayer = players[eventKey]
+        selPlayer = eventKey
         console.log(selPlayer)
         this.setState({selPlayerName: players[eventKey].playerName})
+        
 
 
 
@@ -122,8 +124,8 @@ export default class Draw extends React.Component {
         menuItems = plist.map((player, index) => {
             var mindex='M'+index
             if(!player.draw){
-                return  <MenuItem id={mindex} eventKey={index}>{player.playerName} </MenuItem>
-            }
+                return  <MenuItem id={mindex} eventKey={index} disabled={!player.enabled}>{player.playerName}</MenuItem>
+            } 
         })
 
         return (

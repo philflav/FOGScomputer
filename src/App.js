@@ -52,11 +52,11 @@ class App extends React.Component {
           <h1>FOGS Computer online V1</h1>
           <Nav bsStyle="pills" >
           <NavItem href = "/">Home Page</ NavItem>
-          <NavItem href = "/draw/FOGS2017">Current Draw</NavItem>
           <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
                 <MenuItem href="/admin/player">Add/Update Player</MenuItem>
                 <MenuItem href="/admin/course">Update Course</MenuItem>
         </NavDropdown>
+          <NavItem href = "/draw/FOGS2018">Current Draw</NavItem>
          <MenuItem href="/comps">Competitions Summary</MenuItem>
          <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
          <NavItem href ='#' id='menu-logout'><Glyphicon glyph="log-out" />SignOut</NavItem>
