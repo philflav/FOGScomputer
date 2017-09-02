@@ -85,12 +85,17 @@ export default class Comp extends React.Component {
         ))
 
         playerList = nextState.players.map(function(player,index) {
+            if(player.draw){
 
             if(index===2|index===5|index===8|index===11){
                 return (<div><li>{player.playername}<hr /></li></div>)
             }else {
                 return (<div><li>{player.playername}</li></div>)
             }
+        }
+        else{
+            return (<div><li><i>not drawn</i></li></div>)
+        }
         })
                 
     }
@@ -218,12 +223,12 @@ return(
                         <h3>Playing Groups</h3>
                         <Well>
 
-                            <PlayOrder day='1' players={this.state.players} compName={selectedComp} />
+                            <PlayOrder day='1' players={this.state.players} compName={selectedComp}/>
                        
                         </Well>
                         <Well>
 
-                            <PlayOrder day='2' players={this.state.players} compName={selectedComp} />
+                            <PlayOrder day='2' players={this.state.players} compName={selectedComp}/>
 
                         </Well>
                         <Well>
