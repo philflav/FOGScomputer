@@ -60,8 +60,9 @@ export default class Draw extends React.Component {
                                 players.push({competitorKey: child.key, player_id: child.val().player_id, draw: child.val().draw, playerName: child1.val().forename+' '+child1.val().surname, enabled: true})
                                 if(child.val().draw>0){
                                 var selectedButton = document.getElementById(child.val().draw);
+                                if(selectedButton){
                                 selectedButton.setAttribute('disabled', true)
-                                selectedButton.innerHTML= child1.val().forename +' '+ child1.val().surname+' drew '+ child.val().draw
+                                selectedButton.innerHTML= child1.val().forename +' '+ child1.val().surname+' drew '+ child.val().draw}
                                 }
                                 })  
                                 

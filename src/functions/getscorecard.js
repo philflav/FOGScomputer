@@ -23,7 +23,7 @@ var points = ""
 var par3s = ""
 var handicap = ""
 var F1= ""
-
+if(!scn){reject('no scorecard number')}
 //var courseName
 dbRefScorecards.orderByChild('scorecard_id').equalTo(scn).once('value').then (snap => {
     //console.log(snap.val())
