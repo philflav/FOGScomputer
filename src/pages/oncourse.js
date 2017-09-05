@@ -4,25 +4,25 @@ import fire from '../fire.js';
 
 import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon} from 'react-bootstrap'
 
-var progressBars = ['<h1>hello</h1>', '<h2>world</h2>']
+import stableford from '../stableford.js'
 
-var holeNumber //the current holenumber
-var holePar = 4
-var holeSI =13
-var holeShots = 0
-var holePts = 0
+var progressBars = ['<h1>hello</h1>', '<h2>world</h2>']
+var hcap=11
+
 
 export default class OnCourse extends React.Component {
 
     constructor(props){
     super(props)
-
-    this.state= {
-        holeNumber: 1,
-        holePar: 4,
-        holeSI: 13,
-        holeShots: 4,
-        holePts: 2
+    this.state= {playername: 'Phil',
+                hcap: '20',
+                courseName: 'Bell Dunes',
+                holeNumber: 1,
+                holePar: 5,
+                holeSI: 1,
+                holeShots: 4,
+                holePts: 2,
+                lastEntry: '...'
     }
 
  
@@ -48,60 +48,100 @@ handleClearHole(event){
 handleEagle(event){
      var shots=this.state.holePar-2
      if(shots<1){shots=1}
+     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
      this.setState({
-         holeShots:shots
+         holeShots:shots,
+         holePts: pts,
+         lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts
      })
+     this.handleIncHole()
+
 }
 handleBirdie(event){
     var shots=this.state.holePar-1
     if(shots<1){shots=1}
+    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
     this.setState({
-        holeShots:shots
+        holeShots:shots,
+        holePts: pts,
+        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts
     })
+    this.handleIncHole()
 }
 
 handlePar(event){
     var shots=this.state.holePar
     if(shots<1){shots=1}
+    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
     this.setState({
-        holeShots:shots
+        holeShots:shots,
+        holePts: pts,
+        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts      
+        
+
     })
+    this.handleIncHole()
 
 }
 handleBogey(event){
     var shots=this.state.holePar+1
     if(shots<1){shots=1}
+    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
     this.setState({
-        holeShots:shots
+        holeShots:shots,
+        holePts: pts,
+        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts
     })
+    this.handleIncHole()
 
 }
 handleDblBogey(event){
     var shots=this.state.holePar+2
     if(shots<1){shots=1}
+    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
     this.setState({
-        holeShots:shots
+        holeShots:shots,
+        holePts: pts,
+        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts
     })
+    this.handleIncHole()
+
+}
+handleTrpBogey(event){
+    var shots=this.state.holePar+3
+    if(shots<1){shots=1}
+    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    this.setState({
+        holeShots:shots,
+        holePts: pts,
+        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts
+    })
+    this.handleIncHole()
 
 }
 handleBlob(event){
     var shots=9
+    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
     this.setState({
-        holeShots:shots
+        holeShots:shots,
+        holePts: pts,
+        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts
     })
+    this.handleIncHole()
 
 }
 
 
 render() {
     console.log(this.state)
+    var title=  this.state.courseName +". Player: "+ this.state.playername + '   ('+ this.state.hcap+')'
     return (
 
         <div>
 
-        <Panel bsStyle="primary" header = 'On course Scoring'>
-        <Well>Course and player details </Well>
-        <Well><i>Score Entry for hole </i>     <b> {this.state.holeNumber} </b><br /> 
+        <Panel bsStyle="primary" header = {title}>
+            <h4>Real-time scorecard:<pre> Last entry at {this.state.lastEntry}</pre></h4>
+        <Well bsSize="small"><i>Score Entry for hole </i>     <b> {this.state.holeNumber} </b><br /> 
         <Row>
         <Col xs={12} md={10}>
 			 <Row>
@@ -129,32 +169,37 @@ render() {
         </Row>
         </Well>
         <ButtonToolbar>
-                 <Col xs={4} md={2}>			 
+                 <Col xs={4} md={1}>			 
                 <Button bsStyle='primary' bsSize='small' onClick={this.handleEagle.bind(this)}>
-                <Glyphicon glyph="flash" /> Eagle
+                <Glyphicon glyph="flash" /> Eagle({this.state.holePar-2})
                 </Button> 
             </Col>
-            <Col xs={4} md={2}>			 
+            <Col xs={4} md={1}>			 
                 <Button bsStyle='primary' bsSize='small' onClick={this.handleBirdie.bind(this)}>
-                <Glyphicon glyph="star" /> Birdie
+                <Glyphicon glyph="star" /> Birdie({this.state.holePar-1})
                 </Button> 
             </Col>
-            <Col xs={4} md={2}>			 
+            <Col xs={4} md={1}>			 
                 <Button bsStyle='primary' bsSize='small' onClick={this.handlePar.bind(this)}>
-                <Glyphicon glyph="ok-sign" /> Par
+                <Glyphicon glyph="ok-sign" /> Par({this.state.holePar})
                 </Button> 
             </Col>
-            <Col xs={4} md={2}>			 
+            <Col xs={4} md={1}>			 
                 <Button bsStyle='primary' bsSize='small' onClick={this.handleBogey.bind(this)}>
-                <Glyphicon glyph="thumbs-down" /> Bogey
+                <Glyphicon glyph="thumbs-down" /> Bogey({this.state.holePar+1})
                 </Button> 
             </Col>
-            <Col xs={4} md={2}>			 
+            <Col xs={4} md={1}>			 
                 <Button bsStyle='primary' bsSize='small' onClick={this.handleDblBogey.bind(this)}>
-                <Glyphicon glyph="hand-down" /> Dbl Bogey
+                <Glyphicon glyph="hand-down" /> Dbl Bogey({this.state.holePar+2})
                 </Button> 
             </Col>
-            <Col xs={4} md={2}>			 
+            <Col xs={4} md={1}>			 
+                <Button bsStyle='primary' bsSize='small' onClick={this.handleTrpBogey.bind(this)}>
+                <Glyphicon glyph="fire" /> Trpl Bogey({this.state.holePar+3})
+                </Button> 
+            </Col>
+            <Col xs={4} md={1}>			 
                 <Button bsStyle='primary' bsSize='small' onClick={this.handleBlob.bind(this)}>
                 <Glyphicon glyph="minus-sign" /> Blob
                 </Button> 
