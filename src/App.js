@@ -13,6 +13,7 @@ import LoginForm from './pages/loginform.js'
 import EditPlayer from './pages/editplayer.js'
 import EditCourse from './pages/editcourse.js'
 import Comp from './pages/comp.js'
+import OnCourse from './pages/oncourse.js'
 
 import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
 
@@ -52,6 +53,7 @@ class App extends React.Component {
           <h1>FOGS Computer online V1</h1>
           <Nav bsStyle="pills" >
           <NavItem href = "/">Home Page</ NavItem>
+          <NavItem href="/oncourse">In play scoring</ NavItem>
           <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
                 <MenuItem href="/admin/player">Add/Update Player</MenuItem>
                 <MenuItem href="/admin/course">Update Course</MenuItem>
@@ -65,6 +67,7 @@ class App extends React.Component {
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
+          <Route path ='/oncourse' component = {OnCourse} />
           <Route path ='/draw/:compName' component = {Draw} /> 
           <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
           <Route path ='/:compName/player/:playerName' component ={Players} />

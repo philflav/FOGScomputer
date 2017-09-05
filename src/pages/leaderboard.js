@@ -27,7 +27,8 @@ export default class Leaderboard extends React.Component {
         this.state = { compName: this.props.match.params.compName,
                 day: this.props.match.params.day,
                results: [],
-               overall: []}
+               overall: [],
+              courseName: 'tbd'}
         stateCopy = Object.assign({}, this.state);
 
         that=this 
@@ -111,7 +112,7 @@ export default class Leaderboard extends React.Component {
                         RESULTS.sort(function (a, b) {
                         return b.points - a.points;
                             }); 
-                        stateCopy = {results: RESULTS} 
+                        stateCopy = {results: RESULTS , courseName: results.CourseName} 
                         that.setState(stateCopy)       
                          })
               
@@ -124,8 +125,8 @@ export default class Leaderboard extends React.Component {
                         RESULTS.sort(function (a, b) {
                         return b.points - a.points;
                             }); 
-                        stateCopy = {results: RESULTS} 
-                        that.setState(stateCopy)       
+                        stateCopy = {results: RESULTS , courseName: results.CourseName} 
+                        that.setState(stateCopy)   
                          })
               
                     }
@@ -137,7 +138,7 @@ export default class Leaderboard extends React.Component {
                         RESULTS.sort(function (a, b) {
                         return b.points - a.points;
                             }); 
-                        stateCopy = {results: RESULTS} 
+                        stateCopy = {results: RESULTS , courseName: results.CourseName}  
                         that.setState(stateCopy)       
                          })
               
@@ -150,7 +151,7 @@ export default class Leaderboard extends React.Component {
                         RESULTS.sort(function (a, b) {
                         return b.points - a.points;
                             }); 
-                        stateCopy = {results: RESULTS} 
+                        stateCopy = {results: RESULTS , courseName: results.CourseName} 
                         that.setState(stateCopy)       
                          })
               
@@ -172,7 +173,7 @@ export default class Leaderboard extends React.Component {
         return (
       <div> 
         <Panel bsStyle="primary" header = {this.state.compName}> 
-        <DayTable results={this.state.results} />
+        <DayTable results={this.state.results} courseName = {this.state.courseName} />
         <OverallTable results={this.state.overall} />
         </Panel>
       </div>
@@ -197,7 +198,7 @@ class ResultRow extends React.Component {
 class OverallResultRow extends React.Component {
 
     render() {
-        console.log('ResultRow :',this.props.results)    
+
       return (
         <tr>  
           <td>{this.props.results.PlayerName} </td>
@@ -214,14 +215,13 @@ class DayTable extends React.Component {
      render() {
     //console.log('DayTable :')  
     var results = this.props.results 
-    //console.log("results",results)
-    var coursename = 'undefined'
+
+ 
     var rowItems = results.map((result) => (
-    coursename = result.CourseName,
     <ResultRow results={result} key={result.playerId} />))
     return (
       <div>
-      <Panel bsStyle="info" header= {"Result for "+(coursename)}>
+      <Panel bsStyle="info" header= {this.props.courseName} >
       <Table striped bordered condensed hover >
             <thead>
             <tr>
@@ -245,11 +245,11 @@ class OverallTable extends React.Component {
     //console.log('OverallTable :')  
    var rows = []; 
    var results=this.props.results
-   console.log(results)
+
    
    results.forEach(function(overallResult) {      
       rows.push(<OverallResultRow results={overallResult} key={overallResult.PlayerName} />);  
-      console.log("over: ",overallResult)    
+
     });
     return (
       <div>
