@@ -4,8 +4,10 @@ import fire from '../fire.js';
 
 import {  Well, Form, Button, } from 'react-bootstrap'
 
+import getplayerDetails from '../functions/getplayerDetails.js'
 
 
+var dbRefPlayers = fire.database().ref().child('player');
 
  
 export default class LoginForm extends React.Component {
@@ -14,7 +16,7 @@ export default class LoginForm extends React.Component {
 
         const txtEmail=document.getElementById('txtEmail')
         const txtPassword=document.getElementById('txtPassword')
-        const btnLogin=document.getElementById('btnLogin')
+        const btnLogin=document.getElementById('btnLogin') 
 
 
         console.log(txtEmail, txtPassword, btnLogin)
@@ -38,8 +40,13 @@ export default class LoginForm extends React.Component {
 
         fire.auth().onAuthStateChanged(firebaseUser =>{
             if(firebaseUser) {
-            console.log(firebaseUser)
+                getplayerDetails(firebaseUser.uid).then((success) => {
+                        alert('logged in'+ success.forename)
+                })
+            
+
             btnLogin.classList.add('hide')
+            
 
             }else{
             console.log('not logged in')
