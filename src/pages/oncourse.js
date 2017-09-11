@@ -2,7 +2,7 @@ import React from "react";
 
 import fire from '../fire.js';
 
-import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon} from 'react-bootstrap'
+import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon, Clearfix} from 'react-bootstrap'
 
 import stableford from '../stableford.js'
 
@@ -151,6 +151,7 @@ render() {
         <Panel bsStyle="primary" header = {title}>
             <h4>Real-time scorecard:<pre> Last >> {this.state.lastEntry}</pre></h4>
         <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} </h4> 
+        <Col>
             <Row>			 
                 <Button bsStyle='success'  onClick={this.handleEagle.bind(this)}>
                 <Glyphicon glyph="flash" />{this.state.holePar-2}
@@ -180,11 +181,12 @@ render() {
                 <Glyphicon glyph="fire" />{this.state.holePar+3}
                 </Button> 
             </Row>
+            </Col><Clearfix />
             <Row>
             <br />
 
-            <Col>			 
-                <Button bsStyle='danger'  block onClick={this.handleBlob.bind(this)}>
+            <Col xs={6}>			 
+                <Button bsStyle='danger' block onClick={this.handleBlob.bind(this)}>
                 <Glyphicon glyph="minus-sign" />Blob
                 </Button> 
             </Col>
@@ -193,15 +195,15 @@ render() {
 
             <Row > 
                 <hr />
-                <Col xs={3} >	
+                <Col xs={4} >	
                 <Button bsStyle='primary' bsSize='large' onClick={this.handleDecHole.bind(this)}>
                 <Glyphicon glyph="arrow-left" />Back
                 </Button> 
-            </Col> <Col xs={3}>	
+            </Col> <Col xs={4}>	
                 <Button bsStyle='primary' bsSize='large' onClick={this.handleIncHole.bind(this)}>
                 <Glyphicon glyph="arrow-right" />Next
                 </Button> 
-            </Col>  <Col xs={3}>	
+            </Col>  <Col xs={4}>	
                 <Button bsStyle='primary' bsSize='large' onClick={this.handleClearHole.bind(this)}>
                 <Glyphicon glyph="remove" /> Clear
                 </Button>  

@@ -1,14 +1,19 @@
 {
   "rules": {
     ".read": "auth != true",
-    ".write": "auth != true",
+    ".write": "auth === false",
   "scorecard": { 
+    ".write": "auth != true",
     ".indexOn":"scorecard_id"},
     "player" : {
+    ".write": "auth != true",
     ".indexOn":"player_id"},
     "course" : {
+    ".write": "auth != true",
     ".indexOn":"Course_id"},
-    "comp" : {
+    "comp" : {      
+      ".write":"auth.uid == 'lSLoOIvUblSA93NOjABbckB82LH3' ",   
+      //grants access to comp table to me to restrict publishing of scorecard data. 
       ".indexOn":"name"}
     }
 }
