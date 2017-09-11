@@ -12,7 +12,7 @@
     ".write": "auth != true",
     ".indexOn":"Course_id"},
     "comp" : {      
-      ".write":"auth.uid == 'lSLoOIvUblSA93NOjABbckB82LH3' ",   
+      ".write":"auth.uid == 'lSLoOIvUblSA93NOjABbckB82LH3' || auth.uid == '{another user}'",   
       //grants access to comp table to me to restrict publishing of scorecard data. 
       ".indexOn":"name"}
     }
