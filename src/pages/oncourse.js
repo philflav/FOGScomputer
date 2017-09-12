@@ -203,13 +203,15 @@ render() {
         paddingBottom: '10px'
     }
     var title=  this.state.courseName +". Player: "+ this.state.playername + '   ('+ this.state.hcap+')'
+    var displayHole =this.state.holeNumber<19 ? this.state.holeNumber : '--'
+    var displayPar = this.state.holeNumber<19 ? this.state.holePar : '--'
     return (
 
         <div>
 
         <Panel bsStyle="primary" header = {title}>
             <h4>Real-time scorecard:<pre>Score @:{history.slice(-1).pop()} Running total: {this.state.total} </pre></h4>
-        <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} </h4> 
+        <Well ><h4><i>Score Entry for hole: </i><b> {displayHole} </b> <i>Par : </i> {displayPar} </h4> 
         <Col>
             <Row>			 
                 <Button bsStyle='success'  onClick={this.handleEagle.bind(this)}>
