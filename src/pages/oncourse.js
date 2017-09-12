@@ -6,6 +6,8 @@ import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon, Clearfix} from 
 
 import stableford from '../stableford.js'
 
+import getplayerDetails from '../functions/getplayerDetails.js'
+
 import PlayerProgress from './playerprogress.js'
 
 var progressBars = ['<h1>hello</h1>', '<h2>world</h2>']
@@ -15,25 +17,47 @@ var hcap=11
 var chartData = []
 var chartOptions =''
 
+var history = []
+
 
 export default class OnCourse extends React.Component {
 
     constructor(props){
     super(props)
-    this.state= {playername: 'Phil',
-                hcap: '20',
+    this.state= {playername: '',
+                hcap: '',
                 courseName: 'Bell Dunes',
                 holeNumber: 1,
                 holePar: 3,
                 holeSI: 10,
                 holeShots: 4,
                 holePts: 2,
-                lastEntry: '...'
+                hist: ''
     }
+    //getplayerDetails(auth.uid).then((success) => {
+    //    this.state.playername=success.forename})
 
-    
 
 }
+
+componentWillMount() {
+
+    fire.auth().onAuthStateChanged(firebaseUser =>{
+        if(firebaseUser) {
+            getplayerDetails(firebaseUser.uid).then((success) => {
+                    this.setState({playername: success.forename +' ' + success.surname,
+                    hcap: success.c_hcap,
+                    playerId: success.player_id
+                })
+            })            
+        }
+        else {
+            alert('You must be signed in to perform this action')
+        }
+    })
+}
+
+
 handleIncHole(event){
     var hole= this.state.holeNumber 
     if(hole<18){hole++}else{hole=18}
@@ -46,95 +70,118 @@ handleDecHole(event){
 
 }
 handleClearHole(event){
-    this.setState({
-        holeShots: 0,
-        holePts: 0
-    })
+        history.pop();
+        this.setState({
+                hist: history,
+                holeShots: 0,
+                holePts: 0
+            })
+        this.handleDecHole()
+             
 }
 handleEagle(event){
-     var shots=this.state.holePar-2
-     if(shots<1){shots=1}
-     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
-     this.setState({
-         holeShots:shots,
+    if(this.state.holeNumber<19){
+        var shots=this.state.holePar-2
+        var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+        if(shots<1){shots=1}
+        history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
+        this.setState({
+            holeShots:shots,
          holePts: pts,
-         lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts +' pts'
+         hist: history
      })
      this.handleIncHole()
 
 }
+}
 handleBirdie(event){
+   if(this.state.holeNumber<19){
     var shots=this.state.holePar-1
     if(shots<1){shots=1}
     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
     this.setState({
         holeShots:shots,
         holePts: pts,
-        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts +' pts'
+        hist: history
     })
     this.handleIncHole()
 }
+}
 
 handlePar(event){
+   if(this.state.holeNumber<19){
     var shots=this.state.holePar
     if(shots<1){shots=1}
     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
     this.setState({
         holeShots:shots,
         holePts: pts,
-        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts +' pts'     
+        hist: history     
         
 
     })
     this.handleIncHole()
-
+    }
 }
 handleBogey(event){
+   if(this.state.holeNumber<19){
     var shots=this.state.holePar+1
     if(shots<1){shots=1}
     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
     this.setState({
         holeShots:shots,
         holePts: pts,
-        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts+' pts'
+        hist: history
     })
     this.handleIncHole()
 
 }
+}
 handleDblBogey(event){
+    if(this.state.holeNumber<19){
     var shots=this.state.holePar+2
     if(shots<1){shots=1}
     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
     this.setState({
         holeShots:shots,
         holePts: pts,
-        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts+' pts'
+        hist: history
     })
     this.handleIncHole()
-
+    }
 }
 handleTrpBogey(event){
+   if(this.state.holeNumber<19){
     var shots=this.state.holePar+3
     if(shots<1){shots=1}
     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
     this.setState({
         holeShots:shots,
         holePts: pts,
-        lastEntry: 'Hole: '+this.state.holeNumber+ ' > '+shots+' for '+ pts +' pts'
+        hist: history
     })
     this.handleIncHole()
 
 }
+}
 handleBlob(event){
+   if(this.state.holeNumber<19){
     var shots=9
     var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ '] -/0 ')
     this.setState({
         holeShots:shots,
         holePts: pts,
-        lastEntry: 'for hole: '+this.state.holeNumber+ ' > '+ 'was blobbed'
+        hist: history
     })
     this.handleIncHole()
 
+}
 }
 
 
@@ -149,7 +196,7 @@ render() {
         <div>
 
         <Panel bsStyle="primary" header = {title}>
-            <h4>Real-time scorecard:<pre> Last >> {this.state.lastEntry}</pre></h4>
+            <h4>Real-time scorecard:<pre> Last >> {history}</pre></h4>
         <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} </h4> 
         <Col>
             <Row>			 
@@ -196,18 +243,10 @@ render() {
             <Row > 
                 <hr />
                 <Col xs={4} >	
-                <Button bsStyle='primary' bsSize='large' onClick={this.handleDecHole.bind(this)}>
-                <Glyphicon glyph="arrow-left" />Back
-                </Button> 
-            </Col> <Col xs={4}>	
-                <Button bsStyle='primary' bsSize='large' onClick={this.handleIncHole.bind(this)}>
-                <Glyphicon glyph="arrow-right" />Next
-                </Button> 
-            </Col>  <Col xs={4}>	
                 <Button bsStyle='primary' bsSize='large' onClick={this.handleClearHole.bind(this)}>
-                <Glyphicon glyph="remove" /> Clear
-                </Button>  
-            </Col>               
+                <Glyphicon glyph="arrow-left" />Go back (Clear)
+                </Button> 
+            </Col>      
             
 
         </Row>
