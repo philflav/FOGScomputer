@@ -18,6 +18,7 @@ var chartData = []
 var chartOptions =''
 
 var history = []
+var playertotal = 0
 
 
 export default class OnCourse extends React.Component {
@@ -32,7 +33,8 @@ export default class OnCourse extends React.Component {
                 holeSI: 10,
                 holeShots: 4,
                 holePts: 2,
-                hist: ''
+                hist: '',
+                total: 0
     }
     //getplayerDetails(auth.uid).then((success) => {
     //    this.state.playername=success.forename})
@@ -58,25 +60,35 @@ componentWillMount() {
 }
 
 
-handleIncHole(event){
+handleIncHole(points){
     var hole= this.state.holeNumber 
-    if(hole<18){hole++}else{hole=18}
-    this.setState({holeNumber: hole})
+    hole++
+    var total = this.state.total + points
+    this.setState({holeNumber: hole, total: total})
 }
-handleDecHole(event){
+handleDecHole(points){
     var hole= this.state.holeNumber 
-    if(hole>1){hole--}else{hole=1}
-    this.setState({holeNumber: hole})
+    var total = this.state.total - points
+    if(hole>1){
+        hole--
+    }else{hole=1}
+    this.setState({holeNumber: hole, total: total})
 
 }
 handleClearHole(event){
-        history.pop();
+        
+        var last= history.pop()
+        if(last){
+        var n=last.search("/")
+        var points=last.slice(n+1)
+        console.log(points)
         this.setState({
                 hist: history,
                 holeShots: 0,
-                holePts: 0
+                holePts: points
             })
-        this.handleDecHole()
+        this.handleDecHole(points)
+        }
              
 }
 handleEagle(event){
@@ -86,11 +98,11 @@ handleEagle(event){
         if(shots<1){shots=1}
         history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
         this.setState({
-            holeShots:shots,
+         holeShots:shots,
          holePts: pts,
          hist: history
      })
-     this.handleIncHole()
+     this.handleIncHole(pts)
 
 }
 }
@@ -105,7 +117,7 @@ handleBirdie(event){
         holePts: pts,
         hist: history
     })
-    this.handleIncHole()
+    this.handleIncHole(pts)
 }
 }
 
@@ -122,7 +134,7 @@ handlePar(event){
         
 
     })
-    this.handleIncHole()
+    this.handleIncHole(pts)
     }
 }
 handleBogey(event){
@@ -136,7 +148,7 @@ handleBogey(event){
         holePts: pts,
         hist: history
     })
-    this.handleIncHole()
+    this.handleIncHole(pts)
 
 }
 }
@@ -151,7 +163,7 @@ handleDblBogey(event){
         holePts: pts,
         hist: history
     })
-    this.handleIncHole()
+    this.handleIncHole(pts)
     }
 }
 handleTrpBogey(event){
@@ -165,21 +177,21 @@ handleTrpBogey(event){
         holePts: pts,
         hist: history
     })
-    this.handleIncHole()
+    this.handleIncHole(pts)
 
 }
 }
 handleBlob(event){
    if(this.state.holeNumber<19){
     var shots=9
-    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
+    var pts= 0
     history.push('['+this.state.holeNumber+ '] -/0 ')
     this.setState({
         holeShots:shots,
         holePts: pts,
         hist: history
     })
-    this.handleIncHole()
+    this.handleIncHole(pts)
 
 }
 }
@@ -196,7 +208,7 @@ render() {
         <div>
 
         <Panel bsStyle="primary" header = {title}>
-            <h4>Real-time scorecard:<pre> Last >> {history}</pre></h4>
+            <h4>Real-time scorecard:<pre>Score @:{history.slice(-1).pop()} Running total: {this.state.total} </pre></h4>
         <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} </h4> 
         <Col>
             <Row>			 
