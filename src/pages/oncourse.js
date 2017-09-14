@@ -4,7 +4,7 @@ import fire from '../fire.js';
 
 import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon, Clearfix} from 'react-bootstrap'
 
-import stableford from '../stableford.js'
+import stableford from '../functions/stableford.js'
 
 import getplayerDetails from '../functions/getplayerDetails.js'
 
