@@ -34,7 +34,7 @@ class App extends React.Component {
     fire.auth().onAuthStateChanged(firebaseUser =>{
       if(firebaseUser) {
       //console.log(firebaseUser)
-      adminNav.classList.remove('hide')  
+      if(firebaseUser.uid === 'lSLoOIvUblSA93NOjABbckB82LH3'){adminNav.classList.remove('hide')} 
       menuLogin.classList.add('hide')
       menuLogout.classList.remove('hide')
       }else{
@@ -67,6 +67,7 @@ class App extends React.Component {
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
+          <Route path ='/admin/login' component = {LoginForm} />
           <Route path ='/oncourse' component = {OnCourse} />
           <Route path ='/draw/:compName' component = {Draw} /> 
           <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
@@ -76,7 +77,6 @@ class App extends React.Component {
           <Route path ='/players' component = {Players} />
           <Route path ='/admin/player' component = {EditPlayer} />
           <Route path ='/admin/course' component = {EditCourse} />
-          <Route path ='/admin/login' component = {LoginForm} />
           <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
           </Switch>
 

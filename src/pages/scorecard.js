@@ -4,7 +4,7 @@ import {Table, Panel} from 'react-bootstrap'
 
 import fire from '../fire.js';
 
-import stableford from '../stableford.js'
+import stableford from '../functions/stableford.js'
 
 import '../App.css'
 

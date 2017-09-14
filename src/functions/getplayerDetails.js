@@ -1,6 +1,4 @@
 
-import React from "react"; 
-
 import fire from '../fire.js';
 
 var dbRefPlayers = fire.database().ref().child('player');
@@ -14,7 +12,7 @@ function getplayerDetails(uid) {
     var dbRefPlayer= dbRefPlayers.orderByChild('uid').equalTo(uid)
     dbRefPlayer.once('value').then(snap =>{
         snap.forEach((child) =>{
-            console.log(child.val())
+            //console.log(child.val())
         resolve(child.val())
                  })
             })

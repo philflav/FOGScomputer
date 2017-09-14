@@ -50,3 +50,8 @@ hr {
 .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
   color: #BDBCBC;
 }
+
+table.right {
+  text-align: right;
+  margin-right: 1em;
+}
