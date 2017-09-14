@@ -1,13 +1,14 @@
 import firebase from 'firebase'
 
-var config = {
-  apiKey: "AIzaSyCAb2_s5H7zON9ECQFQFrbP_RNUb4UV1Hg",
-  authDomain: "realtimescorecard.firebaseapp.com",
-  databaseURL: "https://realtimescorecard.firebaseio.com",
-  projectId: "realtimescorecard",
-  storageBucket: "realtimescorecard.appspot.com",
-  messagingSenderId: "961394997117"
-};
+  // Initialize Firebase (FOGSComputer)
+  var config = {
+    apiKey: "AIzaSyDY2SHBUBkhKhYZ_JqdEMyiBG0tkgATLg8",
+    authDomain: "fogscomputer.firebaseapp.com",
+    databaseURL: "https://fogscomputer.firebaseio.com",
+    projectId: "fogscomputer",
+    storageBucket: "fogscomputer.appspot.com",
+    messagingSenderId: "1093265727119"
+  };
   var fire = firebase.initializeApp(config);
 
 
