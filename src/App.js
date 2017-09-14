@@ -54,12 +54,6 @@ class App extends React.Component {
           <Nav bsStyle="pills" >
           <NavItem href = "/">Home Page</ NavItem>
           <NavItem href="/oncourse">In play scoring</ NavItem>
-          <NavDropdown title="Admin" id="admin-nav-dropdown" bsStyle="hide">
-                <MenuItem href="/admin/player">Add/Update Player</MenuItem>
-                <MenuItem href="/admin/course">Update Course</MenuItem>
-        </NavDropdown>
-          <NavItem href = "/draw/FOGS2018">Current Draw</NavItem>
-         <MenuItem href="/comps">Competitions Summary</MenuItem>
          <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
          <NavItem href ='#' id='menu-logout'><Glyphicon glyph="log-out" />SignOut</NavItem>
           </Nav>
@@ -69,14 +63,6 @@ class App extends React.Component {
           <Route path ='/' exact component={Layout}/>
           <Route path ='/admin/login' component = {LoginForm} />
           <Route path ='/oncourse' component = {OnCourse} />
-          <Route path ='/draw/:compName' component = {Draw} /> 
-          <Route path ='/:compName/:day/leaderboard' component = {Leaderboard} />
-          <Route path ='/:compName/player/:playerName' component ={Players} />
-          <Route path ='/comps' component = {Comp} />
-          <Route path ='/:compName' component = {Comp} />
-          <Route path ='/players' component = {Players} />
-          <Route path ='/admin/player' component = {EditPlayer} />
-          <Route path ='/admin/course' component = {EditCourse} />
           <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
           </Switch>
 

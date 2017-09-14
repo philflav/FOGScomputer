@@ -208,7 +208,7 @@ render() {
         <div>
 
         <Panel bsStyle="primary" header = {title}>
-            <h4>Real-time scorecard:<pre>Score @:{history.slice(-1).pop()} Running total: {this.state.total} </pre></h4>
+            <pre>Score @:{history.slice(-1).pop()} Running total: {this.state.total} </pre>
         <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} </h4> 
         <Col>
             <Row>			 
