@@ -2,7 +2,7 @@ import React from "react";
 
 import fire from '../fire.js';
 
-import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon, Clearfix} from 'react-bootstrap'
+import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon, Clearfix, MenuItem, Nav, NavDropdown} from 'react-bootstrap'
 
 import stableford from '../functions/stableford.js'
 
@@ -10,9 +10,14 @@ import getplayerDetails from '../functions/getplayerDetails.js'
 
 import PlayerProgress from './playerprogress.js'
 
-var progressBars = ['<h1>hello</h1>', '<h2>world</h2>']
-var hcap=11
+var dbRefCourses = fire.database().ref().child('course');
 
+var courseList = []
+var menuItems
+
+var holes = []
+var pars = []
+var SIs = []
 
 var chartData = []
 var chartOptions =''
@@ -27,17 +32,23 @@ export default class OnCourse extends React.Component {
     super(props)
     this.state= {playername: '',
                 hcap: '',
-                courseName: 'Bell Dunes',
+                selectedCourseName: 'Felixstowe Ferry',
                 holeNumber: 1,
-                holePar: 3,
-                holeSI: 10,
+                holePar: 4,
+                holeSI: 12,
                 holeShots: 4,
                 holePts: 2,
                 hist: '',
-                total: 0
+                total: 0,
+                courses: []
     }
-    //getplayerDetails(auth.uid).then((success) => {
-    //    this.state.playername=success.forename})
+    //get list of courses available
+    dbRefCourses.on('value' ,snap =>{
+        snap.forEach((child) => {
+        courseList.push(child.val().name)
+        this.setState({courses: courseList})
+        })
+       })
 
 
 }
@@ -57,6 +68,8 @@ componentWillMount() {
             alert('You must be signed in to perform this action')
         }
     })
+
+        
 }
 
 
@@ -195,19 +208,44 @@ handleBlob(event){
 
 }
 }
+handleCourseSelect(eventkey){
+    //console.log(this.state)
+    this.setState({'selectedCourseName': eventkey})
+    //get hole data
+    var dbRefSelectedCourse=dbRefCourses.orderByChild('name').equalTo(eventkey)
+    dbRefSelectedCourse.once('value', snap =>{
+        snap.forEach((child) =>{
+                holes=child.val().holes
+                holes.forEach(hole =>{
+                    pars[hole.number]=hole.par
+                    SIs[hole.number]=hole.SI
+                })
+                console.log(pars, SIs)
+            })
+        })
+    }
+
 
 
 render() {
-    console.log(this.state)
+    menuItems = ''
+    menuItems = this.state.courses.map((course) => (
+        <MenuItem eventKey={course}>{course}</MenuItem>))
+
     var rowStyle ={
         paddingBottom: '10px'
     }
-    var title=  this.state.courseName +". Player: "+ this.state.playername + '   ('+ this.state.hcap+')'
+    var title=  this.state.selectedCourseName +". Player: "+ this.state.playername + '   ('+ this.state.hcap+')'
     return (
 
         <div>
 
         <Panel bsStyle="primary" header = {title}>
+        <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleCourseSelect.bind(this)}>
+                    <NavDropdown eventKey="999" title="Select Course" id="nav-dropdown">
+                    {menuItems}
+                    </NavDropdown>
+                </Nav>
             <pre>Score @:{history.slice(-1).pop()} Running total: {this.state.total} </pre>
         <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} </h4> 
         <Col>
