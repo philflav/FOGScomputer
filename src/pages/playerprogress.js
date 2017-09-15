@@ -27,6 +27,7 @@ render () {
 
    var rightStyle = {
         textAlign: 'right',
+        paddingLeft: '12px',
         paddingRight: '10px'
     }
     var leftStyle = {
