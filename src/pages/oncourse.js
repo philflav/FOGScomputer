@@ -11,9 +11,13 @@ import getplayerDetails from '../functions/getplayerDetails.js'
 import PlayerProgress from './playerprogress.js'
 
 var dbRefCourses = fire.database().ref().child('course');
+var dbRefrtscores = fire.database().ref().child('rtscores');
 
 var courseList = []
 var menuItems
+
+var playerList
+var scorecards = []
 
 var holes = []
 var pars = []
@@ -30,6 +34,7 @@ export default class OnCourse extends React.Component {
 
     constructor(props){
     super(props)
+    this.scorecards= []
     this.state= {playername: '',
                 hcap: '',
                 selectedCourseName: 'Felixstowe Ferry',
@@ -40,7 +45,8 @@ export default class OnCourse extends React.Component {
                 holePts: 2,
                 hist: '',
                 total: 0,
-                courses: []
+                courses: [],
+                scorecards: []
     }
     //get list of courses available
     dbRefCourses.on('value' ,snap =>{
@@ -49,6 +55,8 @@ export default class OnCourse extends React.Component {
         this.setState({courses: courseList})
         })
        })
+
+       
 
 
 }
@@ -68,16 +76,32 @@ componentWillMount() {
             alert('You must be signed in to perform this action')
         }
     })
+    dbRefrtscores.on('child_added', snap =>{
+
+        this.scorecards.push(snap.val())
+        this.setState({
+            scorecards: this.scorecards
+        })
+        console.log(this.state.scorecards)
+    })
 
         
 }
+
+
+componentDidMount() {
+
+
+    
+}
+
 
 
 handleIncHole(points){
     var hole= this.state.holeNumber 
     hole++
     var total = this.state.total + points
-    this.setState({holeNumber: hole, total: total})
+    this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
 }
 handleDecHole(points){
     var hole= this.state.holeNumber 
@@ -85,7 +109,7 @@ handleDecHole(points){
     if(hole>1){
         hole--
     }else{hole=1}
-    this.setState({holeNumber: hole, total: total})
+    this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
 
 }
 handleClearHole(event){
@@ -247,7 +271,7 @@ render() {
                     </NavDropdown>
                 </Nav>
             <pre>Score @:{history.slice(-1).pop()} Running total: {this.state.total} </pre>
-        <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} </h4> 
+        <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} <i>SI : </i> {this.state.holeSI}</h4> 
         <Col>
             <Row>			 
                 <Button bsStyle='success'  onClick={this.handleEagle.bind(this)}>
@@ -309,6 +333,7 @@ render() {
                 <th> </th><th>  </th><th>  </th>
             </thead>
             <tbody>
+                {playerList}
         <PlayerProgress name = '1 Phil' holes={this.state.holeNumber-2}  total={5} />
         <PlayerProgress name = '2 Phil' holes={this.state.holeNumber-2}  total={13} />
         <PlayerProgress name = '3 Phil' holes={this.state.holeNumber-1}  total={13} />
@@ -320,7 +345,7 @@ render() {
         <PlayerProgress name = '9 Phil' holes={this.state.holeNumber-1}  total={13} />
         <PlayerProgress name = '10SImon' holes={this.state.holeNumber-1}  total={45} />
         <PlayerProgress name = '11Phil' holes={this.state.holeNumber-1}  total={13} />
-        <PlayerProgress name = '12Steve' holes={this.state.holeNumber-1}  total={13} />
+        <PlayerProgress name = '12Steve' holes={this.state.holeNumber-1}  total={13} />}
             </tbody>
         </table>
         </Well>
