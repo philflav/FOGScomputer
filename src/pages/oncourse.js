@@ -34,7 +34,7 @@ export default class OnCourse extends React.Component {
 
     constructor(props){
     super(props)
-    this.scorecards= []
+    scorecards= []
     this.state= {playername: '',
                 hcap: '',
                 selectedCourseName: 'Felixstowe Ferry',
@@ -76,14 +76,20 @@ componentWillMount() {
             alert('You must be signed in to perform this action')
         }
     })
-    dbRefrtscores.on('child_added', snap =>{
-
-        this.scorecards.push(snap.val())
+    dbRefrtscores.on('child_changed', snap =>{
+        console.log(snap.val(), snap.key)
+        scorecards[snap.key]=snap.val()
         this.setState({
-            scorecards: this.scorecards
+            scorecards: scorecards
         })
         console.log(this.state.scorecards)
-    })
+        playerList = []
+        this.state.scorecards.forEach((card, index) => {
+           playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].holescore.length -1}  total={this.state.scorecards[index].total} />)
+    
+        })
+        this.forceUpdate()
+    })  
 
         
 }
@@ -118,7 +124,6 @@ handleClearHole(event){
         if(last){
         var n=last.search("/")
         var points=last.slice(n+1)
-        console.log(points)
         this.setState({
                 hist: history,
                 holeShots: 0,
@@ -244,8 +249,8 @@ handleCourseSelect(eventkey){
                     pars[hole.number]=hole.par
                     SIs[hole.number]=hole.SI
                 })
-                console.log(pars, SIs)
             })
+        this.forceUpdate()
         })
     }
 
@@ -334,18 +339,6 @@ render() {
             </thead>
             <tbody>
                 {playerList}
-        <PlayerProgress name = '1 Phil' holes={this.state.holeNumber-2}  total={5} />
-        <PlayerProgress name = '2 Phil' holes={this.state.holeNumber-2}  total={13} />
-        <PlayerProgress name = '3 Phil' holes={this.state.holeNumber-1}  total={13} />
-        <PlayerProgress name = '4 Roger' holes={this.state.holeNumber-1}  total={45} />
-        <PlayerProgress name = '5 Phil' holes={this.state.holeNumber-1}  total={13} />
-        <PlayerProgress name = '6 Bas' holes={this.state.holeNumber-1}  total={13} />
-        <PlayerProgress name = '7 Paul' holes={this.state.holeNumber-2}  total={14} />
-        <PlayerProgress name = '8 Phil' holes={this.state.holeNumber-2}  total={13} />
-        <PlayerProgress name = '9 Phil' holes={this.state.holeNumber-1}  total={13} />
-        <PlayerProgress name = '10SImon' holes={this.state.holeNumber-1}  total={45} />
-        <PlayerProgress name = '11Phil' holes={this.state.holeNumber-1}  total={13} />
-        <PlayerProgress name = '12Steve' holes={this.state.holeNumber-1}  total={13} />}
             </tbody>
         </table>
         </Well>
