@@ -2,7 +2,7 @@ import React from "react";
 
 import fire from '../fire.js';
 
-import {Panel, Well, Row, Col, Button, ButtonToolbar, Glyphicon, Clearfix, MenuItem, Nav, NavDropdown} from 'react-bootstrap'
+import {Panel, Well, Row, Col, Button,  Glyphicon, Clearfix, MenuItem, Nav, NavDropdown} from 'react-bootstrap'
 
 import stableford from '../functions/stableford.js'
 
@@ -23,11 +23,8 @@ var holes = []
 var pars = []
 var SIs = []
 
-var chartData = []
-var chartOptions =''
-
 var history = []
-var playertotal = 0
+
 
 
 export default class OnCourse extends React.Component {
@@ -261,9 +258,6 @@ render() {
     menuItems = this.state.courses.map((course) => (
         <MenuItem eventKey={course}>{course}</MenuItem>))
 
-    var rowStyle ={
-        paddingBottom: '10px'
-    }
     var title=  this.state.selectedCourseName +". Player: "+ this.state.playername + '   ('+ this.state.hcap+')'
     return (
 
