@@ -25,7 +25,7 @@ class App extends React.Component {
   componentDidMount(){
     const menuLogin=document.getElementById('menu-login')
     const menuLogout=document.getElementById('menu-logout')
-    const adminNav=document.getElementById('admin-nav-dropdown')
+
 
     menuLogout.addEventListener('click', e =>{
       fire.auth().signOut()
@@ -34,12 +34,10 @@ class App extends React.Component {
     fire.auth().onAuthStateChanged(firebaseUser =>{
       if(firebaseUser) {
       //console.log(firebaseUser)
-      if(firebaseUser.uid === 'lSLoOIvUblSA93NOjABbckB82LH3'){adminNav.classList.remove('hide')} 
       menuLogin.classList.add('hide')
       menuLogout.classList.remove('hide')
       }else{
       //console.log('not logged in')
-      adminNav.classList.add('hide')
       menuLogin.classList.remove('hide')
       menuLogout.classList.add('hide')
       }
@@ -50,7 +48,6 @@ class App extends React.Component {
     return (
       <Router >
         <div>
-          <h1>FOGS Computer online V1</h1>
           <Nav bsStyle="pills" >
           <NavItem href = "/">Home Page</ NavItem>
           <NavItem href="/oncourse">In play scoring</ NavItem>
