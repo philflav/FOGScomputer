@@ -21,6 +21,7 @@ var menuItems
 
 var playerList
 var scorecards = []
+var holescoreRefHistory =[]
 
 var holes = []
 var pars = []
@@ -77,15 +78,14 @@ componentWillMount() {
         }
     })
     dbRefrtscores.on('child_changed', snap =>{
-        console.log(snap.val(), snap.key)
+        console.log(snap.val())
         scorecards[snap.key]=snap.val()
         this.setState({
             scorecards: scorecards
         })
-        console.log(this.state.scorecards)
         playerList = []
         this.state.scorecards.forEach((card, index) => {
-           playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].holescore.length -1}  total={this.state.scorecards[index].total} />)
+           playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].lasthole}  total={this.state.scorecards[index].total} />)
     
         })
         this.forceUpdate()
@@ -106,17 +106,22 @@ componentDidMount() {
 handleIncHole(strokes, points){
     var hole= this.state.holeNumber 
     var total = this.state.total + points
-    //update database
-    playerdbRef.child('holescore').push({holeNumber: hole, points: points, strokes: strokes})
+    playerdbRef.child('total').set(total)
+    playerdbRef.child('lasthole').set(hole)
+    var holescoreId= playerdbRef.child('holescore').push({holeNumber: hole, points: points, strokes: strokes})
+    holescoreRefHistory.push(holescoreId.getKey())
     if(hole<18)hole++
     this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
 }
 handleDecHole(points){
     var hole= this.state.holeNumber 
     var total = this.state.total - points
-    //update database
+    var key=holescoreRefHistory.pop()
+    playerdbRef.child('holescore/'+key).remove()
     if(hole>1)hole--
     this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
+    playerdbRef.child('lasthole').set(hole)
+    playerdbRef.child('total').set(total)
 
 }
 handleClearHole(event){
