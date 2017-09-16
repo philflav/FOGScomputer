@@ -13,6 +13,9 @@ import PlayerProgress from './playerprogress.js'
 var dbRefCourses = fire.database().ref().child('course');
 var dbRefrtscores = fire.database().ref().child('rtscores');
 
+var playerdbRef = fire.database().ref().child('rtscores/0');
+
+
 var courseList = []
 var menuItems
 
@@ -38,7 +41,7 @@ export default class OnCourse extends React.Component {
                 holeNumber: 1,
                 holePar: 4,
                 holeSI: 12,
-                holeShots: 4,
+                holeStrokes: 4,
                 holePts: 2,
                 hist: '',
                 total: 0,
@@ -100,18 +103,19 @@ componentDidMount() {
 
 
 
-handleIncHole(points){
+handleIncHole(strokes, points){
     var hole= this.state.holeNumber 
-    hole++
     var total = this.state.total + points
+    //update database
+    playerdbRef.child('holescore').push({holeNumber: hole, points: points, strokes: strokes})
+    if(hole<18)hole++
     this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
 }
 handleDecHole(points){
     var hole= this.state.holeNumber 
     var total = this.state.total - points
-    if(hole>1){
-        hole--
-    }else{hole=1}
+    //update database
+    if(hole>1)hole--
     this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
 
 }
@@ -123,7 +127,7 @@ handleClearHole(event){
         var points=last.slice(n+1)
         this.setState({
                 hist: history,
-                holeShots: 0,
+                holeStrokes: 0,
                 holePts: points
             })
         this.handleDecHole(points)
@@ -132,105 +136,105 @@ handleClearHole(event){
 }
 handleEagle(event){
     if(this.state.holeNumber<19){
-        var shots=this.state.holePar-2
-        var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
-        if(shots<1){shots=1}
-        history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
+        var strokes=this.state.holePar-2
+        var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
+        if(strokes<1){strokes=1}
+        history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
         this.setState({
-         holeShots:shots,
+         holeShots:strokes,
          holePts: pts,
          hist: history
      })
-     this.handleIncHole(pts)
+     this.handleIncHole(strokes, pts)
 
 }
 }
 handleBirdie(event){
    if(this.state.holeNumber<19){
-    var shots=this.state.holePar-1
-    if(shots<1){shots=1}
-    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
+    var strokes=this.state.holePar-1
+    if(strokes<1){strokes=1}
+    var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
     this.setState({
-        holeShots:shots,
+        holeStrokes:strokes,
         holePts: pts,
         hist: history
     })
-    this.handleIncHole(pts)
+    this.handleIncHole(strokes, pts)
 }
 }
 
 handlePar(event){
    if(this.state.holeNumber<19){
-    var shots=this.state.holePar
-    if(shots<1){shots=1}
-    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
+    var strokes=this.state.holePar
+    if(strokes<1){strokes=1}
+    var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
     this.setState({
-        holeShots:shots,
+        holeStrokes:strokes,
         holePts: pts,
         hist: history     
         
 
     })
-    this.handleIncHole(pts)
+    this.handleIncHole(strokes, pts)
     }
 }
 handleBogey(event){
    if(this.state.holeNumber<19){
-    var shots=this.state.holePar+1
-    if(shots<1){shots=1}
-    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
+    var strokes=this.state.holePar+1
+    if(strokes<1){strokes=1}
+    var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
     this.setState({
-        holeShots:shots,
+        holesStrokes:strokes,
         holePts: pts,
         hist: history
     })
-    this.handleIncHole(pts)
+    this.handleIncHole(strokes, pts)
 
 }
 }
 handleDblBogey(event){
     if(this.state.holeNumber<19){
-    var shots=this.state.holePar+2
-    if(shots<1){shots=1}
-    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
+    var strokes=this.state.holePar+2
+    if(strokes<1){strokes=1}
+    var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
     this.setState({
-        holeShots:shots,
+        holeStrokes:strokes,
         holePts: pts,
         hist: history
     })
-    this.handleIncHole(pts)
+    this.handleIncHole(strokes, pts)
     }
 }
 handleTrpBogey(event){
    if(this.state.holeNumber<19){
-    var shots=this.state.holePar+3
-    if(shots<1){shots=1}
-    var pts= stableford(this.state.hcap, shots, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+shots+'/'+ pts +' ')
+    var strokes =this.state.holePar+3
+    if(strokes<1){strokes=1}
+    var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
+    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
     this.setState({
-        holeShots:shots,
+        holeStrokes:strokes,
         holePts: pts,
         hist: history
     })
-    this.handleIncHole(pts)
+    this.handleIncHole(strokes, pts)
 
 }
 }
 handleBlob(event){
    if(this.state.holeNumber<19){
-    var shots=9
+    var strokes=9
     var pts= 0
     history.push('['+this.state.holeNumber+ '] -/0 ')
     this.setState({
-        holeShots:shots,
+        holeStrokes:strokes,
         holePts: pts,
         hist: history
     })
-    this.handleIncHole(pts)
+    this.handleIncHole(strokes, pts)
 
 }
 }
