@@ -1,0 +1,209 @@
+{
+  "course" : {
+    "FFGC Kingsfleet" : {
+      "holes" : [ null, {
+        "SI" : 17,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 3,
+        "number" : 2,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 3,
+        "par" : 3
+      }, {
+        "SI" : 5,
+        "number" : 4,
+        "par" : 5
+      }, {
+        "SI" : 7,
+        "number" : 5,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 7,
+        "par" : 4
+      }, {
+        "SI" : 11,
+        "number" : 8,
+        "par" : 5
+      }, {
+        "SI" : 9,
+        "number" : 9,
+        "par" : 3
+      }, {
+        "SI" : 18,
+        "number" : 10,
+        "par" : 4
+      }, {
+        "SI" : 4,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 14,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 6,
+        "number" : 13,
+        "par" : 5
+      }, {
+        "SI" : 8,
+        "number" : 14,
+        "par" : 3
+      }, {
+        "SI" : 2,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 16,
+        "number" : 16,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 17,
+        "par" : 5
+      }, {
+        "SI" : 10,
+        "number" : 18,
+        "par" : 3
+      } ],
+      "name" : "FFGC Kingsfleet"
+    },
+    "FFGC Martello" : {
+      "holes" : [ null, {
+        "SI" : 9,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 5,
+        "number" : 2,
+        "par" : 5
+      }, {
+        "SI" : 11,
+        "number" : 3,
+        "par" : 4
+      }, {
+        "SI" : 7,
+        "number" : 4,
+        "par" : 4
+      }, {
+        "SI" : 17,
+        "number" : 5,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 7,
+        "par" : 5
+      }, {
+        "SI" : 3,
+        "number" : 8,
+        "par" : 5
+      }, {
+        "SI" : 15,
+        "number" : 9,
+        "par" : 3
+      }, {
+        "SI" : 4,
+        "number" : 10,
+        "par" : 5
+      }, {
+        "SI" : 10,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 18,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 14,
+        "number" : 13,
+        "par" : 4
+      }, {
+        "SI" : 2,
+        "number" : 14,
+        "par" : 4
+      }, {
+        "SI" : 8,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 16,
+        "par" : 3
+      }, {
+        "SI" : 6,
+        "number" : 17,
+        "par" : 4
+      }, {
+        "SI" : 16,
+        "number" : 18,
+        "par" : 4
+      } ],
+      "name" : "FFGC Martello"
+    }
+  },
+  "player" : {
+    "QYUg8L7aRcOIAxe1b4m8hAU62Mv1" : {
+      "currentComp" : "",
+      "displayName" : "Phil",
+      "handicap" : "21"
+    },
+    "suyvjt3krbdG2nSl3Vt0vREtfmH2" : {
+      "currentComp" : "",
+      "displayName" : "Tester",
+      "handicap" : "18"
+    }
+  },
+  "rtscores" : {
+    "QYUg8L7aRcOIAxe1b4m8hAU62Mv1" : {
+      "holescore" : {
+        "-KuULHFe33FoWYECWYQ_" : {
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 5
+        }
+      },
+      "lasthole" : 2,
+      "playerName" : "Phil",
+      "total" : 2
+    },
+    "suyvjt3krbdG2nSl3Vt0vREtfmH2" : {
+      "holescore" : {
+        "-KuULAWE1Lx5i19WYfGl" : {
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 4
+        },
+        "-KuULBXM0jlPwhsamHeU" : {
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 5
+        },
+        "-KuULBsiu6pKIzONTto3" : {
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 4
+        },
+        "-KuULKKxpAZo2CfoVFYl" : {
+          "holeNumber" : 5,
+          "points" : 3,
+          "strokes" : 4
+        }
+      },
+      "lasthole" : 4,
+      "playerName" : "Tester",
+      "total" : 12
+    }
+  }
+}
