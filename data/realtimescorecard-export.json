@@ -1,0 +1,88 @@
+{
+  "course" : {
+    "FFGC Kingsfleet" : {
+      "holes" : [ null, {
+        "SI" : 7,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI " : 4,
+        "number" : 2,
+        "par" : 4
+      }, {
+        "SI" : 6,
+        "number" : 9,
+        "par" : 3
+      } ],
+      "name" : "FFGC Kingsfleet"
+    },
+    "FFGC Martello" : {
+      "holes" : [ null, {
+        "SI" : 13,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 2,
+        "par" : 5
+      }, 
+      {
+        "SI" : 15,
+        "number" : 3,
+        "par" : 4
+      },
+      {
+        "SI" : 15,
+        "number" : 4,
+        "par" : 4
+      },
+      {
+        "SI" : 15,
+        "number" : 5,
+        "par" : 3
+      },
+      {
+        "SI" : 1,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 7,
+        "par" : 5
+      },
+      {
+        "SI" : 3,
+        "number" : 8,
+        "par" : 5
+      },
+      {
+        "SI" : 15,
+        "number" : 9,
+        "par" : 3
+      },
+      {
+        "SI" : 18,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 16,
+        "number" : 9,
+        "par" : 3
+      } ],
+      "name" : "FFGC Martello"
+    }
+  },
+  "rtscores" : [ {
+    "QYUg8L7aRcOIAxe1b4m8hAU62Mv1" : {
+      "compName" : "test",
+      "course" : "FFGC Martello",
+      "holescore" : [ null, {
+        "points" : 2,
+        "shots" : 5
+      }, {
+        "points" : 2,
+        "shots" : 6
+      } ]
+    }
+  } ]
+}
