@@ -13,7 +13,7 @@ import PlayerProgress from './playerprogress.js'
 var dbRefCourses = fire.database().ref().child('course');
 var dbRefrtscores = fire.database().ref().child('rtscores');
 
-var playerdbRef = fire.database().ref().child('rtscores/0');
+var playerdbRef
 
 
 var courseList = []
@@ -21,6 +21,7 @@ var menuItems
 
 var playerList
 var scorecards = []
+var scorecardKeys = []
 var holescoreRefHistory =[]
 
 var holes = []
@@ -36,16 +37,16 @@ export default class OnCourse extends React.Component {
     constructor(props){
     super(props)
     scorecards= []
-    this.state= {playername: '',
-                hcap: '',
-                selectedCourseName: 'Felixstowe Ferry',
+    this.state= {playername: '...',
+                hcap: '0',
+                selectedCourseName: 'not selected',
                 holeNumber: 1,
-                holePar: 4,
-                holeSI: 12,
-                holeStrokes: 4,
-                holePts: 2,
-                hist: '',
-                total: 0,
+                holePar: '' ,
+                holeSI: '',
+                holeStrokes: '',
+                holePts: '',
+                hist: [],
+                total: '0',
                 courses: [],
                 scorecards: []
     }
@@ -66,24 +67,32 @@ componentWillMount() {
 
     fire.auth().onAuthStateChanged(firebaseUser =>{
         if(firebaseUser) {
+            console.log('here', firebaseUser.uid)
             getplayerDetails(firebaseUser.uid).then((success) => {
-                    this.setState({playername: success.forename +' ' + success.surname,
-                    hcap: success.c_hcap,
-                    playerId: success.player_id
+                    console.log(success.displayName)
+                    this.setState({playername: success.displayName,
+                    hcap: success.handicap,
+                    comp: success.currentComp,
                 })
-            })            
+            })
+            playerdbRef = fire.database().ref().child('rtscores/'+firebaseUser.uid);            
         }
         else {
             alert('You must be signed in to perform this action')
         }
     })
     dbRefrtscores.on('child_changed', snap =>{
-        console.log(snap.val())
-        scorecards[snap.key]=snap.val()
+        var index = scorecardKeys.indexOf(snap.key)
+        if(index <0){
+            scorecardKeys.push(snap.key)
+        }
+        index = scorecardKeys.indexOf(snap.key)
+        scorecards[index]=snap.val()
         this.setState({
             scorecards: scorecards
-        })
+             })
         playerList = []
+        console.log(scorecards)
         this.state.scorecards.forEach((card, index) => {
            playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].lasthole}  total={this.state.scorecards[index].total} />)
     
@@ -98,6 +107,7 @@ componentWillMount() {
 componentDidMount() {
 
 
+
     
 }
 
@@ -105,13 +115,18 @@ componentDidMount() {
 
 handleIncHole(strokes, points){
     var hole= this.state.holeNumber 
-    var total = this.state.total + points
-    playerdbRef.child('total').set(total)
-    playerdbRef.child('lasthole').set(hole)
-    var holescoreId= playerdbRef.child('holescore').push({holeNumber: hole, points: points, strokes: strokes})
-    holescoreRefHistory.push(holescoreId.getKey())
-    if(hole<18)hole++
-    this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
+    hole++
+    if(hole <= 18){
+        var total = this.state.total + points
+        var playerName = this.state.playername
+        var player_id=this.state.player_id
+        playerdbRef.child('total').set(total)
+        playerdbRef.child('lasthole').set(hole-1)
+        playerdbRef.child('playerName').set(playerName)
+        var holescoreId= playerdbRef.child('holescore').push({ holeNumber: hole, points: points, strokes: strokes})
+        holescoreRefHistory.push(holescoreId.getKey())
+        this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
+    }
 }
 handleDecHole(points){
     var hole= this.state.holeNumber 
@@ -258,6 +273,13 @@ handleCourseSelect(eventkey){
             })
         this.forceUpdate()
         })
+        var hole=1
+        var total=0
+        this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
+
+            //force history to reset
+    this.handleIncHole(0, 0)
+    this.handleDecHole(0)
     }
 
 
