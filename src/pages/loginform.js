@@ -8,28 +8,34 @@ import getplayerDetails from '../functions/getplayerDetails.js'
 
 
 var dbRefPlayers = fire.database().ref().child('player');
-
+var that
  
 export default class LoginForm extends React.Component {
 
     constructor(props){
         super(props)
         this.state=({
-            open: false
+            open: false,
+            displayName: 'name to show on leaderboard',
+            handicap: 0,
+            compCourse: 'FFGC Martello',
+            currentComp: 'TEST'
+
         })
+        that=this
     }
 
     componentDidMount(){
 
         const txtEmail=document.getElementById('txtEmail')
         const txtPassword=document.getElementById('txtPassword')
-        const txtCourseName=document.getElementById('txtCourseName')
+        const txtcompCourse=document.getElementById('txtcompCourse')
         const btnLogin=document.getElementById('btnLogin')
         const btnSignUp=document.getElementById('btnSignUp')  
         const btnUpdate = document.getElementById('btnUpdate')
         const txthandicap=document.getElementById('handicap')
         const pnldetails=document.getElementById('details')
-        const txtCompName=document.getElementById('txtCompName')
+        const txtcurrentComp=document.getElementById('txtcurrentComp')
         const displayname=document.getElementById('displayName')
 
         
@@ -44,7 +50,8 @@ export default class LoginForm extends React.Component {
             dbPlayerRef.set({
                 handicap: txthandicap.value,
                 displayName: displayname.value,
-                currentComp: txtCompName.value
+                currentComp: txtcurrentComp.value,
+                compCourse: txtcompCourse.value
             })
         }
         })
@@ -86,6 +93,9 @@ export default class LoginForm extends React.Component {
         
         })
 
+        
+
+
 
         //Add realtime Listner
 
@@ -120,6 +130,15 @@ export default class LoginForm extends React.Component {
 
     }
 
+    handleInputChange(event) {
+        const target = event.target
+        const name = target.name
+        const value = target.value || ''
+        console.log(name, value)
+        that.setState({           
+            [name]: value});
+    }
+
 
     render () {
         
@@ -144,10 +163,10 @@ export default class LoginForm extends React.Component {
                     Handicap - your playing handicap for the competition <br /><br />
                     </i>
 
-                    <input id="txtCompName" type="text" placeholder="competition name" value={this.state.currentComp} />
-                    <input id="txtCourseName" type="text" placeholder="course name" value={this.state.compCourse} />
-                    <input id="displayName" type="text" placeholder ="your display name" value={this.state.displayName}/>
-                    <input id="handicap" type="number" placeholder = "your playing handicap" value={this.state.handicap}/> 
+                    <input id="txtcurrentComp" type="text" onChange={this.handleInputChange} name="currentComp" value={this.state.currentComp} />
+                    <input id="txtcompCourse" type="text" onChange={this.handleInputChange} name="compCourse" value={this.state.compCourse} />
+                    <input id="displayName" type="text" onChange={this.handleInputChange} name="displayName" value={this.state.displayName}/>
+                    <input id="handicap" type="number" onChange={this.handleInputChange} name="handicap" value={this.state.handicap}/> 
                     <Button bsStyle="primary" id="btnUpdate"> Update Details </Button> <br />                           
                 </Panel>
                 </Form>
