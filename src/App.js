@@ -48,8 +48,8 @@ class App extends React.Component {
     return (
       <Router >
         <div>
-          <Nav bsStyle="pills" >
-          <NavItem href = "/">Home</ NavItem>
+          <Nav id='nav' bsStyle="pills">
+          <NavItem id='menu-home' href = "/">Home</ NavItem>
           <NavItem href="/oncourse">In play scoring</ NavItem>
          <NavItem href ='/admin/login' id='menu-profile'>Profile</NavItem>
          <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>

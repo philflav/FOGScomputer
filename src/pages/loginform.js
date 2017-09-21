@@ -156,7 +156,7 @@ export default class LoginForm extends React.Component {
         return (
 
             <div> 
-                <Well>  
+                <Panel id="login" collapsible expanded ={!this.state.open}>
                 <Form inline> 
                 <i>
                     <h3> Sign In</h3>
@@ -164,8 +164,9 @@ export default class LoginForm extends React.Component {
                 <input id="txtEmail" type="email" placeholder="username" />
                 <input id="txtPassword" type="password" placeholder="****" /> <br />
                 <Button bsStyle="primary" id="btnLogin" > Sign In </Button>
-                <Button bsStyle="primary" id="btnLogOut" hide> Sign Out </Button>
                 <Button bsStyle="primary" id="btnSignUp" > Sign Up </Button> <br/><hr /> <br/>
+                </Form>
+                </Panel>
                 <Panel id="details" collapsible expanded = {this.state.open}>
                     <h3> Enter Competition details below </h3>
                     <br />
@@ -179,10 +180,13 @@ export default class LoginForm extends React.Component {
                     <input id="txtcompCourse" type="text" onChange={this.handleInputChange} name="compCourse" value={this.state.compCourse} />
                     <input id="displayName" type="text" onChange={this.handleInputChange} name="displayName" value={this.state.displayName}/>
                     <input id="handicap" type="number" onChange={this.handleInputChange} name="handicap" value={this.state.handicap}/> 
-                    <Button bsStyle="primary" id="btnUpdate"> Update Details </Button> <br />                           
+                    <br /><br />
+                    <Button bsStyle="primary" id="btnUpdate"> Update</Button>  
+                    <Button bsStyle="primary" href='../oncourse'>Scorecard</Button>                         
+                    <Button bsStyle="primary" id="btnLogOut" hide>Sign Out </Button>
                 </Panel>
-                </Form>
-                </Well>
+          
+            
             </div>
 
         )

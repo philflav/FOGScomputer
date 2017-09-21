@@ -77,9 +77,11 @@ componentWillMount() {
                 })
                 this.handleCourseSelect(success.compCourse)
             })
-            playerdbRef = fire.database().ref().child('rtscores/'+firebaseUser.uid);            
+            playerdbRef = fire.database().ref().child('rtscores/'+firebaseUser.uid);           
+            
         }
-        else {           
+        else 
+        {           
             window.location.href = './admin/login'
             alert('You must be signed in to perform this action')
         }
@@ -111,9 +113,10 @@ componentWillMount() {
 
 
 componentDidMount() {
+    //hide menu so we can navigate away and loose data
+    const nav=document.getElementById('nav')
 
-
-
+    nav.classList.add('hide')
     
 }
 
@@ -150,6 +153,11 @@ handleDecHole(points){
     playerdbRef.child('total').set(total)
 
 }
+
+handleClearScorecard(event){
+    window.location.href = './admin/login'
+}
+
 handleClearHole(event){
         
         var last= history.pop()
@@ -317,7 +325,7 @@ render() {
         <Col>
             <Row>			 
                 <Button bsStyle='success'  onClick={this.handleEagle.bind(this)}>
-                <Glyphicon glyph="flash" />{this.state.holePar-2}
+                <Glyphicon glyph="music" />{this.state.holePar-2}
                 </Button> 
            
             		 
@@ -327,21 +335,21 @@ render() {
        
           		 
                 <Button bsStyle='success'  bsSize='large' onClick={this.handlePar.bind(this)}>
-                <Glyphicon glyph="ok-sign" />{this.state.holePar}
+                <Glyphicon glyph="heart" />{this.state.holePar}
                 </Button> 
            
          
           		 
                 <Button bsStyle='warning'  onClick={this.handleBogey.bind(this)}>
-                <Glyphicon glyph="thumbs-down" />{this.state.holePar+1}
+                <Glyphicon glyph="heart-empty" />{this.state.holePar+1}
                 </Button> 
          		 
                 <Button bsStyle='warning'  onClick={this.handleDblBogey.bind(this)}>
-                <Glyphicon glyph="hand-down" /> {this.state.holePar+2}
+                <Glyphicon glyph="thumbs-down" /> {this.state.holePar+2}
                 </Button> 
     		 
                 <Button bsStyle='warning' onClick={this.handleTrpBogey.bind(this)}>
-                <Glyphicon glyph="fire" />{this.state.holePar+3}
+                <Glyphicon glyph="hand-down" />{this.state.holePar+3}
                 </Button> 
                 <Button bsStyle='danger' block onClick={this.handleBlob.bind(this)}>
                 <Glyphicon glyph="minus-sign" />Blob
@@ -355,7 +363,7 @@ render() {
                
                 <Button bsStyle='primary' bsSize='large' onClick={this.handleClearHole.bind(this)}>               
                 <Glyphicon glyph="arrow-left" />Back</Button> 
-                <Button bsStyle='primary' bsSize='large' >
+                <Button bsStyle='primary' bsSize='large'onClick={this.handleClearScorecard.bind(this)} >
                 <Glyphicon glyph="trash" />Clear Scorecard</Button>
             
             

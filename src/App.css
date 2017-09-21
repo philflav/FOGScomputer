@@ -55,3 +55,6 @@ table.right {
   text-align: right;
   margin-right: 1em;
 }
+.btn {
+  margin: 5px
+}
