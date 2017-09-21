@@ -31,7 +31,8 @@ export default class LoginForm extends React.Component {
         const txtPassword=document.getElementById('txtPassword')
         const txtcompCourse=document.getElementById('txtcompCourse')
         const btnLogin=document.getElementById('btnLogin')
-        const btnSignUp=document.getElementById('btnSignUp')  
+        const btnSignUp=document.getElementById('btnSignUp') 
+        const btnLogOut=document.getElementById('btnLogOut')
         const btnUpdate = document.getElementById('btnUpdate')
         const txthandicap=document.getElementById('handicap')
         const pnldetails=document.getElementById('details')
@@ -55,7 +56,14 @@ export default class LoginForm extends React.Component {
             })
         }
         })
-
+        btnLogOut.addEventListener('click', e =>{
+            fire.auth().signOut().then(function() {
+                console.log('logged out')// Sign-out successful.
+              }, function(error) {
+                // An error happened.
+                console.log(error)
+              });
+        })
 
         btnLogin.addEventListener('click', e =>{
             //get email and password
@@ -69,7 +77,7 @@ export default class LoginForm extends React.Component {
             logPromise.catch(e => alert(e.message))
             logPromise.then(e =>{
 
-                alert('Logged in as ', e.uid)
+                //alert('Logged in as ', e.uid)
                 this.setState({open: true})
                 })         
 
@@ -118,11 +126,14 @@ export default class LoginForm extends React.Component {
             
             this.setState({open: true})
             btnLogin.classList.add('hide')
+            btnSignUp.classList.add('hide')
+            btnLogOut.classList.remove('hide')
             
 
             }else{
-            console.log('not logged in')
             btnLogin.classList.remove('hide')
+            btnSignUp.classList.remove('hide')
+            btnLogOut.classList.add('hide')
             this.setState({open: false})
             }
 
@@ -152,7 +163,8 @@ export default class LoginForm extends React.Component {
                     Sign in here to update your details and enter the current competition. If you don't have an account use the signup button to create one using an email address and password (your actual one or an invented one - it's only used for login authentication!) <br /><br /></i>        
                 <input id="txtEmail" type="email" placeholder="username" />
                 <input id="txtPassword" type="password" placeholder="****" /> <br />
-                <Button bsStyle="primary" id="btnLogin" > Sign In </Button>.  |  .
+                <Button bsStyle="primary" id="btnLogin" > Sign In </Button>
+                <Button bsStyle="primary" id="btnLogOut" hide> Sign Out </Button>
                 <Button bsStyle="primary" id="btnSignUp" > Sign Up </Button> <br/><hr /> <br/>
                 <Panel id="details" collapsible expanded = {this.state.open}>
                     <h3> Enter Competition details below </h3>

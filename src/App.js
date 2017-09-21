@@ -24,22 +24,22 @@ class App extends React.Component {
 
   componentDidMount(){
     const menuLogin=document.getElementById('menu-login')
-    const menuLogout=document.getElementById('menu-logout')
 
-
-    menuLogout.addEventListener('click', e =>{
-      fire.auth().signOut()
-  })
+    const menuProfile=document.getElementById('menu-profile')
 
     fire.auth().onAuthStateChanged(firebaseUser =>{
       if(firebaseUser) {
       //console.log(firebaseUser)
       menuLogin.classList.add('hide')
-      menuLogout.classList.remove('hide')
-      }else{
+
+      menuProfile.classList.remove('hide')
+        }else{
       //console.log('not logged in')
       menuLogin.classList.remove('hide')
-      menuLogout.classList.add('hide')
+  
+      menuProfile.classList.add('hide')
+    
+ 
       }
   })
   }
@@ -49,10 +49,11 @@ class App extends React.Component {
       <Router >
         <div>
           <Nav bsStyle="pills" >
-          <NavItem href = "/">Home Page</ NavItem>
+          <NavItem href = "/">Home</ NavItem>
           <NavItem href="/oncourse">In play scoring</ NavItem>
+         <NavItem href ='/admin/login' id='menu-profile'>Profile</NavItem>
          <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
-         <NavItem href ='#' id='menu-logout'><Glyphicon glyph="log-out" />SignOut</NavItem>
+
           </Nav>
 
  

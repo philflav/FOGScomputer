@@ -27,6 +27,7 @@ var holescoreRefHistory =[]
 var holes = []
 var pars = []
 var SIs = []
+var holeNumber =['--',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,'--']
 
 var history = []
 
@@ -69,18 +70,23 @@ componentWillMount() {
         if(firebaseUser) {
             console.log('here', firebaseUser.uid)
             getplayerDetails(firebaseUser.uid).then((success) => {
-                    console.log(success.displayName)
+                    console.log('Here',success.displayName)
                     this.setState({playername: success.displayName,
                     hcap: success.handicap,
-                    comp: success.currentComp,
+                    currentComp: success.currentComp
                 })
+                this.handleCourseSelect(success.compCourse)
             })
             playerdbRef = fire.database().ref().child('rtscores/'+firebaseUser.uid);            
         }
-        else {
+        else {           
+            window.location.href = './admin/login'
             alert('You must be signed in to perform this action')
         }
     })
+
+//TODO for multi user t- filter on currentComp
+
     dbRefrtscores.on('child_changed', snap =>{
         var index = scorecardKeys.indexOf(snap.key)
         if(index <0){
@@ -92,11 +98,11 @@ componentWillMount() {
             scorecards: scorecards
              })
         playerList = []
-        console.log(scorecards)
         this.state.scorecards.forEach((card, index) => {
            playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].lasthole}  total={this.state.scorecards[index].total} />)
     
         })
+
         this.forceUpdate()
     })  
 
@@ -114,18 +120,23 @@ componentDidMount() {
 
 
 handleIncHole(strokes, points){
-    var hole= this.state.holeNumber 
-    hole++
+    var hole= this.state.holeNumber    
     if(hole <= 18){
+        hole++
         var total = this.state.total + points
         var playerName = this.state.playername
         var player_id=this.state.player_id
+        var compName=this.state.currentComp
+
+        //TODO for multiuser - write status with currentComp as a ref
+
         playerdbRef.child('total').set(total)
         playerdbRef.child('lasthole').set(hole-1)
         playerdbRef.child('playerName').set(playerName)
-        var holescoreId= playerdbRef.child('holescore').push({ holeNumber: hole, points: points, strokes: strokes})
+        var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: hole, points: points, strokes: strokes})
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
+        
     }
 }
 handleDecHole(points){
@@ -135,7 +146,7 @@ handleDecHole(points){
     playerdbRef.child('holescore/'+key).remove()
     if(hole>1)hole--
     this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
-    playerdbRef.child('lasthole').set(hole)
+    playerdbRef.child('lasthole').set(hole-1)
     playerdbRef.child('total').set(total)
 
 }
@@ -159,7 +170,7 @@ handleEagle(event){
         var strokes=this.state.holePar-2
         var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
         if(strokes<1){strokes=1}
-        history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
+        history.push(this.state.holeNumber+ ' > '+strokes+'/'+ pts +' ')
         this.setState({
          holeShots:strokes,
          holePts: pts,
@@ -174,7 +185,7 @@ handleBirdie(event){
     var strokes=this.state.holePar-1
     if(strokes<1){strokes=1}
     var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
+    history.push(this.state.holeNumber+ ' > '+strokes+'/'+ pts +' ')
     this.setState({
         holeStrokes:strokes,
         holePts: pts,
@@ -189,7 +200,7 @@ handlePar(event){
     var strokes=this.state.holePar
     if(strokes<1){strokes=1}
     var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
+    history.push(this.state.holeNumber+ ' > '+strokes+'/'+ pts +' ')
     this.setState({
         holeStrokes:strokes,
         holePts: pts,
@@ -205,7 +216,7 @@ handleBogey(event){
     var strokes=this.state.holePar+1
     if(strokes<1){strokes=1}
     var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
+    history.push(this.state.holeNumber+ ' > '+strokes+'/'+ pts +' ')
     this.setState({
         holesStrokes:strokes,
         holePts: pts,
@@ -220,7 +231,7 @@ handleDblBogey(event){
     var strokes=this.state.holePar+2
     if(strokes<1){strokes=1}
     var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
+    history.push(this.state.holeNumber+ ' > '+strokes+'/'+ pts +' ')
     this.setState({
         holeStrokes:strokes,
         holePts: pts,
@@ -234,7 +245,7 @@ handleTrpBogey(event){
     var strokes =this.state.holePar+3
     if(strokes<1){strokes=1}
     var pts= stableford(this.state.hcap, strokes, this.state.holePar, this.state.holeSI)
-    history.push('['+this.state.holeNumber+ ']'+strokes+'/'+ pts +' ')
+    history.push(this.state.holeNumber+ ' > '+strokes+'/'+ pts +' ')
     this.setState({
         holeStrokes:strokes,
         holePts: pts,
@@ -248,7 +259,7 @@ handleBlob(event){
    if(this.state.holeNumber<19){
     var strokes=9
     var pts= 0
-    history.push('['+this.state.holeNumber+ '] -/0 ')
+    history.push(this.state.holeNumber+ ' > -/0 ')
     this.setState({
         holeStrokes:strokes,
         holePts: pts,
@@ -285,23 +296,24 @@ handleCourseSelect(eventkey){
 
 
 render() {
-    menuItems = ''
+    if(!fire.auth().currentUser)return(null)
+    /*menuItems = ''
     menuItems = this.state.courses.map((course) => (
-        <MenuItem eventKey={course}>{course}</MenuItem>))
+       <MenuItem eventKey={course}>{course}</MenuItem>)) */
 
-    var title=  this.state.selectedCourseName +". Player: "+ this.state.playername + '   ('+ this.state.hcap+')'
+    var title=  this.state.currentComp+' >> '+this.state.selectedCourseName +" >> "+ this.state.playername + '('+ this.state.hcap+')'
     return (
 
         <div>
 
         <Panel bsStyle="primary" header = {title}>
-        <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleCourseSelect.bind(this)}>
+       {/* <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleCourseSelect.bind(this)}>
                     <NavDropdown eventKey="999" title="Select Course" id="nav-dropdown">
                     {menuItems}
                     </NavDropdown>
-                </Nav>
-            <pre>Score @:{history.slice(-1).pop()} Running total: {this.state.total} </pre>
-        <Well ><h4><i>Score Entry for hole: </i><b> {this.state.holeNumber} </b> <i>Par : </i> {this.state.holePar} <i>SI : </i> {this.state.holeSI}</h4> 
+                </Nav> */}
+            <pre>Hole:{history.slice(-1).pop()} Running total: {this.state.total} </pre>
+        <Well ><h4><i>Score Entry for hole: </i><b> {holeNumber[this.state.holeNumber]} </b> <i>Par : </i> {this.state.holePar} <i>SI : </i> {this.state.holeSI}</h4> 
         <Col>
             <Row>			 
                 <Button bsStyle='success'  onClick={this.handleEagle.bind(this)}>
@@ -331,32 +343,28 @@ render() {
                 <Button bsStyle='warning' onClick={this.handleTrpBogey.bind(this)}>
                 <Glyphicon glyph="fire" />{this.state.holePar+3}
                 </Button> 
-            </Row>
-            </Col><Clearfix />
-            <Row>
-            <br />
-
-            <Col xs={6}>			 
                 <Button bsStyle='danger' block onClick={this.handleBlob.bind(this)}>
                 <Glyphicon glyph="minus-sign" />Blob
                 </Button> 
-            </Col>
             </Row>
-    
+            </Col><Clearfix />
+   
 
             <Row > 
-                <hr />
-                <Col xs={4} >	
-                <Button bsStyle='primary' bsSize='large' onClick={this.handleClearHole.bind(this)}>
-                <Glyphicon glyph="arrow-left" />Go back (Clear)
-                </Button> 
-            </Col>      
+                <hr />               
+               
+                <Button bsStyle='primary' bsSize='large' onClick={this.handleClearHole.bind(this)}>               
+                <Glyphicon glyph="arrow-left" />Back</Button> 
+                <Button bsStyle='primary' bsSize='large' >
+                <Glyphicon glyph="trash" />Clear Scorecard</Button>
+            
             
 
         </Row>
     
 
       </Well>
+        <h5>Leaderboard</h5>
         <Well> 
         <table>
             <thead>
