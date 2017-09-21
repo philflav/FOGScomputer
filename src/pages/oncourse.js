@@ -351,8 +351,8 @@ render() {
                 <Button bsStyle='warning' onClick={this.handleTrpBogey.bind(this)}>
                 <Glyphicon glyph="hand-down" />{this.state.holePar+3}
                 </Button> 
-                <Button bsStyle='danger' block onClick={this.handleBlob.bind(this)}>
-                <Glyphicon glyph="minus-sign" />Blob
+                <Button bsStyle='danger' onClick={this.handleBlob.bind(this)}>
+                <Glyphicon glyph="minus-sign" />No score at hole
                 </Button> 
             </Row>
             </Col><Clearfix />

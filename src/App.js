@@ -50,7 +50,7 @@ class App extends React.Component {
         <div>
           <Nav id='nav' bsStyle="pills">
           <NavItem id='menu-home' href = "/">Home</ NavItem>
-          <NavItem href="/oncourse">In play scoring</ NavItem>
+          <NavItem href="/oncourse">Scorecard</ NavItem>
          <NavItem href ='/admin/login' id='menu-profile'>Profile</NavItem>
          <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
 
