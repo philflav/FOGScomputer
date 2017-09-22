@@ -99,8 +99,8 @@ export default class LoginForm extends React.Component {
                 var dbPlayerRef= dbRefPlayers.child(e.uid)
                 dbPlayerRef.set({
                     handicap: 18,
-                    displayName: displayname.value,
-                    currentComp: txtcurrentComp.value,
+                    displayName: 'name',
+                    currentComp: 'Alpha Test',
                     compCourse: txtcompCourse.value
                 })
                 this.setState({open: true})

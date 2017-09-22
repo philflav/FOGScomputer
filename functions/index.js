@@ -15,7 +15,6 @@ exports.deleteOldItems = functions.database.ref('/rtscores/{id}')
     snapshot.forEach(function(child) {
       updates[child.key] = null
     });
-    console.log('Updates:',updates)
     // execute all updates in one go and return the result to end the function
     return ref.update(updates);
   });
