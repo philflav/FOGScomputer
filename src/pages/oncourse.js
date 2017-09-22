@@ -123,7 +123,8 @@ componentDidMount() {
 
 
 handleIncHole(strokes, points){
-    var hole= this.state.holeNumber    
+    var hole= this.state.holeNumber 
+    var lasthole = hole   
     if(hole <= 18){
         hole++
         var total = this.state.total + points
@@ -136,10 +137,10 @@ handleIncHole(strokes, points){
         //TODO for multiuser - write status with currentComp as a ref
 
         playerdbRef.child('total').set(total)
-        playerdbRef.child('lasthole').set(hole-1)
+        playerdbRef.child('lasthole').set(lasthole)
         playerdbRef.child('playerName').set(playerName)
         playerdbRef.child('timestamp').set(now)
-        var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: hole, points: points, strokes: strokes, timestamp: now})
+        var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: lasthole, points: points, strokes: strokes, timestamp: now})
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
         

@@ -16,10 +16,10 @@ export default class LoginForm extends React.Component {
         super(props)
         this.state=({
             open: false,
-            displayName: 'name to show on leaderboard',
+            displayName: 'Display Name',
             handicap: 0,
             compCourse: 'FFGC Martello',
-            currentComp: 'TEST'
+            currentComp: 'Alpha test'
 
         })
         that=this
@@ -96,6 +96,13 @@ export default class LoginForm extends React.Component {
             logPromise.catch(e => alert(e.message))
 
             logPromise.then(e =>{
+                var dbPlayerRef= dbRefPlayers.child(e.uid)
+                dbPlayerRef.set({
+                    handicap: 18,
+                    displayName: displayname.value,
+                    currentComp: txtcurrentComp.value,
+                    compCourse: txtcompCourse.value
+                })
                 this.setState({open: true})
             })
         
@@ -171,12 +178,12 @@ export default class LoginForm extends React.Component {
                     <h3> Enter Competition details below </h3>
                     <br />
                     <i>
-                    Competition Name - exactly as specified by the organiser<br />
+                    Competition Name - not implemented for alpha test<br />
                     Display Name - your name as it will appear on the leaderboard <br />
                     Handicap - your playing handicap for the competition <br /><br />
                     </i>
 
-                    <input id="txtcurrentComp" type="text" onChange={this.handleInputChange} name="currentComp" value={this.state.currentComp} />
+                    <input id="txtcurrentComp" type="text"  name="currentComp" value={this.state.currentComp} disable/>
                     <input id="txtcompCourse" type="text" onChange={this.handleInputChange} name="compCourse" value={this.state.compCourse} />
                     <input id="displayName" type="text" onChange={this.handleInputChange} name="displayName" value={this.state.displayName}/>
                     <input id="handicap" type="number" onChange={this.handleInputChange} name="handicap" value={this.state.handicap}/> 
