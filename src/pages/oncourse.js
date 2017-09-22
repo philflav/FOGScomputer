@@ -130,13 +130,16 @@ handleIncHole(strokes, points){
         var playerName = this.state.playername
         var player_id=this.state.player_id
         var compName=this.state.currentComp
+        var now = Date.now() //time stamp - used for database tidy up. See index.js in functions.
+       
 
         //TODO for multiuser - write status with currentComp as a ref
 
         playerdbRef.child('total').set(total)
         playerdbRef.child('lasthole').set(hole-1)
         playerdbRef.child('playerName').set(playerName)
-        var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: hole, points: points, strokes: strokes})
+        playerdbRef.child('timestamp').set(now)
+        var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: hole, points: points, strokes: strokes, timestamp: now})
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
         
