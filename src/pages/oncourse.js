@@ -324,7 +324,7 @@ render() {
                     </NavDropdown>
                 </Nav> */}
             <pre>Hole:{history.slice(-1).pop()} Running total: {this.state.total} </pre>
-        <Well ><h4><i>Score Entry for hole: </i><b> {holeNumber[this.state.holeNumber]} </b> <i>Par : </i> {this.state.holePar} <i>SI : </i> {this.state.holeSI}</h4> 
+        <Well ><h4><i>Score for hole: </i><b> {holeNumber[this.state.holeNumber]} </b> <i>Par : </i> {this.state.holePar} <i>SI : </i> {this.state.holeSI}</h4> 
         <Col>
             <Row>			 
                 <Button bsStyle='success'  onClick={this.handleEagle.bind(this)}>
