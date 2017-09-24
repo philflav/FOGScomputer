@@ -2,7 +2,7 @@ import React from "react";
 
 import fire from '../fire.js';
 
-import {  Panel, Well, Form, Button, } from 'react-bootstrap'
+import {  Panel,  Form, Button, } from 'react-bootstrap'
 
 import getplayerDetails from '../functions/getplayerDetails.js'
 
@@ -35,7 +35,6 @@ export default class LoginForm extends React.Component {
         const btnLogOut=document.getElementById('btnLogOut')
         const btnUpdate = document.getElementById('btnUpdate')
         const txthandicap=document.getElementById('handicap')
-        const pnldetails=document.getElementById('details')
         const txtcurrentComp=document.getElementById('txtcurrentComp')
         const displayname=document.getElementById('displayName')
 
@@ -116,13 +115,7 @@ export default class LoginForm extends React.Component {
 
         fire.auth().onAuthStateChanged(firebaseUser =>{
             if(firebaseUser) {
-                var dbPlayerRef= dbRefPlayers.child(firebaseUser.uid)
-                /*dbPlayerRef.set({
-                    handicap: txthandicap.value,
-                    displayName: displayname.value,
-                    currentComp: txtCompName.value
-                })*/
-                getplayerDetails(firebaseUser.uid).then((success) => {
+               getplayerDetails(firebaseUser.uid).then((success) => {
                       this.setState({
                           displayName: success.displayName,
                           handicap: success.handicap,

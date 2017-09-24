@@ -2,7 +2,7 @@ import React from "react";
 
 import fire from '../fire.js';
 
-import {Panel, Well, Row, Col, Button,  Glyphicon, Clearfix, MenuItem, Nav, NavDropdown} from 'react-bootstrap'
+import {Panel, Well, Row, Col, Button,  Glyphicon, Clearfix} from 'react-bootstrap'
 
 import stableford from '../functions/stableford.js'
 
@@ -17,7 +17,6 @@ var playerdbRef
 
 
 var courseList = []
-var menuItems
 
 var playerList
 var scorecards = []
@@ -129,7 +128,6 @@ handleIncHole(strokes, points){
         hole++
         var total = this.state.total + points
         var playerName = this.state.playername
-        var player_id=this.state.player_id
         var compName=this.state.currentComp
         var now = Date.now() //time stamp - used for database tidy up. See index.js in functions.
        

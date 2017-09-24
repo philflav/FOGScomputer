@@ -5,17 +5,16 @@ import fire from './fire.js'
 //import { BrowserRouter as Router,  Route} from 'react-router-dom';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
-import Players from './pages/players.js'
+
 import Layout from './pages/layout.js'
-import Draw from './pages/draw.js'
-import Leaderboard from './pages/leaderboard.js'
+
+
 import LoginForm from './pages/loginform.js'
-import EditPlayer from './pages/editplayer.js'
-import EditCourse from './pages/editcourse.js'
-import Comp from './pages/comp.js'
+
+
 import OnCourse from './pages/oncourse.js'
 
-import {Nav, NavItem, NavDropdown, MenuItem, Glyphicon} from 'react-bootstrap'
+import {Nav, NavItem, Glyphicon} from 'react-bootstrap'
 
 //todo an item
 
@@ -50,9 +49,9 @@ class App extends React.Component {
         <div>
           <Nav id='nav' bsStyle="pills">
           <NavItem id='menu-home' href = "/">Home</ NavItem>
-          <NavItem href="./oncourse">Scorecard</ NavItem>
-         <NavItem href ='./login' id='menu-profile'>User Profile</NavItem>
-         <NavItem href ='./login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
+          <NavItem href="/oncourse">Scorecard</ NavItem>
+         <NavItem href ='/login' id='menu-profile'>User Profile</NavItem>
+         <NavItem href ='/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
 
           </Nav>
 

@@ -1,6 +1,6 @@
 import React from "react"; 
 
-import {Panel, Well, Glyphicon} from 'react-bootstrap'
+import { Glyphicon} from 'react-bootstrap'
 
 var holesPlayer
 var runningTotal
