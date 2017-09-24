@@ -9,7 +9,7 @@ export default class Layout extends React.Component {
 
         return (
     <div id='front-page'>
-       <h2>Realtime Leaderboard (V0.0.2 Alpha)</h2>
+       <h2>Realtime Leaderboard (V0.0.3 Alpha)</h2>
 
        <p>Welcome to the realtime leaderboard app</p>
        <p>This app is designed to work mobile phones and tablets. A continuous connection to the Internet is not required, with scores updated and synchronised when a connection becomes available.</p>
