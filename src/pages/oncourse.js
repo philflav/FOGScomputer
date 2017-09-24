@@ -159,7 +159,7 @@ handleDecHole(points){
 }
 
 handleClearScorecard(event){
-    window.location.href = './admin/login'
+    window.location.href = './login'
 }
 
 handleClearHole(event){

@@ -50,16 +50,16 @@ class App extends React.Component {
         <div>
           <Nav id='nav' bsStyle="pills">
           <NavItem id='menu-home' href = "/">Home</ NavItem>
-          <NavItem href="/oncourse">Scorecard</ NavItem>
-         <NavItem href ='/admin/login' id='menu-profile'>Profile</NavItem>
-         <NavItem href ='/admin/login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
+          <NavItem href="./oncourse">Scorecard</ NavItem>
+         <NavItem href ='./login' id='menu-profile'>User Profile</NavItem>
+         <NavItem href ='./login' id='menu-login'><Glyphicon glyph="log-in" />SignIn</NavItem>
 
           </Nav>
 
  
           <Switch>  {/*A <Switch> renders the first child <Route> that matches. A <Route> with no path always matches.*/}
           <Route path ='/' exact component={Layout}/>
-          <Route path ='/admin/login' component = {LoginForm} />
+          <Route path ='/login' component = {LoginForm} />
           <Route path ='/oncourse' component = {OnCourse} />
           <Route component ={Layout} />   {/* Catch all for non matched paths - returns to <Layout> */}
           </Switch>
