@@ -67,9 +67,9 @@ componentWillMount() {
 
     fire.auth().onAuthStateChanged(firebaseUser =>{
         if(firebaseUser) {
-            console.log('here', firebaseUser.uid)
+
             getplayerDetails(firebaseUser.uid).then((success) => {
-                    console.log('Here',success.displayName)
+
                     this.setState({playername: success.displayName,
                     hcap: success.handicap,
                     currentComp: success.currentComp
@@ -100,10 +100,8 @@ componentWillMount() {
              })
         playerList = []
         this.state.scorecards.forEach((card, index) => {
-            console.log(this.state.selectedCourseName,this.state.scorecards[index] )
             if(this.state.selectedCourseName===this.state.scorecards[index].courseName){
            playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].lasthole}  total={this.state.scorecards[index].total} />)}
-    
         })
 
         this.forceUpdate()
@@ -126,7 +124,6 @@ componentDidMount() {
 handleIncHole(strokes, points){
     var hole= this.state.holeNumber 
     var lasthole = hole  
-    console.log('State:',this.state) 
     if(hole <= 18){
         hole++
         var total = this.state.total + points
