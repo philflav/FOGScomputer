@@ -2,87 +2,1510 @@
   "course" : {
     "FFGC Kingsfleet" : {
       "holes" : [ null, {
-        "SI" : 7,
+        "SI" : 17,
         "number" : 1,
         "par" : 4
       }, {
-        "SI " : 4,
+        "SI" : 3,
         "number" : 2,
         "par" : 4
       }, {
-        "SI" : 6,
-        "number" : 9,
-        "par" : 3
-      } ],
-      "name" : "FFGC Kingsfleet"
-    },
-    "FFGC Martello" : {
-      "holes" : [ null, {
         "SI" : 13,
-        "number" : 1,
-        "par" : 4
-      }, {
-        "SI" : 15,
-        "number" : 2,
-        "par" : 5
-      }, 
-      {
-        "SI" : 15,
         "number" : 3,
-        "par" : 4
-      },
-      {
-        "SI" : 15,
+        "par" : 3
+      }, {
+        "SI" : 5,
         "number" : 4,
-        "par" : 4
-      },
-      {
-        "SI" : 15,
+        "par" : 5
+      }, {
+        "SI" : 7,
         "number" : 5,
         "par" : 3
-      },
-      {
+      }, {
         "SI" : 1,
         "number" : 6,
         "par" : 4
       }, {
         "SI" : 15,
         "number" : 7,
+        "par" : 4
+      }, {
+        "SI" : 11,
+        "number" : 8,
         "par" : 5
-      },
-      {
+      }, {
+        "SI" : 9,
+        "number" : 9,
+        "par" : 3
+      }, {
+        "SI" : 18,
+        "number" : 10,
+        "par" : 4
+      }, {
+        "SI" : 4,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 14,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 6,
+        "number" : 13,
+        "par" : 5
+      }, {
+        "SI" : 8,
+        "number" : 14,
+        "par" : 3
+      }, {
+        "SI" : 2,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 16,
+        "number" : 16,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 17,
+        "par" : 5
+      }, {
+        "SI" : 10,
+        "number" : 18,
+        "par" : 3
+      } ],
+      "name" : "FFGC Kingsfleet"
+    },
+    "FFGC Martello" : {
+      "holes" : [ null, {
+        "SI" : 9,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 5,
+        "number" : 2,
+        "par" : 5
+      }, {
+        "SI" : 11,
+        "number" : 3,
+        "par" : 4
+      }, {
+        "SI" : 7,
+        "number" : 4,
+        "par" : 4
+      }, {
+        "SI" : 17,
+        "number" : 5,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 7,
+        "par" : 5
+      }, {
         "SI" : 3,
         "number" : 8,
         "par" : 5
-      },
-      {
+      }, {
         "SI" : 15,
         "number" : 9,
         "par" : 3
-      },
-      {
+      }, {
+        "SI" : 4,
+        "number" : 10,
+        "par" : 5
+      }, {
+        "SI" : 10,
+        "number" : 11,
+        "par" : 4
+      }, {
         "SI" : 18,
         "number" : 12,
         "par" : 3
       }, {
-        "SI" : 16,
-        "number" : 9,
+        "SI" : 14,
+        "number" : 13,
+        "par" : 4
+      }, {
+        "SI" : 2,
+        "number" : 14,
+        "par" : 4
+      }, {
+        "SI" : 8,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 16,
         "par" : 3
+      }, {
+        "SI" : 6,
+        "number" : 17,
+        "par" : 4
+      }, {
+        "SI" : 16,
+        "number" : 18,
+        "par" : 4
       } ],
       "name" : "FFGC Martello"
+    },
+    "Woodbridge" : {
+      "holes" : {
+        "number" : 1
+      },
+      "name" : "Woodbridge FOrest"
     }
   },
-  "rtscores" : [ {
-    "QYUg8L7aRcOIAxe1b4m8hAU62Mv1" : {
-      "compName" : "test",
-      "course" : "FFGC Martello",
-      "holescore" : [ null, {
-        "points" : 2,
-        "shots" : 5
-      }, {
-        "points" : 2,
-        "shots" : 6
-      } ]
+  "player" : {
+    "6vTAvHne0mfKgc4ziJMfaGCUDHv1" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "Alpha Test",
+      "displayName" : "Simon Mahoney",
+      "handicap" : "7"
+    },
+    "VVa0oazwSBduhlUaykYM5LeVPYI2" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "TEST",
+      "displayName" : "Tester",
+      "handicap" : "7"
+    },
+    "rqD9DxJN8mSlcFI0RNKjf22aOEC3" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "Alpha Test",
+      "displayName" : "Paul",
+      "handicap" : "18"
+    },
+    "sErd1Kg4FvaHZZMPKN2IdloDfhj1" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "Alpha Test",
+      "displayName" : "Phil-test2",
+      "handicap" : "14"
+    },
+    "vV1Y0cMWLEUQnzKCEQxfYfDD9yF2" : {
+      "compCourse" : "FFGC Kingsfleet",
+      "currentComp" : "Alpha Test",
+      "displayName" : "DONALD Duck",
+      "handicap" : "18"
+    },
+    "y5UZXVU55YeCVkm2V7ho3O8C8Qb2" : {
+      "compCourse" : "FFGC Kingsfleet",
+      "currentComp" : "Alpha Test",
+      "displayName" : "Phil Flavin",
+      "handicap" : "21"
     }
-  } ]
+  },
+  "rtscores" : {
+    "sErd1Kg4FvaHZZMPKN2IdloDfhj1" : {
+      "courseName" : "FFGC Martello",
+      "holescore" : {
+        "-Kv6nDHSy9vaa4OwTEVM" : {
+          "comp" : "Alpha Test",
+          "courseName" : "FFGC Kingsfleet",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590648307
+        },
+        "-Kv6nDd56iFBaP9Bc_71" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506590649752
+        },
+        "-Kv6nDntzDIROjPSs_mm" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506590650446
+        },
+        "-Kv6nE2ygJSqVDjAbURp" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590651469
+        },
+        "-Kv6nHbsTReyvkdaoXRk" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 1,
+          "strokes" : 4,
+          "timestamp" : 1506590666049
+        },
+        "-Kv6nHunhgRDxuMX-Yua" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590667271
+        },
+        "-Kv6nI8BmrE9HMZEfaaQ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506590668192
+        },
+        "-Kv6nLOyOVrYmG1TbHoN" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506590681554
+        },
+        "-Kv6nLaVdsrm4j3mETLu" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 9,
+          "points" : 0,
+          "strokes" : 5,
+          "timestamp" : 1506590682358
+        },
+        "-Kv6nLmbKPGB0ug2CJb9" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 10,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506590683130
+        },
+        "-Kv6nMA1FVHZQNijfb-a" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 11,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590684687
+        },
+        "-Kv6nMaQUv4h_bKGypjU" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 12,
+          "points" : 0,
+          "strokes" : 5,
+          "timestamp" : 1506590686447
+        },
+        "-Kv6nMoJeyD9d_R26z0l" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 13,
+          "points" : 1,
+          "strokes" : 6,
+          "timestamp" : 1506590687332
+        },
+        "-Kv6n_HLUuuyUoKUhqYv" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 14,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590742509
+        },
+        "-Kv6na-vQwlrQkVPtjiN" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 15,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590745481
+        },
+        "-Kv6naHiE7w2gEXMJsiZ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 16,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506590746621
+        },
+        "-Kv6naTfDuNJul2hcP5V" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 17,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590747388
+        },
+        "-Kv6qmokLi5_yiTBwl5M" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 18,
+          "points" : 1,
+          "strokes" : 5,
+          "timestamp" : 1506591583845
+        },
+        "-Kv6qqheqbjPscXxL7qI" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506591599783
+        },
+        "-Kv6qqokT_4ITxgm4ovF" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506591600238
+        },
+        "-Kv7sYNv8PXUud3wOC71" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506608821516
+        },
+        "-Kv7tRtrceP_1h7lcbFi" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506609057095
+        },
+        "-Kv7u-lIeEysxUU5iJwz" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506609204004
+        },
+        "-Kv7u-wf0Z1cMHzaHZ6M" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506609204733
+        },
+        "-Kv7u5wBK7NZMOhzYlFx" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609229277
+        },
+        "-Kv7u6PZ-zthynV7RwUe" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609231219
+        },
+        "-Kv7u6_gLwOk6cUQKPXv" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609231933
+        },
+        "-Kv7u6inQWb_ml3f5jzK" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609232516
+        },
+        "-Kv7u6uf-wiuaoGttSWQ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609233276
+        },
+        "-Kv7ud66lFBn5Rsgky-6" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506609369236
+        },
+        "-Kv7udO_4znMohcN89r6" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609370418
+        },
+        "-Kv7umYrTH-szvv9_K2G" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 0,
+          "strokes" : 6,
+          "timestamp" : 1506609407938
+        },
+        "-Kv7w-QKDsF-O-bIdQnL" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506609726880
+        },
+        "-Kv7w-UoozSed0mpRCr0" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609727166
+        },
+        "-Kv7w-ZI6LDjmgHt0KWq" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506609727454
+        },
+        "-Kv7w00P6ELpdCjQxnuv" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506609729317
+        },
+        "-Kv7w0APXVjDYBok7Q-G" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506609729957
+        },
+        "-Kv7w0FBuiZ7OZ990O1T" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609730260
+        },
+        "-Kv7xLjuK9krSxoE3jAC" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610080434
+        },
+        "-Kv7xLtnf9gAVaBP8zQ_" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506610081065
+        },
+        "-Kv7xM2A-KuHRwQOikV9" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610081661
+        },
+        "-Kv7xMBdUCuwo6Tw0fvc" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610082273
+        },
+        "-Kv7xMOF129MCClWAOJ0" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 3,
+          "timestamp" : 1506610083081
+        },
+        "-Kv7xMcAFoNuOX9Zs-s1" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610084033
+        },
+        "-Kv7xMuWlVprmMpNgwDg" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506610085209
+        },
+        "-Kv7xZ-pe6EnKjRfKMCl" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506610134760
+        },
+        "-Kv7xZ8pQDFXZn82fhY1" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610135336
+        },
+        "-Kv7xZGXytorPKMhe_Yx" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506610135831
+        },
+        "-Kv7xaLDQu188xXdMDwq" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506610144321
+        },
+        "-Kv7y62QezU8IcOja8e_" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506610278277
+        },
+        "-Kv7y6F-jA13DKPWdBgE" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610279084
+        },
+        "-Kv7y6OcX-6kZy3l7Omf" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 1,
+          "strokes" : 5,
+          "timestamp" : 1506610279700
+        },
+        "-Kv7y6YlC2SdLhNWySLW" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506610280350
+        },
+        "-Kv7y6cSuXGfgCqHhHGh" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 9,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506610280652
+        },
+        "-Kv7y77f7xh9G9iU02YM" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 10,
+          "points" : 1,
+          "strokes" : 5,
+          "timestamp" : 1506610282709
+        },
+        "-Kv7y7KeD4dDVLLyYqzG" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 11,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610283542
+        },
+        "-Kv7y7O_7EERiOpTVgw-" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 12,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506610283797
+        },
+        "-Kv7y7SoINluKfcavFxx" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 13,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506610284068
+        },
+        "-Kv7y7WFxEUyS7HDkBbw" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 14,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506610284285
+        },
+        "-Kv8-ZOkouCZoIono5QW" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610922783
+        },
+        "-Kv82D27TTr0J6xuxWk7" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506611619229
+        },
+        "-Kv82D61a_-ElS_1LfjH" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506611619487
+        },
+        "-Kv82D9b54ekqfesKWLf" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506611619705
+        },
+        "-Kv82DDcNOOMdgO9A8C2" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506611619972
+        },
+        "-Kv82DI2wUPp4XYNz6O5" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 3,
+          "timestamp" : 1506611620253
+        },
+        "-Kv82DLvPU04-OghdUXx" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506611620505
+        },
+        "-Kv82DPct9lR-f6W9ZjW" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506611620739
+        },
+        "-Kv878jEHBs4WPKD8PHo" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506612911589
+        },
+        "-Kv878zsCkm4QHk1hv_a" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506612912652
+        },
+        "-Kv8792r0BwcDdJA-Ihb" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506612912913
+        },
+        "-Kv8797G0eYcnW09tA_a" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506612913183
+        },
+        "-Kv879ALEaLc4S330NLQ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 3,
+          "timestamp" : 1506612913388
+        }
+      },
+      "lasthole" : 5,
+      "playerName" : "Phil-test2",
+      "timestamp" : 1506612913388,
+      "total" : 13
+    },
+    "vV1Y0cMWLEUQnzKCEQxfYfDD9yF2" : {
+      "courseName" : "FFGC Kingsfleet",
+      "holescore" : {
+        "-Kv7y2TmolfchzTpEeil" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610268258
+        },
+        "-Kv7y3IHCWGogkwzxus1" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506610271615
+        },
+        "-Kv7y3WSuhsdeWOBf0xb" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610272520
+        },
+        "-Kv7y9FGYMeekIKSgLyR" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 4,
+          "strokes" : 3,
+          "timestamp" : 1506610295981
+        },
+        "-Kv7y9i_REHc6eBcBk8j" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506610297936
+        },
+        "-Kv7yA7bJ_1ZT_qVU3dU" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610299593
+        },
+        "-Kv7yBS0YZUv_R2WM3Ie" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506610305003
+        },
+        "-Kv8-YB1_TeG3DiPX570" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610922406
+        },
+        "-Kv8-hXsoxr3Ls55yTjV" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610964829
+        },
+        "-Kv8-hqqWaBfXgpcGjP8" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506610966108
+        },
+        "-Kv87O1LGuCFY8hAoFmd" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506612973358
+        },
+        "-Kv87OG64-8y17-06tLG" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506612974303
+        },
+        "-Kv87OMqPmY5DyjaGJQ3" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506612974735
+        },
+        "-Kv87OVa93D4oXk0UiTx" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506612975295
+        },
+        "-Kv87OaMwoRiKiMGNX99" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506612975663
+        },
+        "-Kv87OeFu1FBOHpjbFfU" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506612975911
+        },
+        "-Kv87OhMI61dZUaXjcAS" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506612976111
+        },
+        "-Kv87OkT3Dgix6Km_g_a" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506612976311
+        },
+        "-Kv87OoqnapYB_x2bdfi" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 9,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506612976591
+        }
+      },
+      "lasthole" : 9,
+      "playerName" : "DONALD Duck",
+      "timestamp" : 1506612976591,
+      "total" : 18
+    },
+    "y5UZXVU55YeCVkm2V7ho3O8C8Qb2" : {
+      "courseName" : "FFGC Kingsfleet",
+      "holescore" : {
+        "-Kv1TV0aQV7-BulEjAgg" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506501327706
+        },
+        "-Kv1TZHsBZeXSuSR6Fd5" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 4,
+          "strokes" : 3,
+          "timestamp" : 1506501345186
+        },
+        "-Kv6mfELmS38RM5-xh8i" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590503892
+        },
+        "-Kv6mgGmfWv8kX0mdcdm" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 1,
+          "strokes" : 7,
+          "timestamp" : 1506590508147
+        },
+        "-Kv6mqxmIvwX6wJ-WSn2" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506590551911
+        },
+        "-Kv6mrMQB4aCpepEAitU" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506590553559
+        },
+        "-Kv6n3zIILFIUtA-j6HC" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506590609751
+        },
+        "-Kv6n4ES_VJl4QQMhScR" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506590610796
+        },
+        "-Kv6nRL6rd1w94W0ikBM" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590705021
+        },
+        "-Kv6nRWbO7rfNUXR5r0W" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506590705757
+        },
+        "-Kv6nRbaEXdOGDohrWXc" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590706141
+        },
+        "-Kv6nRoieA24uDge24eQ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590706980
+        },
+        "-Kv6nRsiYNI1Q2c8sfGr" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506590707237
+        },
+        "-Kv6nXiLJZ1Zor66wPkV" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506590731149
+        },
+        "-Kv6nXyjrtJGSP-VHf4U" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506590732197
+        },
+        "-Kv6nY9D7qb9TW2cNHaA" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 3,
+          "strokes" : 6,
+          "timestamp" : 1506590732933
+        },
+        "-Kv6nYNUcuyxsq1n--qe" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 9,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506590733845
+        },
+        "-Kv6nYqwtRDFG6zRKwgI" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 10,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506590735796
+        },
+        "-Kv6nYxKlBIXNUyW0VZ7" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 11,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590736204
+        },
+        "-Kv6nZ1T4GyyRUVvaHjA" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 12,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506590736532
+        },
+        "-Kv6nZFJqPyPMHKhmfyX" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 13,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506590737420
+        },
+        "-Kv6nZMRQ01-TTVeAj6H" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 14,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506590737875
+        },
+        "-Kv6pXJxjSwgT3yQtqt7" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 15,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506591253804
+        },
+        "-Kv6pXoNsm26xFmq1eOx" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 16,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506591255811
+        },
+        "-Kv6pY1wo4q0DSmaNVZl" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 17,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506591256750
+        },
+        "-Kv7tsp2-vB93kzoVKT_" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609173013
+        },
+        "-Kv7tt0ht9fW6VBP5MG9" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609173821
+        },
+        "-Kv7ttHSSnXVzjYtTASW" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609174896
+        },
+        "-Kv7ttPZ9Ee20RF1lm33" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609175403
+        },
+        "-Kv7twqV1okhOe_qb8gp" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609189478
+        },
+        "-Kv7tx2l-TBVpgQgcllH" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609190316
+        },
+        "-Kv7txU_7GRI4RBXJySj" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609192100
+        },
+        "-Kv7txblTvcAsUwn8aRc" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609192626
+        },
+        "-Kv7txgnwH3JYf6KBFBJ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609192953
+        },
+        "-Kv7txluo62Fy3B6K3L6" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506609193278
+        },
+        "-Kv7tzpXguGguL61XnrM" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506609201689
+        },
+        "-Kv7u-3Vcf78aPRUBeVt" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 2,
+          "strokes" : 7,
+          "timestamp" : 1506609202661
+        },
+        "-Kv7w18uXRPwTMMbSgpV" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609735506
+        },
+        "-Kv7w1ERMksnb36Az0AG" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506609735855
+        },
+        "-Kv7w1JPSWsabbe7WRkO" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609736175
+        },
+        "-Kv7wRA2TvKqKXtCVst4" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609842079
+        },
+        "-Kv7wRTyYId6zg_M0Cv6" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506609843344
+        },
+        "-Kv7wTEjhEaCBseIzuNp" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609850563
+        },
+        "-Kv7weWUZ5iw4r3xL_Uu" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609900856
+        },
+        "-Kv7wemxTjeH4_FB2YbM" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506609901968
+        },
+        "-Kv7wexI0ftA2DE6dEFA" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 4,
+          "strokes" : 4,
+          "timestamp" : 1506609902641
+        },
+        "-Kv7wf16nLXKmwai7BM7" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506609902946
+        },
+        "-Kv7wf4nM8EC5Pwmu2HX" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 4,
+          "strokes" : 5,
+          "timestamp" : 1506609903174
+        },
+        "-Kv7wf83NhhmDXsGL5CO" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 9,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506609903399
+        },
+        "-Kv7wfBUCHPryD7d3WUC" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 10,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506609903619
+        },
+        "-Kv7wfECXKaWaTDxfqbZ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 11,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506609903780
+        },
+        "-Kv7xNfTMbSkh16RsNQR" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610089901
+        },
+        "-Kv7xNqlHeWu8xBm-bdv" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506610090628
+        },
+        "-Kv7xNxXpt7_44sZaGuH" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610091067
+        },
+        "-Kv7xO2SX6mnEnrTC0Ni" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610091435
+        },
+        "-Kv7xYNVni-wAvtKxGvx" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610133727
+        },
+        "-Kv7xY_oIOWALIoz9fOA" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506610134578
+        },
+        "-Kv7xYhiP_RIEJUTrYka" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610135087
+        },
+        "-Kv7x_JI1zVbhUsTIj1l" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506610141657
+        },
+        "-Kv7x_tiwYOsZdcQvoan" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506610144051
+        },
+        "-Kv7y4p1Rjg0V7d4etoh" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 0,
+          "strokes" : 9,
+          "timestamp" : 1506610274823
+        },
+        "-Kv8-Xlxv94POptZKzAK" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506610917711
+        },
+        "-Kv829l5VGehnnnjOxFj" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506611604203
+        },
+        "-Kv829up78hAcG5xr3Up" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506611604826
+        },
+        "-Kv82A-p0dSF31umz_1J" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 1,
+          "strokes" : 5,
+          "timestamp" : 1506611605210
+        },
+        "-Kv82A7KoCs9tvh6OFuP" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 0,
+          "strokes" : 8,
+          "timestamp" : 1506611605689
+        },
+        "-Kv82AKobTN2ewi1LAmd" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 4,
+          "strokes" : 2,
+          "timestamp" : 1506611606554
+        },
+        "-Kv82ARLcr63Hf4cCe_K" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 4,
+          "strokes" : 4,
+          "timestamp" : 1506611606969
+        },
+        "-Kv85NXUelOaiw2iRjuz" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 1,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506612451640
+        },
+        "-Kv85NckdHgi0Xk_8T-Y" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 2,
+          "points" : 4,
+          "strokes" : 4,
+          "timestamp" : 1506612452042
+        },
+        "-Kv85Nh-wwlpS5q8JE6l" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 3,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506612452313
+        },
+        "-Kv85kg2jrXbpWevU9a5" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 4,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506612550564
+        },
+        "-Kv85kmyIb2Vl-QgEnXa" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 5,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506612551006
+        },
+        "-Kv85kqiV193aTeGMC0E" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 6,
+          "points" : 4,
+          "strokes" : 4,
+          "timestamp" : 1506612551246
+        },
+        "-Kv85kt1YlzDtvvPv83v" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506612551391
+        },
+        "-Kv85mbZomDEjXSUiZIp" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506612558469
+        },
+        "-Kv85mhq8Tml9BlgM9VZ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 9,
+          "points" : 3,
+          "strokes" : 3,
+          "timestamp" : 1506612558870
+        },
+        "-Kv85mlPZ8Nv5Or8Nhoq" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 10,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506612559099
+        },
+        "-Kv85moH3htR6WFHqg-J" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 11,
+          "points" : 3,
+          "strokes" : 4,
+          "timestamp" : 1506612559283
+        },
+        "-Kv879QuO0Cvy0MlCbM7" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 12,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506612918167
+        },
+        "-Kv879Ue2MGbTSULAGvk" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 13,
+          "points" : 2,
+          "strokes" : 6,
+          "timestamp" : 1506612918408
+        },
+        "-Kv879XhWR-u62t8RyUW" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 14,
+          "points" : 2,
+          "strokes" : 4,
+          "timestamp" : 1506612918602
+        },
+        "-Kv879_kuqGOvxGGyZSO" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 15,
+          "points" : 3,
+          "strokes" : 5,
+          "timestamp" : 1506612918800
+        },
+        "-Kv879br4QJvSaAMesvH" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 16,
+          "points" : 2,
+          "strokes" : 5,
+          "timestamp" : 1506612918938
+        },
+        "-Kv87BXifOljJ2RYmAnq" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 7,
+          "points" : 0,
+          "strokes" : 7,
+          "timestamp" : 1506612922176
+        },
+        "-Kv87BiCraPrBFHgwEOH" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 8,
+          "points" : 0,
+          "strokes" : 8,
+          "timestamp" : 1506612922912
+        },
+        "-Kv87BthK2j-4Jo9tDsY" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 9,
+          "points" : 0,
+          "strokes" : 6,
+          "timestamp" : 1506612923648
+        },
+        "-Kv87C04oOi8rscsjon2" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 10,
+          "points" : 0,
+          "strokes" : 7,
+          "timestamp" : 1506612924119
+        },
+        "-Kv87CGgZ3okFj_hjKU6" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 11,
+          "points" : 0,
+          "strokes" : 7,
+          "timestamp" : 1506612925183
+        },
+        "-Kv87CLieEZnRkfSs_xJ" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 12,
+          "points" : 0,
+          "strokes" : 6,
+          "timestamp" : 1506612925498
+        },
+        "-Kv87D1bhCP1eVyuIFow" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 13,
+          "points" : 1,
+          "strokes" : 7,
+          "timestamp" : 1506612928312
+        },
+        "-Kv87DdhzUhiwMiUlAQf" : {
+          "comp" : "Alpha Test",
+          "holeNumber" : 14,
+          "points" : 1,
+          "strokes" : 5,
+          "timestamp" : 1506612930815
+        }
+      },
+      "lasthole" : 14,
+      "playerName" : "Phil Flavin",
+      "timestamp" : 1506612930815,
+      "total" : 17
+    }
+  }
 }
