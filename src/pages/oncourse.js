@@ -138,7 +138,7 @@ handleIncHole(strokes, points){
         playerdbRef.child('lasthole').set(lasthole)
         playerdbRef.child('playerName').set(playerName)
         playerdbRef.child('timestamp').set(now)
-        playerdbRef.child('courseName').set(this.state.selectedCourseName)
+        playerdbRef.child('courseName').set(this.state.selectedCourseName) //needed for course filter
         var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: lasthole, points: points, strokes: strokes, timestamp: now})
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
