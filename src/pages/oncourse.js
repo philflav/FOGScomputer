@@ -100,7 +100,9 @@ componentWillMount() {
              })
         playerList = []
         this.state.scorecards.forEach((card, index) => {
-           playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].lasthole}  total={this.state.scorecards[index].total} />)
+            console.log(this.state.selectedCourseName,this.state.scorecards[index] )
+            if(this.state.selectedCourseName===this.state.scorecards[index].courseName){
+           playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].lasthole}  total={this.state.scorecards[index].total} />)}
     
         })
 
@@ -123,7 +125,8 @@ componentDidMount() {
 
 handleIncHole(strokes, points){
     var hole= this.state.holeNumber 
-    var lasthole = hole   
+    var lasthole = hole  
+    console.log('State:',this.state) 
     if(hole <= 18){
         hole++
         var total = this.state.total + points
@@ -138,6 +141,7 @@ handleIncHole(strokes, points){
         playerdbRef.child('lasthole').set(lasthole)
         playerdbRef.child('playerName').set(playerName)
         playerdbRef.child('timestamp').set(now)
+        playerdbRef.child('courseName').set(this.state.selectedCourseName)
         var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: lasthole, points: points, strokes: strokes, timestamp: now})
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})

@@ -4,32 +4,47 @@ import fire from '../fire.js';
 
 import {  Panel,  Form, Button, } from 'react-bootstrap'
 
+import DropdownInput from 'react-dropdown-input2'
+
 import getplayerDetails from '../functions/getplayerDetails.js'
 
 
-var dbRefPlayers = fire.database().ref().child('player');
+var dbRefPlayers = fire.database().ref().child('player')
+var dbRefCourses = fire.database().ref().child('course')
 var that
  
 export default class LoginForm extends React.Component {
-
+ 
     constructor(props){
         super(props)
         this.state=({
             open: false,
             displayName: 'Display Name',
             handicap: 0,
-            compCourse: 'FFGC Martello',
-            currentComp: 'Alpha test'
+            compCourse: '',
+            currentComp: 'Alpha test',
+            courses: [] //populates onComponentWillMount
 
         })
         that=this
+    }
+
+    componentWillMount(){
+        //setup courseNames for selector box
+        dbRefCourses.once('value').then(snap =>{
+            var courseList = []
+            snap.forEach((child) => {
+                courseList.push(child.val().name)
+           }) 
+           this.setState({courses: courseList})
+
+        })
     }
 
     componentDidMount(){
 
         const txtEmail=document.getElementById('txtEmail')
         const txtPassword=document.getElementById('txtPassword')
-        const txtcompCourse=document.getElementById('txtcompCourse')
         const btnLogin=document.getElementById('btnLogin')
         const btnSignUp=document.getElementById('btnSignUp') 
         const btnLogOut=document.getElementById('btnLogOut')
@@ -51,7 +66,7 @@ export default class LoginForm extends React.Component {
                 handicap: txthandicap.value,
                 displayName: displayname.value,
                 currentComp: txtcurrentComp.value,
-                compCourse: txtcompCourse.value
+                compCourse: this.state.compCourse
             })
         }
         })
@@ -100,7 +115,7 @@ export default class LoginForm extends React.Component {
                     handicap: 18,
                     displayName: 'name',
                     currentComp: 'Alpha Test',
-                    compCourse: txtcompCourse.value
+                    compCourse: that.state.compCourse
                 })
                 this.setState({open: true})
             })
@@ -150,6 +165,14 @@ export default class LoginForm extends React.Component {
             [name]: value});
     }
 
+    handleSelectName(value) {
+
+        that.setState({
+            compCourse: value.value
+        })
+        console.log(that.state.compCourse)
+    }
+
 
     render () {
         
@@ -175,12 +198,28 @@ export default class LoginForm extends React.Component {
                     Display Name - your name as it will appear on the leaderboard <br />
                     Handicap - your playing handicap for the competition <br /><br />
                     </i>
-
+                    <form class="form-horizontal">
+                    <div class="col-xs-4">
+                    <label>Competition Name</label>
                     <input id="txtcurrentComp" type="text"  name="currentComp" value={this.state.currentComp} disable/>
-                    <input id="txtcompCourse" type="text" onChange={this.handleInputChange} name="compCourse" value={this.state.compCourse} />
+                    </div>
+                    <div class="col-xs-4">  
+                        <label>Course</label>               
+                    <DropdownInput
+                            options={this.state.courses}
+                            defaultValue= {this.state.compCourse}
+                            menuClassName='dropdown-input'
+                            onSelect={this.handleSelectName}
+                            placeholder='Select Course'
+                            max={10}
+                        />
+                    </div>
+                    <label>Player Name</label>
                     <input id="displayName" type="text" onChange={this.handleInputChange} name="displayName" value={this.state.displayName}/>
+                    <label>Player Handicap</label>
                     <input id="handicap" type="number" onChange={this.handleInputChange} name="handicap" value={this.state.handicap}/> 
-                    <br /><br />
+                    </form>
+                    <br /><br />    
                     <Button bsStyle="primary" id="btnUpdate"> Update</Button>  
                     <Button bsStyle="primary" href='../oncourse'>Scorecard</Button>                         
                     <Button bsStyle="primary" id="btnLogOut" hide>Sign Out </Button>
