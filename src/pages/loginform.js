@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component {
     componentDidMount(){
 
         const txtEmail=document.getElementById('txtEmail')
-        const txtPassword=document.getElementById('txtPassword')
+//        const txtPassword=document.getElementById('txtPassword')
         const btnLogin=document.getElementById('btnLogin')
         const btnSignUp=document.getElementById('btnSignUp') 
         const btnLogOut=document.getElementById('btnLogOut')
@@ -53,10 +53,7 @@ export default class LoginForm extends React.Component {
         const txtcurrentComp=document.getElementById('txtcurrentComp')
         const displayname=document.getElementById('displayName')
 
-        
-
-        console.log(txtEmail, txtPassword, txthandicap)
-
+ 
         btnUpdate.addEventListener('click', e =>{
             var user=fire.auth().currentUser
             if(user){
@@ -82,7 +79,7 @@ export default class LoginForm extends React.Component {
         btnLogin.addEventListener('click', e =>{
             //get email and password
             const email=txtEmail.value
-            const pass=txtPassword.value
+            const pass='default'
             
             const auth=fire.auth()            
 
@@ -101,7 +98,7 @@ export default class LoginForm extends React.Component {
         btnSignUp.addEventListener('click', e =>{
             //get email and password
             const email=txtEmail.value
-            const pass=txtPassword.value
+            const pass='default'
             
             const auth=fire.auth()            
 
@@ -185,7 +182,7 @@ export default class LoginForm extends React.Component {
                     <h3> Sign In</h3>
                     Sign in here to update your details and enter the current competition. If you don't have an account use the signup button to create one using an email address and password (your actual one or an invented one - it's only used for login authentication!) <br /><br /></i>        
                 <input id="txtEmail" type="email" placeholder="username" />
-                <input id="txtPassword" type="password" placeholder="****" /> <br />
+  
                 <Button bsStyle="primary" id="btnLogin" > Sign In </Button>
                 <Button bsStyle="primary" id="btnSignUp" > Sign Up </Button> <br/><hr /> <br/>
                 </Form>
