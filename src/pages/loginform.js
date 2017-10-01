@@ -4,7 +4,8 @@ import fire from '../fire.js';
 
 import {  Panel,  Form, Button, } from 'react-bootstrap'
 
-import DropdownInput from 'react-dropdown-input2'
+import Select from 'react-select'
+import 'react-select/dist/react-select.css'
 
 import getplayerDetails from '../functions/getplayerDetails.js'
 
@@ -32,11 +33,16 @@ export default class LoginForm extends React.Component {
     componentWillMount(){
         //setup courseNames for selector box
         dbRefCourses.once('value').then(snap =>{
-            var courseList = []
+
+            var optionsList =[]
             snap.forEach((child) => {
-                courseList.push(child.val().name)
-           }) 
-           this.setState({courses: courseList})
+
+                optionsList.push({value: child.val().name, label: child.val().name})
+           })  
+
+           this.setState({options: optionsList})
+
+           console.log(this.state.options)
 
         })
     }
@@ -163,16 +169,17 @@ export default class LoginForm extends React.Component {
     }
 
     handleSelectName(value) {
-
+        if(value){
         that.setState({
             compCourse: value.value
         })
         console.log(that.state.compCourse)
-    }
+         }
+        }
 
 
     render () {
-        
+
         return (
 
             <div> 
@@ -202,14 +209,14 @@ export default class LoginForm extends React.Component {
                     </div>
                     <div class="col-xs-4">  
                         <label>Course</label>               
-                    <DropdownInput
-                            options={this.state.courses}
-                            defaultValue= {this.state.compCourse}
-                            menuClassName='dropdown-input'
-                            onSelect={this.handleSelectName}
-                            placeholder='Select Course'
-                            max={10}
-                        />
+    
+                    <Select
+                        name="Select Course"
+                        value= {this.state.compCourse}
+                        searchable = {true}
+                        options = {this.state.options}
+                        onChange={this.handleSelectName}
+                    />
                     </div>
                     <label>Player Name</label>
                     <input id="displayName" type="text" onChange={this.handleInputChange} name="displayName" value={this.state.displayName}/>
