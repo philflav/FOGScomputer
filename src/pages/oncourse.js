@@ -3,6 +3,7 @@ import React from "react";
 import fire from '../fire.js';
 
 import {Panel, Well, Row, Col, Button,  Glyphicon, Clearfix} from 'react-bootstrap'
+import Notifications, {notify} from 'react-notify-toast';
 
 import stableford from '../functions/stableford.js'
 
@@ -115,16 +116,16 @@ componentWillMount() {
              })
         playerList = []
         leaderdata = []
-        console.log(this.state.scorecards)
+
         this.state.scorecards.forEach((card, index) => {
             if(this.state.selectedCourseName===this.state.scorecards[index].courseName){
                 leaderdata.push({name: this.state.scorecards[index].playerName, holes:this.state.scorecards[index].lasthole, total:this.state.scorecards[index].total })
             }
 
         })
-        console.log(leaderdata)
+
         leaderdata.sort(sort_by('total', true, parseInt))
-        console.log(leaderdata)
+
         for (var i = 0, len = leaderdata.length; i < len; i++){
                playerList.push(<PlayerProgress name={leaderdata[i].name} holes={leaderdata[i].lasthole}  total={leaderdata[i].total} />)
         }
@@ -169,6 +170,7 @@ handleIncHole(strokes, points){
         var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: lasthole, points: points, strokes: strokes, timestamp: now})
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
+        notify.show(strokes+' Entered', "success", 1500)
         
     }
 }
@@ -181,6 +183,7 @@ handleDecHole(points){
     this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
     playerdbRef.child('lasthole').set(hole-1)
     playerdbRef.child('total').set(total)
+    notify.show('BACK 1', "warning", 1500)
 
 }
 
@@ -343,7 +346,7 @@ render() {
     return (
 
         <div>
-
+            <Notifications />
         <Panel bsStyle="primary" header = {title}>
        {/* <Nav bsStyle="tabs" activeKey="1" onSelect={this.handleCourseSelect.bind(this)}>
                     <NavDropdown eventKey="999" title="Select Course" id="nav-dropdown">
