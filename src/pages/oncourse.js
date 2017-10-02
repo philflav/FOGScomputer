@@ -119,16 +119,18 @@ componentWillMount() {
 
         this.state.scorecards.forEach((card, index) => {
             if(this.state.selectedCourseName===this.state.scorecards[index].courseName){
-                leaderdata.push({name: this.state.scorecards[index].playerName, holes:this.state.scorecards[index].lasthole, total:this.state.scorecards[index].total })
+                leaderdata.push({name: this.state.scorecards[index].playerName, holes: this.state.scorecards[index].lasthole, total:this.state.scorecards[index].total })
             }
 
         })
-
+        console.log(leaderdata)
         leaderdata.sort(sort_by('total', true, parseInt))
+        console.log(leaderdata)
 
         for (var i = 0, len = leaderdata.length; i < len; i++){
-               playerList.push(<PlayerProgress name={leaderdata[i].name} holes={leaderdata[i].lasthole}  total={leaderdata[i].total} />)
+               playerList.push(<PlayerProgress name={leaderdata[i].name} holes={leaderdata[i].holes}  total={leaderdata[i].total} />)
         }
+        console.log(playerList)
         /*
 
         this.forceUpdate()
