@@ -12,6 +12,13 @@ label {
   margin-right: 5px;
   font-weight: 700;
 }
+.btn {
+  margin: 1px;
+  padding: 12px;
+}
+.btn-lg {
+  padding: 15px;
+}
 
 
 .dropdown-menu>li>a {
