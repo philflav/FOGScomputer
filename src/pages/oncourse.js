@@ -18,7 +18,8 @@ var playerdbRef
 
 var courseList = []
 
-var playerList
+var playerList = []
+var leaderdata = []
 var scorecards = []
 var scorecardKeys = []
 var holescoreRefHistory =[]
@@ -29,6 +30,20 @@ var SIs = []
 var holeNumber =['--',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,'--']
 
 var history = []
+
+//sorting function
+var sort_by = function(field, reverse, primer){
+    
+       var key = primer ? 
+           function(x) {return primer(x[field])} : 
+           function(x) {return x[field]};
+    
+       reverse = !reverse ? 1 : -1;
+    
+       return function (a, b) {
+           return a = key(a), b = key(b), reverse * ((a > b) - (b > a));
+         } 
+    }
 
 
 
@@ -99,12 +114,24 @@ componentWillMount() {
             scorecards: scorecards
              })
         playerList = []
+        leaderdata = []
+        console.log(this.state.scorecards)
         this.state.scorecards.forEach((card, index) => {
             if(this.state.selectedCourseName===this.state.scorecards[index].courseName){
-           playerList.push(<PlayerProgress name = {this.state.scorecards[index].playerName} holes={this.state.scorecards[index].lasthole}  total={this.state.scorecards[index].total} />)}
+                leaderdata.push({name: this.state.scorecards[index].playerName, holes:this.state.scorecards[index].lasthole, total:this.state.scorecards[index].total })
+            }
+
         })
+        console.log(leaderdata)
+        leaderdata.sort(sort_by('total', true, parseInt))
+        console.log(leaderdata)
+        for (var i = 0, len = leaderdata.length; i < len; i++){
+               playerList.push(<PlayerProgress name={leaderdata[i].name} holes={leaderdata[i].lasthole}  total={leaderdata[i].total} />)
+        }
+        /*
 
         this.forceUpdate()
+        */
     })  
 
         
