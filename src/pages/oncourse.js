@@ -170,7 +170,7 @@ handleIncHole(strokes, points){
         var holescoreId= playerdbRef.child('holescore').push({comp: compName, holeNumber: lasthole, points: points, strokes: strokes, timestamp: now})
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
-        notify.show(strokes+' Entered', "success", 1500)
+        if(strokes>0){notify.show(strokes+' Entered', "success", 1500)} 
         
     }
 }
@@ -183,7 +183,7 @@ handleDecHole(points){
     this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
     playerdbRef.child('lasthole').set(hole-1)
     playerdbRef.child('total').set(total)
-    notify.show('BACK 1', "warning", 1500)
+    notify.show('Hole '+hole, "warning", 1500)
 
 }
 
