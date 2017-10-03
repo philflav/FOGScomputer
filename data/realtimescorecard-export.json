@@ -152,13 +152,160 @@
       } ],
       "name" : "FFGC Martello"
     },
-    "Woodbridge" : {
-      "holes" : {
-        "number" : 1
-      },
-      "name" : "Woodbridge FOrest"
-    }
-  },
+    "Woodbridge Heath" : {
+      "holes" :[ null, {
+        "SI" : 14,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 10,
+        "number" : 2,
+        "par" : 4
+      }, {
+        "SI" : 4,
+        "number" : 3,
+        "par" : 5
+      }, {
+        "SI" : 12,
+        "number" : 4,
+        "par" : 4
+      }, {
+        "SI" : 2,
+        "number" : 5,
+        "par" : 4
+      }, {
+        "SI" : 6,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 18,
+        "number" : 7,
+        "par" : 3
+      }, {
+        "SI" : 8,
+        "number" : 8,
+        "par" : 5
+      }, {
+        "SI" : 16,
+        "number" : 9,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 10,
+        "par" : 4
+      }, {
+        "SI" : 11,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 9,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 17,
+        "number" : 13,
+        "par" : 4
+      }, {
+        "SI" : 5,
+        "number" : 14,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 15,
+        "par" : 3
+      }, {
+        "SI" : 3,
+        "number" : 16,
+        "par" : 4
+      }, {
+        "SI" : 7,
+        "number" : 17,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 18,
+        "par" : 4
+      } ],
+      "name" : "Woodbridge Heath"
+    },
+    "Le Touquet - La Mer": {
+      "holes":[ null, {
+        "SI" : 8,
+        "number" : 1,
+        "par" : 5
+      },{
+        "SI" : 4,
+        "number" : 2,
+        "par" : 3
+      },{
+        "SI" : 18,
+        "number" : 3,
+        "par" : 4
+      },{
+        "SI" : 14,
+        "number" : 4,
+        "par" : 5
+      },{
+        "SI" : 10,
+        "number" : 5,
+        "par" : 4
+      },{
+        "SI" : 16,
+        "number" : 6,
+        "par" : 4
+      },{
+        "SI" : 12,
+        "number" : 7,
+        "par" : 3
+      },{
+        "SI" : 6,
+        "number" : 8,
+        "par" : 4
+      },{
+        "SI" : 2,
+        "number" : 9,
+        "par" : 4
+      },{
+        "SI" : 17,
+        "number" : 10,
+        "par" : 3
+      },{
+        "SI" : 1,
+        "number" : 11,
+        "par" : 4
+      },{
+        "SI" : 7,
+        "number" : 12,
+        "par" : 4
+      },{
+        "SI" : 3,
+        "number" : 13,
+        "par" : 4
+      },{
+        "SI" : 5,
+        "number" : 14,
+        "par" : 4
+      },{
+        "SI" : 11,
+        "number" : 15,
+        "par" : 5
+      },{
+        "SI" : 9,
+        "number" : 16,
+        "par" : 3
+      },{
+        "SI" : 15,
+        "number" : 17,
+        "par" : 5
+      },{
+        "SI" : 13,
+        "number" : 18,
+        "par" : 4
+      }   
+      ],
+      "name" : "Le Touquet - La Mer"
+    },
+  },  
   "player" : {
     "6vTAvHne0mfKgc4ziJMfaGCUDHv1" : {
       "compCourse" : "FFGC Martello",
@@ -168,7 +315,7 @@
     },
     "VVa0oazwSBduhlUaykYM5LeVPYI2" : {
       "compCourse" : "FFGC Martello",
-      "currentComp" : "TEST",
+      "currentComp" : "Alpha Test",
       "displayName" : "Tester",
       "handicap" : "7"
     },
@@ -187,8 +334,8 @@
     "vV1Y0cMWLEUQnzKCEQxfYfDD9yF2" : {
       "compCourse" : "FFGC Kingsfleet",
       "currentComp" : "Alpha Test",
-      "displayName" : "DONALD Duck",
-      "handicap" : "18"
+      "displayName" : "Donald Duck",
+      "handicap" : "12"
     },
     "y5UZXVU55YeCVkm2V7ho3O8C8Qb2" : {
       "compCourse" : "FFGC Kingsfleet",
@@ -1507,5 +1654,5 @@
       "timestamp" : 1506612930815,
       "total" : 17
     }
-  }
+  }  
 }
