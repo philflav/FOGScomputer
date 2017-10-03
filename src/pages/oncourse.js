@@ -123,14 +123,14 @@ componentWillMount() {
             }
 
         })
-        console.log(leaderdata)
+
         leaderdata.sort(sort_by('total', true, parseInt))
-        console.log(leaderdata)
+
 
         for (var i = 0, len = leaderdata.length; i < len; i++){
                playerList.push(<PlayerProgress name={leaderdata[i].name} holes={leaderdata[i].holes}  total={leaderdata[i].total} />)
         }
-        console.log(playerList)
+
         /*
 
         this.forceUpdate()
