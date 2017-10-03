@@ -24,7 +24,8 @@ export default class LoginForm extends React.Component {
             handicap: 0,
             compCourse: '',
             currentComp: 'Alpha test',
-            courses: [] //populates onComponentWillMount
+            courses: [], //populates onComponentWillMount
+            options: [{value: 'not set',label: 'Courses Loading - refresh page if necessary'}]
 
         })
         that=this
@@ -187,7 +188,7 @@ export default class LoginForm extends React.Component {
                 <Form inline> 
                 <i>
                     <h3> Sign In</h3>
-                    Sign in here to update your details and enter the current competition. If you don't have an account use the signup button to create one using an email address and password (your actual one or an invented one - it's only used for login authentication!) <br /><br /></i>        
+                    'Sign In' here to update your details and enter the course you are playing. If you don't already have an account use the 'Sign Up' button to create one using an email address (your actual one or an invented (unique) one - it's only used for login authentication!) <br /><br /></i>        
                 <input id="txtEmail" type="email" placeholder="username" />
   
                 <Button bsStyle="primary" id="btnLogin" > Sign In </Button>
@@ -198,9 +199,11 @@ export default class LoginForm extends React.Component {
                     <h3> Enter Competition details below </h3>
                     <br />
                     <i>
-                    Competition Name - not implemented for alpha test<br />
-                    Display Name - your name as it will appear on the leaderboard <br />
-                    Handicap - your playing handicap for the competition <br /><br />
+                    Competition Name - not implemented for alpha test.<br />
+                    Display Name - your name as it will appear on the leaderboard. <br />
+                    Course - select the course you are playing from the drop down list.<br />
+                    Handicap - your playing handicap. <br /><br />
+                    Make sure to press 'Update' after entering your details before going to the scorecard.
                     </i>
                     <form class="form-horizontal">
                     <div class="col-xs-4">
