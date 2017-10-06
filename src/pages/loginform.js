@@ -13,6 +13,20 @@ import getplayerDetails from '../functions/getplayerDetails.js'
 var dbRefPlayers = fire.database().ref().child('player')
 var dbRefCourses = fire.database().ref().child('course')
 var that
+
+var getOptions = function(input, callback){
+    
+    //setup courseNames for selector box
+    dbRefCourses.once('value').then(snap =>{
+        var optionsList =[]
+        snap.forEach((child) => {
+            optionsList.push({value: child.val().name, label: child.val().name})
+        })
+            
+       callback(null, {options: optionsList, complete:true})
+      
+})
+}
  
 export default class LoginForm extends React.Component {
  
@@ -213,11 +227,11 @@ export default class LoginForm extends React.Component {
                     <div class="col-xs-4">  
                         <label>Course</label>               
     
-                    <Select
+                    <Select.Async
                         name="Select Course"
                         value= {this.state.compCourse}
                         searchable = {true}
-                        options = {this.state.options}
+                        loadOptions = {getOptions}
                         onChange={this.handleSelectName}
                     />
                     </div>
