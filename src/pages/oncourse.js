@@ -407,7 +407,7 @@ render() {
     
 
       </Well>
-        <h5>Leaderboard</h5>
+        <h5>{this.state.currentComp + ' Leaderboard'}</h5>
         <Well> 
         <table>
             <thead>
