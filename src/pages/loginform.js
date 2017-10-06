@@ -70,6 +70,7 @@ export default class LoginForm extends React.Component {
         const btnSignUp=document.getElementById('btnSignUp') 
         const btnLogOut=document.getElementById('btnLogOut')
         const btnUpdate = document.getElementById('btnUpdate')
+        const btnScorecard = document.getElementById('btnScorecard')
         const txthandicap=document.getElementById('handicap')
         const txtcurrentComp=document.getElementById('txtcurrentComp')
         const displayname=document.getElementById('displayName')
@@ -86,6 +87,21 @@ export default class LoginForm extends React.Component {
                 currentComp: txtcurrentComp.value,
                 compCourse: this.state.compCourse
             })
+        }
+        })
+
+        btnScorecard.addEventListener('click', e =>{
+            var user=fire.auth().currentUser
+            if(user){
+            console.log(user.uid)
+            var dbPlayerRef= dbRefPlayers.child(user.uid)
+            dbPlayerRef.set({
+                handicap: txthandicap.value,
+                displayName: displayname.value,
+                currentComp: txtcurrentComp.value,
+                compCourse: this.state.compCourse
+            })
+            window.location.href = '../oncourse'
         }
         })
         btnLogOut.addEventListener('click', e =>{
@@ -206,7 +222,7 @@ export default class LoginForm extends React.Component {
                 <input id="txtEmail" type="email" placeholder="username" />
   
                 <Button bsStyle="primary" id="btnLogin" > Sign In </Button>
-                <Button bsStyle="primary" id="btnSignUp" > Sign Up </Button> <br/><hr /> <br/>
+                <Button bsStyle="info" id="btnSignUp" > Sign Up </Button> <br/><hr /> <br/>
                 </Form>
                 </Panel>
                 <Panel id="details" collapsible expanded = {this.state.open}>
@@ -241,9 +257,9 @@ export default class LoginForm extends React.Component {
                     <input id="handicap" type="number" onChange={this.handleInputChange} name="handicap" value={this.state.handicap}/> 
                     </form>
                     <br /><br />    
-                    <Button bsStyle="primary" id="btnUpdate"> Update</Button>  
-                    <Button bsStyle="primary" href='../oncourse'>Scorecard</Button>                         
-                    <Button bsStyle="primary" id="btnLogOut" hide>Sign Out </Button>
+                    <Button bsStyle="info" bsSize="small" id="btnUpdate"> Save</Button>  
+                    <Button bsStyle="primary" bsSize="large"id="btnScorecard">Scorecard</Button>                         
+                    <Button bsStyle="info" bsSize="small" id="btnLogOut" hide>Sign Out </Button>
                 </Panel>
           
             
