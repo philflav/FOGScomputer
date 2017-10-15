@@ -19,6 +19,12 @@ label {
 .btn-lg {
   padding: 15px;
 }
+.glyphicon {
+padding-right: 4px;
+}
+.h4, h4 {
+  font-size: 16px;
+}
 
 
 .dropdown-menu>li>a {

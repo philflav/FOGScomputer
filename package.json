@@ -1,6 +1,6 @@
 {
   "name": "realtimeScorecard",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "private": true,
   "dependencies": {
     "firebase": "^4.1.3",

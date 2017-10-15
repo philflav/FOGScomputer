@@ -32,6 +32,8 @@ var holeNumber =['--',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,'--']
 
 var history = []
 
+var buttons
+
 //sorting function
 var sort_by = function(field, reverse, primer){
     
@@ -80,6 +82,8 @@ export default class OnCourse extends React.Component {
 }
 
 componentWillMount() {
+
+   
 
     fire.auth().onAuthStateChanged(firebaseUser =>{
         if(firebaseUser) {
@@ -151,7 +155,9 @@ componentDidMount() {
 
 
 
+
 handleIncHole(strokes, points){
+    buttons = document.getElementById('buttons') //get handle on entry buttons here as it's not working in componentWillMount
     var hole= this.state.holeNumber 
     var lasthole = hole  
     if(hole <= 18){
@@ -173,6 +179,10 @@ handleIncHole(strokes, points){
         holescoreRefHistory.push(holescoreId.getKey())
         this.setState({holeNumber: hole, total: total, holePar: pars[hole], holeSI: SIs[hole]})
         if(strokes>0){notify.show(strokes+' Entered', "success", 1500)} 
+        if(hole>18){
+            buttons.classList.add('hidden')
+        }
+
         
     }
 }
@@ -186,6 +196,9 @@ handleDecHole(points){
     playerdbRef.child('lasthole').set(hole-1)
     playerdbRef.child('total').set(total)
     notify.show('Hole '+hole, "warning", 1500)
+    if(hole<=18){
+        buttons.classList.remove('hidden')
+    }
 
 }
 
@@ -356,7 +369,7 @@ render() {
                     </NavDropdown>
                 </Nav> */}
             <pre>Hole:{history.slice(-1).pop()} Running total: {this.state.total} </pre>
-        <Well ><h4><i>Score for hole: </i><b> {holeNumber[this.state.holeNumber]} </b> <i>Par : </i> {this.state.holePar} <i>SI : </i> {this.state.holeSI}</h4> 
+        <Well id='buttons' ><h4><i>Score for hole: </i><b> {holeNumber[this.state.holeNumber]} </b> <i>Par : </i> {this.state.holePar} <i>SI : </i> {this.state.holeSI}</h4> 
         <Col>
             <Row>			 
                 <Button bsStyle='success'  onClick={this.handleEagle.bind(this)}>
@@ -387,19 +400,21 @@ render() {
                 <Glyphicon glyph="hand-down" />{this.state.holePar+3}
                 </Button> 
                 <Button bsStyle='danger' onClick={this.handleBlob.bind(this)}>
-                <Glyphicon glyph="minus-sign" />No score at hole
+                <Glyphicon glyph="minus-sign" />No score
                 </Button> 
             </Row>
-            </Col><Clearfix />
+            </Col>
+            <Clearfix />
+        </Well>
+        <Well>
    
 
-            <Row > 
-                <hr />               
-               
+            <Row >                  
+              
                 <Button bsStyle='primary' bsSize='large' onClick={this.handleClearHole.bind(this)}>               
-                <Glyphicon glyph="arrow-left" />Back</Button> 
-                <Button bsStyle='primary' bsSize='large'onClick={this.handleClearScorecard.bind(this)} >
-                <Glyphicon glyph="trash" />Clear Scorecard</Button>
+                <Glyphicon glyph="arrow-left" /> Back a Hole</Button> 
+                <Button bsStyle='danger' bsSize='large'onClick={this.handleClearScorecard.bind(this)} >
+                <Glyphicon glyph="trash" /> Wipe scorecard</Button>
             
             
 
@@ -407,7 +422,7 @@ render() {
     
 
       </Well>
-        <h5>{this.state.currentComp + ' Leaderboard'}</h5>
+        <h5>{this.state.currentComp + '-  Leaderboard'}</h5>
         <Well> 
         <table>
             <thead>
