@@ -3,7 +3,7 @@ const functions = require('./node_modules/firebase-functions');
 // This firebase server function removes and rtscore data that is more than 24 hours old.
 // Each time a score is written to the database a timestamp is added. The function sorts by 
 //timestamp and nullifies anything created befor the cutoff time. It is trggered on each write to the database.
-exports.deleteOldItems = functions.database.ref('/rtscores/{id}')
+exports.deleteOldScores = functions.database.ref('/rtscores/{id}')
 .onWrite(event => {
   var ref = event.data.ref.parent; // reference to the items
   var now = Date.now();
@@ -19,7 +19,7 @@ exports.deleteOldItems = functions.database.ref('/rtscores/{id}')
     return ref.update(updates);
   });
 });
-exports.deleteOldItems = functions.database.ref('/messages')
+exports.deleteOldMessages = functions.database.ref('/messages/{id}')
 .onWrite(event => {
   var ref = event.data.ref.parent; // reference to the items
   var now = Date.now();

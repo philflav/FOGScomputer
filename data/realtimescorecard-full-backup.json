@@ -1,0 +1,538 @@
+{
+  "course" : {
+    "Belle Dune" : {
+      "holes" : [ null, {
+        "SI" : 12,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 6,
+        "number" : 2,
+        "par" : 4
+      }, {
+        "SI" : 18,
+        "number" : 3,
+        "par" : 3
+      }, {
+        "SI" : 16,
+        "number" : 4,
+        "par" : 5
+      }, {
+        "SI" : 8,
+        "number" : 5,
+        "par" : 4
+      }, {
+        "SI" : 14,
+        "number" : 6,
+        "par" : 3
+      }, {
+        "SI" : 4,
+        "number" : 7,
+        "par" : 4
+      }, {
+        "SI" : 2,
+        "number" : 8,
+        "par" : 4
+      }, {
+        "SI" : 10,
+        "number" : 9,
+        "par" : 4
+      }, {
+        "SI" : 3,
+        "number" : 10,
+        "par" : 5
+      }, {
+        "SI" : 5,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 13,
+        "par" : 5
+      }, {
+        "SI" : 17,
+        "number" : 14,
+        "par" : 3
+      }, {
+        "SI" : 11,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 16,
+        "par" : 4
+      }, {
+        "SI" : 7,
+        "number" : 17,
+        "par" : 4
+      }, {
+        "SI" : 9,
+        "number" : 18,
+        "par" : 4
+      } ],
+      "name" : "Belle Dune"
+    },
+    "FFGC Kingsfleet" : {
+      "holes" : [ null, {
+        "SI" : 17,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 3,
+        "number" : 2,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 3,
+        "par" : 3
+      }, {
+        "SI" : 5,
+        "number" : 4,
+        "par" : 5
+      }, {
+        "SI" : 7,
+        "number" : 5,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 7,
+        "par" : 4
+      }, {
+        "SI" : 11,
+        "number" : 8,
+        "par" : 5
+      }, {
+        "SI" : 9,
+        "number" : 9,
+        "par" : 3
+      }, {
+        "SI" : 18,
+        "number" : 10,
+        "par" : 4
+      }, {
+        "SI" : 4,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 14,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 6,
+        "number" : 13,
+        "par" : 5
+      }, {
+        "SI" : 8,
+        "number" : 14,
+        "par" : 3
+      }, {
+        "SI" : 2,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 16,
+        "number" : 16,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 17,
+        "par" : 5
+      }, {
+        "SI" : 10,
+        "number" : 18,
+        "par" : 3
+      } ],
+      "name" : "FFGC Kingsfleet"
+    },
+    "FFGC Martello" : {
+      "holes" : [ null, {
+        "SI" : 9,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 5,
+        "number" : 2,
+        "par" : 5
+      }, {
+        "SI" : 11,
+        "number" : 3,
+        "par" : 4
+      }, {
+        "SI" : 7,
+        "number" : 4,
+        "par" : 4
+      }, {
+        "SI" : 17,
+        "number" : 5,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 7,
+        "par" : 5
+      }, {
+        "SI" : 3,
+        "number" : 8,
+        "par" : 5
+      }, {
+        "SI" : 15,
+        "number" : 9,
+        "par" : 3
+      }, {
+        "SI" : 4,
+        "number" : 10,
+        "par" : 5
+      }, {
+        "SI" : 10,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 18,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 14,
+        "number" : 13,
+        "par" : 4
+      }, {
+        "SI" : 2,
+        "number" : 14,
+        "par" : 4
+      }, {
+        "SI" : 8,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 16,
+        "par" : 3
+      }, {
+        "SI" : 6,
+        "number" : 17,
+        "par" : 4
+      }, {
+        "SI" : 16,
+        "number" : 18,
+        "par" : 4
+      } ],
+      "name" : "FFGC Martello"
+    },
+    "Hardelot - Les Dunes" : {
+      "holes" : [ null, {
+        "SI" : 11,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 17,
+        "number" : 2,
+        "par" : 3
+      }, {
+        "SI" : 9,
+        "number" : 3,
+        "par" : 5
+      }, {
+        "SI" : 3,
+        "number" : 4,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 5,
+        "par" : 3
+      }, {
+        "SI" : 5,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 7,
+        "par" : 3
+      }, {
+        "SI" : 7,
+        "number" : 8,
+        "par" : 5
+      }, {
+        "SI" : 1,
+        "number" : 9,
+        "par" : 5
+      }, {
+        "SI" : 6,
+        "number" : 10,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 11,
+        "par" : 3
+      }, {
+        "SI" : 2,
+        "number" : 12,
+        "par" : 4
+      }, {
+        "SI" : 10,
+        "number" : 13,
+        "par" : 5
+      }, {
+        "SI" : 14,
+        "number" : 14,
+        "par" : 3
+      }, {
+        "SI" : 16,
+        "number" : 15,
+        "par" : 4
+      }, {
+        "SI" : 4,
+        "number" : 16,
+        "par" : 4
+      }, {
+        "SI" : 18,
+        "number" : 17,
+        "par" : 3
+      }, {
+        "SI" : 8,
+        "number" : 18,
+        "par" : 4
+      } ],
+      "name" : "Hardelot -  Les Dunes"
+    },
+    "Le Touquet - La Mer" : {
+      "holes" : [ null, {
+        "SI" : 8,
+        "number" : 1,
+        "par" : 5
+      }, {
+        "SI" : 4,
+        "number" : 2,
+        "par" : 3
+      }, {
+        "SI" : 18,
+        "number" : 3,
+        "par" : 4
+      }, {
+        "SI" : 14,
+        "number" : 4,
+        "par" : 5
+      }, {
+        "SI" : 10,
+        "number" : 5,
+        "par" : 4
+      }, {
+        "SI" : 16,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 12,
+        "number" : 7,
+        "par" : 3
+      }, {
+        "SI" : 6,
+        "number" : 8,
+        "par" : 4
+      }, {
+        "SI" : 2,
+        "number" : 9,
+        "par" : 4
+      }, {
+        "SI" : 17,
+        "number" : 10,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 7,
+        "number" : 12,
+        "par" : 4
+      }, {
+        "SI" : 3,
+        "number" : 13,
+        "par" : 4
+      }, {
+        "SI" : 5,
+        "number" : 14,
+        "par" : 4
+      }, {
+        "SI" : 11,
+        "number" : 15,
+        "par" : 5
+      }, {
+        "SI" : 9,
+        "number" : 16,
+        "par" : 3
+      }, {
+        "SI" : 15,
+        "number" : 17,
+        "par" : 5
+      }, {
+        "SI" : 13,
+        "number" : 18,
+        "par" : 4
+      } ],
+      "name" : "Le Touquet - La Mer"
+    },
+    "Woodbridge Heath" : {
+      "holes" : [ null, {
+        "SI" : 14,
+        "number" : 1,
+        "par" : 4
+      }, {
+        "SI" : 10,
+        "number" : 2,
+        "par" : 4
+      }, {
+        "SI" : 4,
+        "number" : 3,
+        "par" : 5
+      }, {
+        "SI" : 12,
+        "number" : 4,
+        "par" : 4
+      }, {
+        "SI" : 2,
+        "number" : 5,
+        "par" : 4
+      }, {
+        "SI" : 6,
+        "number" : 6,
+        "par" : 4
+      }, {
+        "SI" : 18,
+        "number" : 7,
+        "par" : 3
+      }, {
+        "SI" : 8,
+        "number" : 8,
+        "par" : 5
+      }, {
+        "SI" : 16,
+        "number" : 9,
+        "par" : 3
+      }, {
+        "SI" : 1,
+        "number" : 10,
+        "par" : 4
+      }, {
+        "SI" : 11,
+        "number" : 11,
+        "par" : 4
+      }, {
+        "SI" : 9,
+        "number" : 12,
+        "par" : 3
+      }, {
+        "SI" : 17,
+        "number" : 13,
+        "par" : 4
+      }, {
+        "SI" : 5,
+        "number" : 14,
+        "par" : 4
+      }, {
+        "SI" : 13,
+        "number" : 15,
+        "par" : 3
+      }, {
+        "SI" : 3,
+        "number" : 16,
+        "par" : 4
+      }, {
+        "SI" : 7,
+        "number" : 17,
+        "par" : 4
+      }, {
+        "SI" : 15,
+        "number" : 18,
+        "par" : 4
+      } ],
+      "name" : "Woodbridge Heath"
+    }
+  },
+  "messages" : {
+    "-Kw_O-6Mb8Vhj3nRN3CT" : {
+      "message" : "Test message 1 ",
+      "timestamp" : 1508160831333,
+      "username" : "Phil"
+    },
+    "-Kw_P5CaPZsnVdqyr-mN" : {
+      "message" : "Basil has logged in",
+      "timestamp" : 1508161121470,
+      "username" : "Basil"
+    },
+    "-Kw_PfLBoqkjgf1vwT6O" : {
+      "message" : "Paul has signed in",
+      "timestamp" : 1508161270546,
+      "username" : "Paul"
+    },
+    "-Kw_PrpAzp2PpAbZWKsH" : {
+      "message" : "Simon has signed in",
+      "timestamp" : 1508161321689,
+      "username" : "Simon"
+    }
+  },
+  "player" : {
+    "4bPKVtvlruS4pykvpC25eWZQ5Lr2" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "Alpha test",
+      "displayName" : "Paul",
+      "handicap" : "17"
+    },
+    "BHX71B9JQkUCRdnqWdX2SdGSnEH3" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "Alpha test",
+      "displayName" : "Simon",
+      "handicap" : "6"
+    },
+    "RGKzOcPRIGWHt6vDtY8EdmWhhpr1" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "Alpha test",
+      "displayName" : "Basil",
+      "handicap" : "21"
+    },
+    "bUf3Xc5KdFOIrMVDtv2S7OyeHXA2" : {
+      "compCourse" : "FFGC Martello",
+      "currentComp" : "Alpha test",
+      "displayName" : "Phil",
+      "handicap" : "21"
+    }
+  },
+  "rtscores" : {
+    "4bPKVtvlruS4pykvpC25eWZQ5Lr2" : {
+      "courseName" : "FFGC Martello",
+      "lasthole" : 0,
+      "playerName" : "Paul",
+      "timestamp" : 1508161259433,
+      "total" : 0
+    },
+    "BHX71B9JQkUCRdnqWdX2SdGSnEH3" : {
+      "courseName" : "FFGC Martello",
+      "lasthole" : 0,
+      "playerName" : "Simon",
+      "timestamp" : 1508161311274,
+      "total" : 0
+    },
+    "RGKzOcPRIGWHt6vDtY8EdmWhhpr1" : {
+      "courseName" : "FFGC Martello",
+      "lasthole" : 0,
+      "playerName" : "Basil",
+      "timestamp" : 1508161101704,
+      "total" : 0
+    },
+    "bUf3Xc5KdFOIrMVDtv2S7OyeHXA2" : {
+      "courseName" : "FFGC Martello",
+      "lasthole" : 0,
+      "playerName" : "Phil",
+      "timestamp" : 1508161050112,
+      "total" : 0
+    }
+  }
+}
