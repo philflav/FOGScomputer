@@ -2,7 +2,7 @@ import React from "react";
 
 import fire from '../fire.js';
 
-import {Panel, Well, Row, Col, Button,  Glyphicon, Clearfix} from 'react-bootstrap'
+import {Panel, Well, Row, Col, Button,  Glyphicon, Clearfix, Tab, Tabs} from 'react-bootstrap'
 import Notifications, {notify} from 'react-notify-toast';
 
 import stableford from '../functions/stableford.js'
@@ -10,6 +10,7 @@ import stableford from '../functions/stableford.js'
 import getplayerDetails from '../functions/getplayerDetails.js'
 
 import PlayerProgress from './playerprogress.js'
+import Messenger from './messenger.js'
 
 var dbRefCourses = fire.database().ref().child('course');
 var dbRefrtscores = fire.database().ref().child('rtscores');
@@ -422,17 +423,25 @@ render() {
     
 
       </Well>
-        <h5>{this.state.currentComp + '-  Leaderboard'}</h5>
-        <Well> 
-        <table>
-            <thead>
-                <th> </th><th>  </th><th>  </th>
-            </thead>
-            <tbody>
-                {playerList}
-            </tbody>
-        </table>
-        </Well>
+ 
+        <Tabs defaultActiveKey={2} id="leaderboardTab">
+         <Tab eventKey={1} title="Leaderboard">  
+         <h5>{this.state.currentComp + '-  Leaderboard'}</h5>
+               <table>
+               <thead>
+                   <th> </th><th>  </th><th>  </th>
+               </thead>
+               <tbody>
+                   {playerList}
+               </tbody>
+           </table>
+           </Tab>
+               <Tab eventKey={2} title="Birdie (messenger)">
+               <Messenger />
+            </Tab>    
+        </Tabs>
+
+
         </Panel>
         </div>
 
