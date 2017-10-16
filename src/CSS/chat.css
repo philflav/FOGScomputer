@@ -2,15 +2,17 @@
 .chat-input {
     position: relative;
     overflow: hidden;
-    padding: 0 40px;
+    padding: 0 0px;
     flex-shrink: 0;
+
   }
   
   .chat-input input[type="text"] {
-    margin-top: 10px;
+    margin-top: 0px;
     width: 100%;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #e5ecbe
   }
 
   
@@ -19,13 +21,13 @@
   display: flex; 
   justify-content: flex-start; 
   position: relative;
-  width: 50%;
-  height: 30px;
-  padding: 5px;
-  background: #00FF00;
-  -webkit-border-radius: 40px;
-  -moz-border-radius: 40px;
-  border-radius: 40px;
+  width: 90%;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #5ed35e;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
   border: rgb(39, 36, 36) solid 1px;
   } 
 
@@ -36,17 +38,20 @@
   }
 
   .message .delta{
-    color: rgb(155, 184, 159)
+    color: rgb(9, 112, 23)
   }
   
   .message.from-me {
     display: flex;
     justify-content: flex-end;
+    text-align: right;
     margin-bottom: 10px;
   }
   
   .message.from-me .message-body {
-    background-color: #1a43fc;
+
+    justify-content: flex-end;
+    background-color: #1f75bb;
     color: rgb(255, 255, 255);
   }
   

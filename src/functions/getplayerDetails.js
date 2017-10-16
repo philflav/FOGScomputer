@@ -6,7 +6,7 @@ var dbRefPlayers = fire.database().ref().child('player');
 function getplayerDetails(uid) {
 
     //get player name for logged in user with uid
-
+    console.log(uid)
     return new Promise(function(resolve, reject){
 
     var dbRefPlayer= dbRefPlayers.child(uid)

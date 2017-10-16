@@ -164,6 +164,7 @@ export default class LoginForm extends React.Component {
 
         fire.auth().onAuthStateChanged(firebaseUser =>{
             if(firebaseUser) {
+                console.log('Here')
                getplayerDetails(firebaseUser.uid).then((success) => {
                       this.setState({
                           displayName: success.displayName,

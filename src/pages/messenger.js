@@ -1,7 +1,5 @@
 import React from "react"; 
 
-import {Panel, Well} from 'react-bootstrap'
-
 import fire from '../fire.js';
 
 import getplayerDetails from '../functions/getplayerDetails.js'

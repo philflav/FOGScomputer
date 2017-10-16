@@ -23,7 +23,7 @@ exports.deleteOldMessages = functions.database.ref('/messages/{id}')
 .onWrite(event => {
   var ref = event.data.ref.parent; // reference to the items
   var now = Date.now();
-  var cutoff = now - 12 * 60 * 1000; //delete anything more than 12 minutes old
+  var cutoff = now - 12 *60 * 60 * 1000; //delete anything more than 12 hours old
   var oldItemsQuery = ref.orderByChild('timestamp').endAt(cutoff);
   return oldItemsQuery.once('value', function(snapshot) {
     // create a map with all childrenfirebase that need to be removed

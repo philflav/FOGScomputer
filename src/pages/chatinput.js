@@ -1,11 +1,5 @@
 import React from "react"; 
 
-import {Panel, Well} from 'react-bootstrap'
-
-import fire from '../fire.js';
-
-var dbRefMessages = fire.database().ref().child('messages');
-
 export default class ChatInput extends React.Component {
     constructor(props){
         super(props)
@@ -40,7 +34,7 @@ render () {
         <input type="text" id="input"
           onChange={this.textChangeHandler.bind(this)}
           value={this.state.chatInput}
-          placeholder="Write a message...(40chars max)"
+          placeholder="Write a message..."
           required />
       </form>
         </div>

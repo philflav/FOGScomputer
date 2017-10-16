@@ -1,13 +1,10 @@
 import React from "react"; 
 
-import {Panel, Well} from 'react-bootstrap'
-
 import fire from '../fire.js';
 import getplayerDetails from '../functions/getplayerDetails.js'
 
 require ('../CSS/chat.css')
 
-var dbRefMessages = fire.database().ref().child('messages');
 
 export default class Message extends React.Component {
     constructor(props){
@@ -44,7 +41,7 @@ render () {
 <div className={`message ${fromMe}`}>
  
         <div className='username'>
-          { this.props.username }   {dt}Mins ago
+          { this.props.username } - {dt}Mins ago
         </div>  
         <div className='message-body'>
           { this.props.message }
