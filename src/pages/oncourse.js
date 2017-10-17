@@ -436,7 +436,7 @@ render() {
                </tbody>
            </table>
            </Tab>
-               <Tab eventKey={2} title="Birdie (messenger)">
+               <Tab eventKey={2} title="Birdy (messenger)">
                <Messenger />
             </Tab>    
         </Tabs>

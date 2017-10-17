@@ -12,11 +12,11 @@ export default class Layout extends React.Component {
         <Well>
        <h2>Realtime Leaderboard (V0.0.9 Alpha)</h2>
 
-       <p>Welcome to the realtime leaderboard app. Use the app to keep track of score and Stableford points as you play and keep an eye on the leaderboard of players around you.</p>
+       <p>Welcome to the realtime leaderboard app. Use the app to keep track of score and your Stableford points as you play, keep an eye on the leaderboard and message players in other groups using 'Birdy' for a bit of banter.</p>
        <p>The app is designed to work on all mobile phones and tablets. A continuous connection to the Internet is not required, with scores updated and synchronised when a connection is available.</p>
        <p>An account login is required to use the app. Go to 'Sign-In' for details.</p>
        <p>Scores are entered from the 'Scorecard' page. Progress of other competitors on the same course are  displayed in the leaderboard as they enter their own scores.</p> <h3>Release notes</h3>
-       <p>v0.0.9 <li>'Birdie' Messenger function added. Birdie because its like Twitter for Golfers! Messages over 12hours old are deleted.</li><li>Score entry buttons hidden after 18th hole</li></p>
+       <p>v0.0.9 <li>'Birdy' Messenger function added. Birdy because its like Twitter for Golfers! Messages over 12hours old are deleted.</li><li>Score entry buttons hidden after 18th hole</li></p>
        <p>v0.0.8 <li>Bug fix - loading course details on profile page</li><li>Minor UI changes</li></p>
        <p>V0.0.7 <li>Changes to course selector on profile page to remove IOS6 bug.</li><li> Leaderboard now sorted high to low</li><li>Notification of hole data entry (button press) added</li></p>
        <p>V0.0.6 <li>removes the need for password authentication. Only user email now required to signup/signin</li></p>
