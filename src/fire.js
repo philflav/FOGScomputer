@@ -1,13 +1,14 @@
 import firebase from 'firebase'
 
   // Initialize Firebase (FOGSComputer)
+  //  My details removed - add your own if reqired
   var config = {
-    apiKey: "AIzaSyCAb2_s5H7zON9ECQFQFrbP_RNUb4UV1Hg",
-    authDomain: "realtimescorecard.firebaseapp.com",
-    databaseURL: "https://realtimescorecard.firebaseio.com",
-    projectId: "realtimescorecard",
-    storageBucket: "realtimescorecard.appspot.com",
-    messagingSenderId: "961394997117"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
   };
   var fire = firebase.initializeApp(config);
 
